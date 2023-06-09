@@ -10,5 +10,3 @@ npm run ios -w app
 npm run web -w app
 // To install a package to the app or api directory
 npm install PACKAGE -w DIRECTORY
-// To install a package as a dev dependency to the app or api directory
-npm install PACKAGE -D -w DIRECTORY
