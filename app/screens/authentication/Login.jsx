@@ -7,9 +7,9 @@ const styles = StyleSheet.create({
   },
   touchable: {
     width: 300,
-    marginTop: 16,
+    marginTop: 556,
     marginLeft: 25,
-    paddingVertical: 8,
+    paddingVertical: 18,
     borderWidth: 2,
     borderColor: '#20232a',
     borderRadius: 6,
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
 function Login(props) {
   console.log(props.navigation)
   return (

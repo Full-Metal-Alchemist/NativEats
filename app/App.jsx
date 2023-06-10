@@ -4,9 +4,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Login from './src/screens/authentication/Login';
-import Signup from './src/screens/authentication/Signup';
-import ForgotPassword from './src/screens/authentication/ForgotPass';
+import Login from './screens/authentication/Login';
+import Signup from './screens/authentication/Signup';
+import ForgotPassword from './screens/authentication/ForgotPass';
 
 const navigator = createStackNavigator(
   {
