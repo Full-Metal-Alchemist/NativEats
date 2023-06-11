@@ -27,8 +27,7 @@ CREATE TABLE users (
 CREATE TABLE restaurants (
   id SERIAL PRIMARY KEY INT,
   name VARCHAR(50),
-  description VARCHAR(50),
-  photos TEXT,
+  photos TEXT[],
   rating DECIMAL,
   price VARCHAR(10),
   popularity VARCHAR(10),
@@ -36,8 +35,9 @@ CREATE TABLE restaurants (
   city VARCHAR(30),
   state VARCHAR(30),
   country VARCHAR(40),
-  latitude TEXT,
-  longitue TEXT,
+  transcation TEXT[],
+  hour TEXT[][],
+  phone TEXT,
 );
 
 CREATE TABLE restaurant_reviews (
@@ -47,15 +47,15 @@ CREATE TABLE restaurant_reviews (
   rating TEXT,
   comment TEXT,
   photos TEXT,
-  created_at TIMESTAMP,
-  updated_at TIMESTAMP,
+  created_at DATE,
+  updated_at DATE,
 );
 
 CREATE TABLE restaurant_bookmarks (
   id SERIAL PRIMARY KEY INT,
   restaurant_id INT REFERENCES restaurants(id),
   user_id INT REFERENCES users(id),
-  created_at TIMESTAMP,
+  created_at DATE,
 );
 
 
