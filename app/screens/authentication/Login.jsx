@@ -1,5 +1,7 @@
 import React from 'react';
-import { Text, StyleSheet, View, Button, TouchableOpacity } from 'react-native';
+import {
+  Text, StyleSheet, View, Button, TouchableOpacity,
+} from 'react-native';
 
 const styles = StyleSheet.create({
   text: {
@@ -21,23 +23,23 @@ const styles = StyleSheet.create({
   },
 });
 
-function Login(props) {
-  console.log(props.navigation)
+function Login({ navigation }) {
+  console.log(navigation);
   return (
     <View>
       <Text style={styles.text}>This is the home screen!</Text>
       <Button
-        onPress={() => props.navigation.navigate('SignupScreen')}
+        onPress={() => navigation.navigate('Signup')}
         title="Sign Up"
       />
       <TouchableOpacity
         style={styles.touchable}
-        onPress={() => props.navigation.navigate('ForgotPasswordScreen')}>
+        onPress={() => navigation.navigate('ForgotPassword')}
+      >
         <Text>Forgot Password</Text>
       </TouchableOpacity>
     </View>
-  )
-};
-
+  );
+}
 
 export default Login;
