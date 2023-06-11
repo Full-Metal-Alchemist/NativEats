@@ -23,23 +23,12 @@ const styles = StyleSheet.create({
   },
 });
 
-function Login({ navigation }) {
-  console.log(navigation);
+function RecipeSingle({ navigation }) {
   return (
     <View>
-      <Text style={styles.text}>This is the home screen!</Text>
-      <Button
-        onPress={() => navigation.navigate('Signup')}
-        title="Sign Up"
-      />
-      <TouchableOpacity
-        style={styles.touchable}
-        onPress={() => navigation.navigate('ForgotPassword')}
-      >
-        <Text>Forgot Password</Text>
-      </TouchableOpacity>
+      <Text style={styles.text}>This is the Signle Recipe screen!</Text>
     </View>
   );
 }
 
-export default Login;
+export default RecipeSingle;
