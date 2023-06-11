@@ -15,7 +15,13 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="RecipesMain">
+      <Stack.Navigator
+        initialRouteName="RecipesMain"
+        screenOptions={{
+          headerStyle: { elevation: 0 },
+          cardStyle: { backgroundColor: '#ffdf7a' }
+        }}
+      >
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />

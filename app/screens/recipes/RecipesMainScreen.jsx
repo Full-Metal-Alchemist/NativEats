@@ -13,11 +13,16 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#20232a',
     borderRadius: 6,
-    backgroundColor: '#61dafb',
+    backgroundColor: '#55d6bf',
     color: '#20232a',
     textAlign: 'center',
     fontSize: 30,
     fontWeight: 'bold',
+  },
+  list: {
+    alignItems: 'center',
+    padding: 0,
+    margin: 0,
   },
 });
 
@@ -39,7 +44,8 @@ function RecipesMain({ navigation }) {
     createdAt: '2020-02-11 15:44:17',
   }];
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.list}>
+      <Text>Asia Cuisine Recipes</Text>
       <FlatList
         data={mock}
         renderItem={({ item }) => (

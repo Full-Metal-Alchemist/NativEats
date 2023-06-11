@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
   touchable: {
     width: 300,
     marginTop: 15,
-    marginLeft: 25,
     paddingVertical: 18,
     borderWidth: 2,
     borderColor: '#20232a',
@@ -24,7 +23,7 @@ const styles = StyleSheet.create({
 });
 
 function RecipeButton({ navigation, title, data }) {
-  console.log(data)
+  // console.log(data)
   return (
     <View>
       <TouchableOpacity
