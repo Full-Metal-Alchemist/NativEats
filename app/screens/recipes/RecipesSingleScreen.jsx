@@ -1,32 +1,33 @@
 import React from 'react';
 import {
-  Text, StyleSheet, View, Button, TouchableOpacity,
+  Text, StyleSheet, View, TouchableOpacity, Image
 } from 'react-native';
 
 const styles = StyleSheet.create({
-  text: {
-    fontSize: 30,
-  },
-  touchable: {
-    width: 300,
-    marginTop: 556,
-    marginLeft: 25,
-    paddingVertical: 18,
-    borderWidth: 2,
-    borderColor: '#20232a',
-    borderRadius: 6,
-    backgroundColor: '#61dafb',
-    color: '#20232a',
-    textAlign: 'center',
+  title: {
     fontSize: 30,
     fontWeight: 'bold',
   },
+  text: {
+    fontSize: 20,
+  },
+  image: {
+    width: 100,
+    height: 100,
+    borderWidth: 2,
+    borderColor: 'black',
+  },
 });
 
-function RecipeSingle({ navigation }) {
+function RecipeSingle({ navigation, route }) {
+  const { data } = route.params;
+  console.log(data);
   return (
     <View>
-      <Text style={styles.text}>This is the Signle Recipe screen!</Text>
+      <Text style={styles.title}>{data.name}</Text>
+      <Text style={styles.text}>{data.cuisine[0]} Cuisine</Text>
+      <Image style={styles.image} source={{ uri: data.photos[0] }} />
+      <Text style={styles.text}>{data.steps}</Text>
     </View>
   );
 }

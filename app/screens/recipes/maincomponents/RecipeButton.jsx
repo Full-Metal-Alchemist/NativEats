@@ -29,7 +29,7 @@ function RecipeButton({ navigation, title, data }) {
     <View>
       <TouchableOpacity
         style={styles.touchable}
-        onPress={() => navigation.navigate('RecipesSingle')}
+        onPress={() => navigation.navigate('RecipesSingle', { data })}
       >
         <Text>{title}</Text>
       </TouchableOpacity>
