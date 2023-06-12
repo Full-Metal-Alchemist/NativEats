@@ -6,6 +6,8 @@ import {
 const styles = StyleSheet.create({
   text: {
     fontSize: 30,
+    textAlign: 'center',
+    alignSelf: 'center',
   },
   touchable: {
     width: 300,
@@ -17,6 +19,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#61dafb',
     color: '#20232a',
     textAlign: 'center',
+    alignSelf: 'center',
     fontSize: 30,
     fontWeight: 'bold',
   },

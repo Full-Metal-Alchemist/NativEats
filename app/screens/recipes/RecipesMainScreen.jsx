@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 30,
     fontWeight: 'bold',
+    justifyContent: 'center',
   },
   list: {
     alignItems: 'center',
