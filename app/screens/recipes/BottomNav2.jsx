@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 });
 
 function BottomNav({ navigation }) {
-  const mock = [{ render: 'Recipes', navName: 'RecipesMain' }, { render: 'Foodie Tour', navName: 'FoodTourScreen' }, { render: 'Cultural Insights', navName: 'CulturalScreen' }, { render: 'Bookmarks', navName: 'BookmarkScreen' }];
+  const mock = [{ render: 'Recipes', navName: 'RecipesMain' }, { render: 'Foodie Tour', navName: 'FoodieTour' }, { render: 'Cultural Insights', navName: 'CulturalScreen' }, { render: 'Bookmarks', navName: 'BookmarkScreen' }];
   return (
     <SafeAreaView style={styles.list}>
       <FlatList
