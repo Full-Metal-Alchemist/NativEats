@@ -1,21 +1,17 @@
 import { React, useState } from 'react';
 import { View, Text } from 'react-native';
-import { Card } from 'react-native-elements';
-import { Rating, AirbnbRating } from 'react-native-elements';
+import { Card, Rating, AirbnbRating } from 'react-native-elements';
 
-function RCard() {
+function RCard({ item }) {
+  console.log(item.id);
   return (
     <Card>
-      <Card.Title>HELLO WORLD</Card.Title>
-      <Card.Divider/>
-      <Rating
-        showRating
-        onFinishRating={3}
-        style={{ paddingVertical: 10 }}
-      />
-      <Card.Image source={require('../../assets/profile.jpeg')} />
+      <Card.Title>{item.name}</Card.Title>
+      <Card.Divider />
+      <Rating imageSize={60} readonly startingValue={item.rating} />
+      {/* <Card.Image source={{ url: item.photos[0] }} /> */}
       <Text>
-          The idea with React Native Elements is more about component structure than actual design.
+        {item.address}
       </Text>
     </Card>
 

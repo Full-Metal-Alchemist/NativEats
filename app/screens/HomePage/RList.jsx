@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import {
   FlatList,
   SafeAreaView,
@@ -6,22 +6,31 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  View,
 } from 'react-native';
-import { RCard } from './RCard';
+import axios from 'axios';
+import RCard from './RCard';
 
 function RList() {
   const [restaurants, setRestaurant] = useState([]);
+  useEffect(() => {
+    axios.get('http://localhost:8080/api/v1/restaurants')
+      .then((res) => {
+        setRestaurant(res.data);
+        console.log(res.data.length);
+      });
+  }, []);
 
   return (
-    <SafeAreaView>
+    <View>
       <FlatList
-        data={DATA}
-        renderItem={(item) => (
+        data={restaurants}
+        renderItem={({ item }) => (
           <RCard item={item} />
         )}
         keyExtractor={(item) => item.id}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 export default RList;

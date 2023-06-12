@@ -4,16 +4,11 @@ import {
 } from 'react-native';
 import Filter from './Filter';
 import Search from './Search';
-// import RList from './RList';
+import RList from './RList';
 import RCard from './RCard';
 import axios from 'axios';
 
 function HomePage() {
-  useEffect(()=>{
-    axios.get('http://localhost:8080/api/v1/restaurants')
-      .then((res)=>console.log(res.data));
-  }, []);
-
   const styles = StyleSheet.create({
     img: {
       width: 50,
@@ -30,7 +25,7 @@ function HomePage() {
 
       <Search />
       <Filter />
-      <RCard />
+      <RList />
 
     </View>
   );
