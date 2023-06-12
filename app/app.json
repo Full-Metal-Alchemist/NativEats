@@ -26,11 +26,14 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "plugins": [
+      "@react-native-firebase/app"
+    ],
     "extra": {
       "eas": {
         "projectId": "1a3dc6c5-41bc-4849-a852-0512c80fe911"
       }
     },
-    "owner": "lundas"
+    "owner": "full-metal-alchemist"
   }
 }
