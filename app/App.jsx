@@ -17,7 +17,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="FoodieTour"
         screenOptions={{
           headerStyle: { elevation: 0 },
           cardStyle: { backgroundColor: '#ffdf7a' }

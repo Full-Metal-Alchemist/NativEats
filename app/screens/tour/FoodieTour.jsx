@@ -23,17 +23,27 @@ const styles = StyleSheet.create({
   },
 });
 
-function FoodieTour() {
+function FoodieTour({ navigation }) {
 // TODO: need to grab one restaurant for each time of day
 // Highest # of reviews, minimum 4+ star ratings
+// const { data } = route.params;
 
   return (
     <View>
       <Text style={styles.title}>Self-Guided Foodie Tour</Text>
       <Text style={styles.text}>Can't decide on what to eat today? We'll choose for you!</Text>
       <Text style={styles.text}>Breakfast</Text>
+      <View>
+        <Text>Image placeholder</Text>
+      </View>
       <Text style={styles.text}>Lunch</Text>
+      <View>
+        <Text>Image placeholder</Text>
+      </View>
       <Text style={styles.text}>Dinner</Text>
+      <View>
+        <Text>Image placeholder</Text>
+      </View>
     </View>
   );
 }
