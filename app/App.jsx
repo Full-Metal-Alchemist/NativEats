@@ -9,6 +9,7 @@ import Signup from './screens/authentication/Signup';
 import ForgotPassword from './screens/authentication/ForgotPass';
 import RecipesMain from './screens/recipes/RecipesMainScreen';
 import RecipesSingle from './screens/recipes/RecipesSingleScreen';
+import FoodieTour from './screens/tour/FoodieTour';
 
 const Stack = createStackNavigator();
 
@@ -16,7 +17,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="RecipesMain"
+        initialRouteName="Login"
         screenOptions={{
           headerStyle: { elevation: 0 },
           cardStyle: { backgroundColor: '#ffdf7a' }
@@ -27,6 +28,7 @@ export default function App() {
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <Stack.Screen name="RecipesMain" component={RecipesMain} />
         <Stack.Screen name="RecipesSingle" component={RecipesSingle} />
+        <Stack.Screen name="FoodieTour" component={FoodieTour} />
       </Stack.Navigator>
     </NavigationContainer>
   );
