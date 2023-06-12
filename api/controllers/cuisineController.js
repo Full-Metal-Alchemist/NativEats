@@ -1,22 +1,56 @@
 const mockCuisines = require('../../__mocks__/mockCuisines');
+const Cuisine = require('../models/Cuisine');
 
 const createCuisine = async (req, res) => {
-  res.sendStatus(200);
+  const {
+    name,
+    about,
+    photo,
+  } = req.body;
+  const cuisine = await Cuisine.create({
+    name,
+    about,
+    photo,
+  });
+  res.send(cuisine);
 };
 
 const getCuisines = async (req, res) => {
-  res.send(mockCuisines);
+  const cuisines = await Cuisine.findAll();
+
+  if (cuisines.length) {
+    res.send(cuisines);
+  } else {
+    // TODO: Fix when more data exists
+    res.send(mockCuisines);
+  }
 };
 
 const getCuisine = async (req, res) => {
-  res.send(mockCuisines[0]);
+  const { cuisineId } = req.params;
+  const cuisine = await Cuisine.findByPk(cuisineId);
+
+  if (cuisine) {
+    res.send(cuisine);
+  } else {
+    // TODO: Fix when more data exists
+    res.send(mockCuisines[0]);
+  }
 };
 
 const updateCuisine = async (req, res) => {
-  res.send(req.body || mockCuisines[0]);
+  const { cuisineId } = req.params;
+  await Cuisine.update(req.body, {
+    where: { id: cuisineId },
+  });
+  res.send(req.body || {});
 };
 
 const deleteCuisine = async (req, res) => {
+  const { cuisineId } = req.params;
+  await Cuisine.destroy({
+    where: { id: cuisineId },
+  });
   res.sendStatus(200);
 };
 

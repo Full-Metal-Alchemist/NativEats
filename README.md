@@ -24,7 +24,6 @@ Installing a package used in both React Native and the API server
 POST /api/v1/auth/login
 POST /api/v1/auth/logout
 
-GET /api/v1/bookmarks
 POST /api/v1/bookmarks
 DELETE /api/v1/bookmarks
 

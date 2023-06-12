@@ -1,61 +1,79 @@
--- CREATE TABLE users (
---   id SERIAL PRIMARY KEY NOT NULL,
---   profile_photo TEXT,
---   first_name VARCHAR(50),
---   last_name VARCHAR(50),
---   username VARCHAR(50),
---   email VARCHAR(50),
---   password_hash TEXT,
---   latitude TEXT,
---   longitue TEXT,
--- );
-
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
-  profile_photo TEXT,
   first_name VARCHAR(50),
   last_name VARCHAR(50),
-  username VARCHAR(50),
   email VARCHAR(50),
+  username VARCHAR(50),
+  profile_photo TEXT,
   password_hash TEXT,
   latitude TEXT,
-  longitue TEXT,
-  created_at TIMESTAMP,
-  updated_at TIMESTAMP
+  longitude TEXT,
+  created_at TIMESTAMP DEFAULT now()
 );
 
 CREATE TABLE restaurants (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(50),
-  photos TEXT[],
+  description TEXT,
+  photos JSON,
   rating DECIMAL,
   price VARCHAR(10),
-  popularity VARCHAR(10),
+  review_count INT,
+  popularity INT,
   address VARCHAR(80),
   city VARCHAR(30),
   state VARCHAR(30),
   country VARCHAR(40),
+  latitude TEXT,
+  longitude TEXT,
+  is_visible BOOLEAN DEFAULT true,
   transcation TEXT[],
   hour TEXT[][],
-  phone TEXT
+  phone VARCHAR(20),
+  created_at TIMESTAMP DEFAULT now()
 );
 
-CREATE TABLE restaurant_reviews (
+CREATE TABLE reviews (
   id SERIAL PRIMARY KEY NOT NULL,
   restaurant_id INT REFERENCES restaurants(id),
   user_id INT REFERENCES users(id),
-  rating TEXT,
+  rating DECIMAL,
   comment TEXT,
   photos TEXT,
-  created_at DATE,
-  updated_at DATE
+  is_visible BOOLEAN DEFAULT true,
+  created_at TIMESTAMP DEFAULT now(),
+  updated_at TIMESTAMP
 );
 
-CREATE TABLE restaurant_bookmarks (
-  id SERIAL PRIMARY KEY NOT NULL,
-  restaurant_id INT REFERENCES restaurants(id),
+CREATE TABLE bookmarks (
   user_id INT REFERENCES users(id),
-  created_at DATE
+  restaurant_id INT REFERENCES restaurants(id),
+  created_at TIMESTAMP DEFAULT now()
 );
 
+CREATE TABLE cuisines (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(50),
+  about TEXT,
+  photo TEXT,
+  is_visible BOOLEAN DEFAULT true
+);
 
+CREATE TABLE cuisine_restaurant (
+  cuisine_id INT REFERENCES cuisines(id),
+  restaurant_id INT REFERENCES restaurants(id)
+);
+
+CREATE TABLE recipes (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(50),
+  steps TEXT,
+  photos JSON,
+  is_visible BOOLEAN DEFAULT true,
+  created_at TIMESTAMP DEFAULT now()
+);
+
+CREATE TABLE cuisine_recipe (
+  cuisine_id INT REFERENCES cuisines(id),
+  recipe_id INT REFERENCES recipes(id)
+);
