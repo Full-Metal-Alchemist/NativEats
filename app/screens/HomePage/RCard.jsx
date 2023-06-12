@@ -1,20 +1,24 @@
 import { React, useState } from 'react';
 import { View, Text } from 'react-native';
 import { Card, Rating, AirbnbRating } from 'react-native-elements';
+import { BookmarkIcon as BookmarkIconOutline } from "react-native-heroicons/outline";
 
-function RCard({ item }) {
+function RCard({ navigation, item }) {
   console.log(item.id, item.rating);
   return (
     <Card>
       <Card.Title>{item.name}</Card.Title>
       <Card.Divider />
-      <Rating imageSize={20} readonly startingValue={item.rating} />
-      {/* <Card.Image source={{ url: item.photos[0] }} /> */}
+      <BookmarkIconOutline />
+      <Card.Image source={{ url: item.photos[0] }}
+      onPress={()=>{
+        navigation.navigate('NativEat',{item:item})
+      }}/>
+      <Rating imageSize={15} readonly startingValue={item.rating} />
       <Text>
-        {item.address}
+        {item.reviewCount} reviews
       </Text>
     </Card>
-
   );
 }
 

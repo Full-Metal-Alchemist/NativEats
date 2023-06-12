@@ -20,7 +20,7 @@ function Filter() {
         // onPress={this.updateIndex}
         // selectedIndex={selectedIndex}
         buttons={buttons}
-        containerStyle={{ height: 100 }}
+        containerStyle={{ height: 50}}
       />
 
     </View>

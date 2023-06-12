@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import {
-  View, Text, StyleSheet, FlatList, Image,
+  View, Text, StyleSheet, FlatList, Image, Button,
 } from 'react-native';
 import Filter from './Filter';
 import Search from './Search';
@@ -8,7 +8,7 @@ import RList from './RList';
 import RCard from './RCard';
 import axios from 'axios';
 
-function HomePage() {
+function HomePage({navigation}) {
   const styles = StyleSheet.create({
     img: {
       width: 50,
@@ -25,8 +25,7 @@ function HomePage() {
 
       <Search />
       <Filter />
-      <RList />
-
+      <RList navigation={navigation} />
     </View>
   );
 }

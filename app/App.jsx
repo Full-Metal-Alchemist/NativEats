@@ -11,7 +11,7 @@ import RecipesMain from './screens/recipes/RecipesMainScreen';
 import RecipesSingle from './screens/recipes/RecipesSingleScreen';
 import HomePage from './screens/HomePage';
 // import BookMark from './screens/BookMark';
-// import RestaurantDetail from './screens/RestaurantDetail';
+import RestaurantDetail from './screens/RestaurantDetail';
 
 const Stack = createStackNavigator();
 
@@ -19,14 +19,14 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
-        {/* <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <Stack.Screen name="RecipesMain" component={RecipesMain} />
-        <Stack.Screen name="RecipesSingle" component={RecipesSingle} /> */}
+        <Stack.Screen name="RecipesSingle" component={RecipesSingle} />
         <Stack.Screen name="Restaurants" component={HomePage} />
-        {/* <Stack.Screen name="BookMark" component={BookMark} />
-        <Stack.Screen name="RestaurantDetail" component={RestaurantDetail} /> */}
+        {/* <Stack.Screen name="BookMark" component={BookMark} /> */}
+        <Stack.Screen name="NativEat" component={RestaurantDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );
