@@ -1,8 +1,10 @@
 import React from 'react';
 import {
-  Text, StyleSheet, View, Button, TouchableOpacity, FlatList, SafeAreaView
+  Text, StyleSheet, View, Button, TouchableOpacity, FlatList, SafeAreaView, Dimensions,
 } from 'react-native';
 import RecipeButton from './maincomponents/RecipeButton';
+import BottomNav from './BottomNav';
+import BottomNav2 from './BottomNav2';
 
 const styles = StyleSheet.create({
   text: {
@@ -21,9 +23,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   list: {
+    height: Dimensions.get('window').height - 50,
     alignItems: 'center',
     padding: 0,
     margin: 0,
+    display: 'flex',
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'space-between',
   },
 });
 
@@ -46,18 +54,21 @@ function RecipesMain({ navigation }) {
   }];
   return (
     <SafeAreaView style={styles.list}>
-      <Text>Asia Cuisine Recipes</Text>
-      <FlatList
-        data={mock}
-        renderItem={({ item }) => (
-          <RecipeButton
-            navigation={navigation}
-            title={item.name}
-            data={item}
-          />
-        )}
-        keyExtractor={(item) => item.id}
-      />
+      <View style={styles.container}>
+        <Text>Asia Cuisine Recipes</Text>
+        <FlatList
+          data={mock}
+          renderItem={({ item }) => (
+            <RecipeButton
+              navigation={navigation}
+              title={item.name}
+              data={item}
+            />
+          )}
+          keyExtractor={(item) => item.id}
+        />
+      </View>
+      <BottomNav2 navigation={navigation} style={{ position: 'absolute' }} />
     </SafeAreaView>
   );
 }
