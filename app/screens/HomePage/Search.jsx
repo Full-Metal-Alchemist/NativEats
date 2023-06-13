@@ -1,21 +1,30 @@
 import { React, useState } from 'react';
 import {
-  View, Text, StyleSheet, FlatList,
+  View, Text, StyleSheet, FlatList, Button, ScrollView,
 } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-function Search() {
+
+const styles = StyleSheet.create({
+  searchbar: {
+    width: 230,
+  },
+});
+
+function Search({ setSubmitSearch }) {
   const [search, setSearch] = useState('');
   return (
-    <View>
+    <ScrollView horizontal>
       <SearchBar
         placeholder="Type Here..."
         onChangeText={(e) => { setSearch(e); }}
         value={search}
         containerStyle={{ backgroundColor: '#fff' }}
-        inputContainerStyle={{ backgroundColor: '#fff5c9' }}
+        inputContainerStyle={{ backgroundColor: '#fff'}}
         placeholderTextColor={{ string: '#520028' }}
+        style={styles.searchbar}
       />
-    </View>
+      <Button style={styles.buttons} title="submit" onPress={() => { setSubmitSearch(search); }} />
+    </ScrollView>
   );
 }
 

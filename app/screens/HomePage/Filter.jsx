@@ -2,9 +2,9 @@ import React from 'react';
 import {
   View, StyleSheet, ScrollView,
 } from 'react-native';
-import { ButtonGroup, Button, } from 'react-native-elements';
-import { ArrowSmallUpIcon as ArrowSmallUpIconOutline, ArrowSmallDownIcon as ArrowSmallDownIconOutline } from "react-native-heroicons/outline";
-import COLORS from "../../constants/colors";
+import { ButtonGroup, Button } from 'react-native-elements';
+import { ArrowSmallUpIcon as ArrowSmallUpIconOutline, ArrowSmallDownIcon as ArrowSmallDownIconOutline } from 'react-native-heroicons/outline';
+import COLORS from '../../constants/colors';
 
 const styles = StyleSheet.create({
   icons: {
@@ -17,30 +17,36 @@ const styles = StyleSheet.create({
   },
 });
 
-const buttonStyle = { color: '#520028' };
-
-function Filter() {
+function Filter({ filter, setFilter }) {
   // const buttons = ['price', 'price', 'popularity', 'rating'];
+  const buttonStyle = (x) => {
+    if (filter === x) return ({ color: '#fff' });
+
+    return ({ color: '#520028' });
+  };
 
   return (
     <View>
-      <ScrollView horizontal={true}>
+      <ScrollView horizontal>
+        <Button title="recommandation" titleStyle={buttonStyle(0)} type="clear" onPress={() => { setFilter(0); }} />
         <Button
           title="price"
-          icon={<ArrowSmallUpIconOutline color="#520028" />}
+          icon={<ArrowSmallUpIconOutline color="grey" />}
           style={styles.buttons}
           type="clear"
-          titleStyle={buttonStyle}
+          titleStyle={buttonStyle(1)}
+          onPress={() => { setFilter(1); }}
         />
         <Button
           title="price"
-          icon={<ArrowSmallDownIconOutline color="#520028" />}
+          icon={<ArrowSmallDownIconOutline color="grey" />}
           style={styles.buttons}
           type="clear"
-          titleStyle={buttonStyle}
+          titleStyle={buttonStyle(2)}
+          onPress={() => { setFilter(2); }}
         />
-        <Button title="popularity" titleStyle={buttonStyle} type="clear" />
-        <Button title="rating" titleStyle={buttonStyle} type="clear" />
+        <Button title="popularity" titleStyle={buttonStyle(3)} type="clear" onPress={() => { setFilter(3); }} />
+        <Button title="rating" titleStyle={buttonStyle(4)} type="clear" onPress={() => { setFilter(4); }} />
       </ScrollView>
 
       {/* <ButtonGroup

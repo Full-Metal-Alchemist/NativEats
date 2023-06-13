@@ -9,7 +9,9 @@ import Search from './Search';
 import List from './RList';
 
 function HomePage({ navigation }) {
-  const[arr, setArr] = useState([]);
+  const [arr, setArr] = useState([]);
+  const [filter, setFilter] = useState(0);
+  const [submitsearch, setSubmitSearch] = useState('');
   const styles = StyleSheet.create({
     img: {
       width: 50,
@@ -21,8 +23,10 @@ function HomePage({ navigation }) {
       .then((res) => {
         setArr(res.data);
         console.log(res.data.length);
+        console.log(submitsearch);
+        console.log('filter', filter);
       });
-  }, []);
+  }, [filter, submitsearch]);
   return (
     <View style={{ paddingBottom: 500 }}>
       <View>
@@ -35,8 +39,8 @@ function HomePage({ navigation }) {
         />
       </View>
 
-      <Search setArr={setArr} />
-      <Filter setArr={setArr} />
+      <Search setSubmitSearch={setSubmitSearch} />
+      <Filter filter={filter} setFilter={setFilter} />
       <List arr={arr} navigation={navigation} />
     </View>
   );
