@@ -1,28 +1,54 @@
 import React from 'react';
 import {
-  View, Text, StyleSheet, FlatList, ScrollView,
+  View, StyleSheet, ScrollView,
 } from 'react-native';
-import { ButtonGroup } from 'react-native-elements';
+import { ButtonGroup, Button, } from 'react-native-elements';
+import { ArrowSmallUpIcon as ArrowSmallUpIconOutline, ArrowSmallDownIcon as ArrowSmallDownIconOutline } from "react-native-heroicons/outline";
+import COLORS from "../../constants/colors";
+
+const styles = StyleSheet.create({
+  icons: {
+    width: 16,
+    heigth: 16,
+    color: '#55d6bf',
+  },
+  buttons: {
+    color: '#000',
+  },
+});
+
+const buttonStyle = { color: '#520028' };
 
 function Filter() {
-  const buttons = ['price', 'price', 'popularity', 'rating'];
+  // const buttons = ['price', 'price', 'popularity', 'rating'];
+
   return (
     <View>
-      {/* <ScrollView horizontal={true}>
+      <ScrollView horizontal={true}>
+        <Button
+          title="price"
+          icon={<ArrowSmallUpIconOutline color="#520028" />}
+          style={styles.buttons}
+          type="clear"
+          titleStyle={buttonStyle}
+        />
+        <Button
+          title="price"
+          icon={<ArrowSmallDownIconOutline color="#520028" />}
+          style={styles.buttons}
+          type="clear"
+          titleStyle={buttonStyle}
+        />
+        <Button title="popularity" titleStyle={buttonStyle} type="clear" />
+        <Button title="rating" titleStyle={buttonStyle} type="clear" />
+      </ScrollView>
 
-        <Text>Child 1</Text>
-        <Text>Child 2</Text>
-        <Text>Child 3</Text>
-
-      </ScrollView> */}
-
-      <ButtonGroup
+      {/* <ButtonGroup
         // onPress={this.updateIndex}
         // selectedIndex={selectedIndex}
         buttons={buttons}
-        containerStyle={{ height: 50}}
-      />
-
+        containerStyle={{ height: 50 }}
+      /> */}
     </View>
   );
 }

@@ -11,9 +11,11 @@ function Search() {
         placeholder="Type Here..."
         onChangeText={(e) => { setSearch(e); }}
         value={search}
+        containerStyle={{ backgroundColor: '#fff' }}
+        inputContainerStyle={{ backgroundColor: '#fff5c9' }}
+        placeholderTextColor={{ string: '#520028' }}
       />
     </View>
-
   );
 }
 
