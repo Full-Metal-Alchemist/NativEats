@@ -13,6 +13,7 @@
     "express": "^4.18.2",
     "helmet": "^7.0.0",
     "react-native-heroicons": "^3.2.0",
+    "react-native-snap-carousel": "^3.9.1",
     "react-native-svg": "^13.9.0",
     "xss-clean": "^0.1.4"
   },
