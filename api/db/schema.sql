@@ -31,6 +31,7 @@ CREATE TABLE restaurants (
   transactions JSON,
   hours JSON,
   phone TEXT,
+  tags JSON,
   created_at TIMESTAMP DEFAULT now()
 );
 
