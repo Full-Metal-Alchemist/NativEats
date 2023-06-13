@@ -58,6 +58,9 @@ module.exports = (sequelize) => {
     phone: {
       type: DataTypes.TEXT,
     },
+    tags: {
+      type: DataTypes.JSON,
+    },
   }, {
     sequelize,
     modelName: 'restaurant',
