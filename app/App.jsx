@@ -23,14 +23,14 @@ export default function App() {
         initialRouteName="Login"
         screenOptions={{
           headerStyle: { elevation: 0 },
-          cardStyle: { backgroundColor: '#ffdf7a' }
+          cardStyle: { backgroundColor: '#ffdf7a' },
         }}
       >
-        {/* <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <Stack.Screen name="RecipesMain" component={RecipesMain} />
-        <Stack.Screen name="RecipesSingle" component={RecipesSingle} /> */}
+        <Stack.Screen name="RecipesSingle" component={RecipesSingle} />
         <Stack.Screen name="Restaurants" component={HomePage} />
         {/* <Stack.Screen name="BookMark" component={BookMark} /> */}
         <Stack.Screen name="NativEat" component={RestaurantDetail} />
