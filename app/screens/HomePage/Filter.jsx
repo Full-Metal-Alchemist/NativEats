@@ -28,9 +28,9 @@ function Filter({ filter, setFilter }) {
   return (
     <View>
       <ScrollView horizontal>
-        <Button title="recommandation" titleStyle={buttonStyle(0)} type="clear" onPress={() => { setFilter(0); }} />
+        <Button title="All" titleStyle={buttonStyle(0)} type="clear" onPress={() => { setFilter(0); }} />
         <Button
-          title="price"
+          title="Price"
           icon={<ArrowSmallUpIconOutline color="grey" />}
           style={styles.buttons}
           type="clear"
@@ -38,15 +38,15 @@ function Filter({ filter, setFilter }) {
           onPress={() => { setFilter(1); }}
         />
         <Button
-          title="price"
+          title="Price"
           icon={<ArrowSmallDownIconOutline color="grey" />}
           style={styles.buttons}
           type="clear"
           titleStyle={buttonStyle(2)}
           onPress={() => { setFilter(2); }}
         />
-        <Button title="popularity" titleStyle={buttonStyle(3)} type="clear" onPress={() => { setFilter(3); }} />
-        <Button title="rating" titleStyle={buttonStyle(4)} type="clear" onPress={() => { setFilter(4); }} />
+        <Button title="Popularity" titleStyle={buttonStyle(3)} type="clear" onPress={() => { setFilter(3); }} />
+        <Button title="Rating" titleStyle={buttonStyle(4)} type="clear" onPress={() => { setFilter(4); }} />
       </ScrollView>
 
       {/* <ButtonGroup

@@ -10,21 +10,20 @@ const styles = StyleSheet.create({
   },
 });
 
-function Search({ setSubmitSearch }) {
-  const [search, setSearch] = useState('');
+function Search({ search, setSearch }) {
+  // const [search, setSearch] = useState('');
   return (
-    <ScrollView horizontal>
-      <SearchBar
-        placeholder="Type Here..."
-        onChangeText={(e) => { setSearch(e); }}
-        value={search}
-        containerStyle={{ backgroundColor: '#fff' }}
-        inputContainerStyle={{ backgroundColor: '#fff'}}
-        placeholderTextColor={{ string: '#520028' }}
-        style={styles.searchbar}
-      />
-      <Button style={styles.buttons} title="submit" onPress={() => { setSubmitSearch(search); }} />
-    </ScrollView>
+
+    <SearchBar
+      placeholder="Type Here..."
+      onChangeText={(e) => { setSearch(e); }}
+      value={search}
+      containerStyle={{ backgroundColor: '#fff' }}
+      inputContainerStyle={{ backgroundColor: '#fff' }}
+      placeholderTextColor={{ string: '#520028' }}
+      style={styles.searchbar}
+    />
+
   );
 }
 

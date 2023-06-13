@@ -11,7 +11,7 @@ import List from './RList';
 function HomePage({ navigation }) {
   const [arr, setArr] = useState([]);
   const [filter, setFilter] = useState(0);
-  const [submitsearch, setSubmitSearch] = useState('');
+  const [search, setSearch] = useState('');
   const styles = StyleSheet.create({
     img: {
       width: 50,
@@ -23,10 +23,10 @@ function HomePage({ navigation }) {
       .then((res) => {
         setArr(res.data);
         console.log(res.data.length);
-        console.log(submitsearch);
+        console.log(search);
         console.log('filter', filter);
       });
-  }, [filter, submitsearch]);
+  }, [filter, search]);
   return (
     <View style={{ paddingBottom: 500 }}>
       <View>
@@ -39,7 +39,7 @@ function HomePage({ navigation }) {
         />
       </View>
 
-      <Search setSubmitSearch={setSubmitSearch} />
+      <Search search={search} setSearch={setSearch} />
       <Filter filter={filter} setFilter={setFilter} />
       <List arr={arr} navigation={navigation} />
     </View>
