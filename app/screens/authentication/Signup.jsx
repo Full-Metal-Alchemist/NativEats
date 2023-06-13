@@ -3,21 +3,23 @@ import {
   View, Text, StyleSheet, TextInput, Button, Alert,
 } from 'react-native';
 
+import { LoginButton, LoginInput } from './components';
+
 function Signup() {
   return (
     <View>
-      <TextInput
+      <LoginInput
         placeholder="Email"
         keyboardType="email-address"
         textContentType="emailAddress"
       />
-      <TextInput
+      <LoginInput
         placeholder="Password"
         autoCorrect={false}
         secureTextEntry
         textContentType="password"
       />
-      <Button title="Sign up" onPress={() => Alert.alert('Signed up!')} />
+      <LoginButton title="Sign up" onPress={() => Alert.alert('Signed up!')} />
     </View>
   );
 }

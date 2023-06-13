@@ -3,6 +3,8 @@ import {
   Text, StyleSheet, View, TextInput, Button, Alert,
 } from 'react-native';
 
+import { LoginButton, LoginInput } from './components';
+
 const styles = StyleSheet.create({
   text: {
     fontSize: 30,
@@ -29,18 +31,18 @@ function Login({ navigation }) {
     <View>
       <Text>Login</Text>
       <Text>New text lets goooo!</Text>
-      <TextInput
+      <LoginInput
         placeholder="Enter email"
         keyboardType="email-address"
         textContentType="emailAddress"
       />
-      <TextInput
+      <LoginInput
         placeholder="Enter password"
         autoCorrect={false}
         secureTextEntry
         textContentType="password"
       />
-      <Button title="Sign In" onPress={() => Alert.alert('Sign in pressed!')} />
+      <LoginButton title="Sign In" onPress={() => Alert.alert('Sign in pressed!')} />
       <Button title="Sign Up" onPress={() => navigation.navigate('Signup')} />
       <Button
         title="Forgot Password"

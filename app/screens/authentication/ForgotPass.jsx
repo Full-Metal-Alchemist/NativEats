@@ -3,15 +3,17 @@ import {
   View, Text, StyleSheet, TextInput, Button, Alert,
 } from 'react-native';
 
+import { LoginButton, LoginInput } from './components';
+
 function ForgotPassword() {
   return (
     <View>
-      <TextInput
+      <LoginInput
         placeholder="Enter Email"
         keyboardType="email-address"
         textContentType="emailAddress"
       />
-      <Button title="Recover Password" onPress={() => Alert.alert('Password Recovered!')} />
+      <LoginButton title="Recover Password" onPress={() => Alert.alert('Password Recovered!')} />
     </View>
   );
 }
