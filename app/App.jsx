@@ -9,6 +9,7 @@ import Signup from './screens/authentication/Signup';
 import ForgotPassword from './screens/authentication/ForgotPass';
 import RecipesMain from './screens/recipes/RecipesMainScreen';
 import RecipesSingle from './screens/recipes/RecipesSingleScreen';
+import MoodPage from './screens/landing/moodpage/MoodPage';
 import HomePage from './screens/HomePage';
 // import BookMark from './screens/BookMark';
 import RestaurantDetail from './screens/RestaurantDetail';
@@ -29,6 +30,7 @@ export default function App() {
         {/* <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+        <Stack.Screen name="MoodPage" component={MoodPage} />
         <Stack.Screen name="RecipesMain" component={RecipesMain} />
         <Stack.Screen name="RecipesSingle" component={RecipesSingle} /> */}
         <Stack.Screen name="Restaurants" component={HomePage} />
