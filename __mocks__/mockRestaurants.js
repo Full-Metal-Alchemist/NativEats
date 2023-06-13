@@ -5,6 +5,8 @@ module.exports = [
     description: 'Some description',
     photos: [
       'https://images.unsplash.com/photo-1628885363743-fbf9c98d4196?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80',
+      'https://a.cdn-hotels.com/gdcs/production54/d85/0020bfa8-2465-4e82-8348-4273ca0001b0.jpg?impolicy=fcrop&w=800&h=533&q=medium',
+      'https://www.kkday.com/zh-tw/blog/wp-content/uploads/taipei_hotpot_259640909_195927309402013_5752413302303156284_n-1.jpg',
     ],
     rating: 4.4,
     price: '$$$',
@@ -16,6 +18,11 @@ module.exports = [
     country: 'USA',
     latitude: '28.4332350000',
     longitude: '-81.4714470000',
+    transcation: [
+      'pickup',
+      'delivery'],
+    hour: [['1100', '0000'], ['1100', '0000'], ['1100', '0000'], ['1100', '0000'], ['1100', '0130'], ['1100', '0200'], ['1100', '0000']],
+    phone: '(323) 366-2408',
   },
   {
     id: '2',
@@ -23,6 +30,8 @@ module.exports = [
     description: 'Some description',
     photos: [
       'https://images.unsplash.com/photo-1580121676785-ea9ca33e3fb2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3feef53v-3a5PvGAX_n8NQqXj_vLUcfiklg&usqp=CAU',
+      'https://taiwantour.info/wp-content/uploads/2020/10/1603784489-c8104f469d54661e259ae7974e1c5ea6.jpg',
     ],
     rating: 4.4,
     price: '$$',
@@ -34,6 +43,11 @@ module.exports = [
     country: 'USA',
     latitude: '28.5578450000',
     longitude: '-81.3645470000',
+    transcation: [
+      'pickup',
+      'delivery'],
+    hour: [['1100', '0000'], ['1100', '0000'], ['1100', '0000'], ['1100', '0000'], ['1100', '0130'], ['1100', '0200'], ['1100', '0000']],
+    phone: '(213) 749-1099',
   },
   {
     id: '3',
@@ -41,6 +55,8 @@ module.exports = [
     description: '',
     photos: [
       'https://images.unsplash.com/photo-1602273660127-a0000560a4c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=436&q=80',
+      'https://i.ytimg.com/vi/knrnKwzsPZ0/maxresdefault.jpg',
+      'https://i.epochtimes.com/assets/uploads/2017/04/top-fish-chips-450x300.jpg',
     ],
     rating: 4.2,
     price: '$$',
@@ -52,5 +68,31 @@ module.exports = [
     country: 'USA',
     latitude: '28.5976271000',
     longitude: '-81.3508344000',
+    transcation: ['pickup'],
+    hour: [['1100', '0000'], ['1100', '0000'], ['1100', '0000'], ['1100', '0000'], ['1100', '0130'], ['1700', '2200'], ['1700', '2200']],
+    phone: '(323) 466-8812',
+  },
+  {
+    id: '4',
+    name: 'Bosphorous Turkish Cuisine',
+    description: '',
+    photos: [
+      'https://images.unsplash.com/photo-1602273660127-a0000560a4c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=436&q=80',
+      'https://qna.smzdm.com/202112/31/61cee6dfbd4d94566.jpg_fo742.jpg',
+      'https://p2.cri.cn/M00/19/EF/wKgACl5iBKKAfK5gAAAAAAAAAAA019.553x312.png',
+    ],
+    rating: 4.2,
+    price: '$$',
+    reviewCount: 568,
+    popularity: 90,
+    address: '108 S Park Ave',
+    city: 'Winter Park',
+    state: 'FL',
+    country: 'USA',
+    latitude: '28.5976271000',
+    longitude: '-81.3508344000',
+    transcation: ['pickup'],
+    hour: [['1100', '0000'], ['1100', '0000'], ['1100', '0000'], ['1100', '0000'], ['1100', '0130'], ['1700', '2200'], ['1700', '2200']],
+    phone: '(323) 466-8812',
   },
 ];
