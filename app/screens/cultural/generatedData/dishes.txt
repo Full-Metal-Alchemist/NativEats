@@ -1,0 +1,110 @@
+Italian Cuisine:
+  Pizza Margherita
+  Spaghetti Bolognese
+  Lasagna
+  Risotto
+  Caprese Salad
+  Tiramisu
+  Gelato
+  Cannoli
+  Panzanella
+  Osso Buco
+Chinese Cuisine:
+  Kung Pao Chicken
+  Sweet and Sour Pork
+  Peking Duck
+  Dim Sum (various types of dumplings)
+  Mapo Tofu
+  General Tso's Chicken
+  Chow Mein
+  Spring Rolls
+  Hot Pot
+  Fried Rice
+Mexican Cuisine:
+  Tacos (various types like carnitas, al pastor, and fish tacos)
+  Guacamole
+  Enchiladas
+  Chiles Rellenos
+  Pozole
+  Tamales
+  Quesadillas
+  Salsa and Chips
+  Mole
+  Churros
+Korean Cuisine:
+  Bibimbap
+  Bulgogi (marinated grilled beef)
+  Kimchi (fermented vegetables)
+  Japchae (stir-fried glass noodles)
+  Samgyeopsal (grilled pork belly)
+  Galbi (marinated short ribs)
+  Sundubu-jjigae (soft tofu stew)
+  Kimbap (seaweed rice rolls)
+  Dakgalbi (spicy stir-fried chicken)
+  Mandu (dumplings)
+Persian Cuisine:
+  Chelo Kebab (grilled meat kebabs served with saffron rice)
+  Ghormeh Sabzi (herb stew with meat and kidney beans)
+  Fesenjan (pomegranate and walnut stew)
+  Tahdig (crispy rice)
+  Dolmeh (stuffed grape leaves)
+  Ash Reshteh (herb and noodle soup)
+  Zereshk Polo (barberry rice)
+  Baklava
+  Halva
+  Shirazi Salad (tomato and cucumber salad)
+New American Cuisine:
+  Hamburger
+  Fried Chicken and Waffles
+  Lobster Roll
+  BBQ Ribs
+  Clam Chowder
+  Caesar Salad
+  Gumbo
+  Mac and Cheese
+  Key Lime Pie
+  Red Velvet Cake
+Japanese Cuisine:
+  Sushi (various types like nigiri, maki, and sashimi)
+  Ramen
+  Tempura
+  Tonkatsu (breaded and deep-fried pork cutlet)
+  Yakitori (grilled skewered chicken)
+  Okonomiyaki (savory pancake)
+  Miso Soup
+  Udon (thick wheat noodles)
+  Matcha Green Tea
+  Dango (sweet rice dumplings)
+Thai Cuisine:
+  Pad Thai
+  Tom Yum Soup
+  Green Curry
+  Massaman Curry
+  Som Tum (spicy papaya salad)
+  Pad See Ew (stir-fried noodles)
+  Pineapple Fried Rice
+  Thai Red Curry
+  Mango Sticky Rice
+  Tom Kha Gai (coconut chicken soup)
+Indian Cuisine:
+  Butter Chicken
+  Biryani
+  Rogan Josh (lamb curry)
+  Tandoori Chicken
+  Chole Bhature (chickpea curry with fried bread)
+  Palak Paneer (spinach and cottage cheese curry)
+  Masala Dosa (fermented crepe with potato filling)
+  Chicken Tikka Masala
+  Gulab Jamun (sweet fried dumplings in syrup)
+  Samosas (fried savory pastry filled with spiced potatoes and peas)
+Vietnamese Cuisine:
+  Pho (beef or chicken noodle soup)
+  Banh Mi (Vietnamese sandwich)
+  Spring Rolls (fresh rice paper rolls)
+  Bun Cha (grilled pork with vermicelli noodles)
+  Com Tam (broken rice with grilled meat)
+  Banh Xeo (Vietnamese pancake)
+  Bun Bo Hue (spicy beef noodle soup)
+  Ca Kho To (caramelized fish in clay pot)
+  Banh Cuon (steamed rice rolls)
+  Che (various Vietnamese desserts)
