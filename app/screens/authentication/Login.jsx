@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Text, StyleSheet, View, Button, TouchableOpacity,
+  Text, StyleSheet, View, InputField,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -27,17 +27,20 @@ function Login({ navigation }) {
   console.log(navigation);
   return (
     <View>
-      <Text style={styles.text}>This is the home screen!</Text>
-      <Button
-        onPress={() => navigation.navigate('Signup')}
-        title="Sign Up"
+      <Text>Login</Text>
+      <InputField
+        leftIcon="email"
+        placeholder="Enter email"
+        keyboardType="email-address"
+        textContentType="emailAddress"
       />
-      <TouchableOpacity
-        style={styles.touchable}
-        onPress={() => navigation.navigate('ForgotPassword')}
-      >
-        <Text>Forgot Password</Text>
-      </TouchableOpacity>
+      <InputField
+        leftIcon="lock"
+        placeholder="Enter password"
+        autoCorrect="false"
+        secureTextEntry
+        textContentType="password"
+      />
     </View>
   );
 }
