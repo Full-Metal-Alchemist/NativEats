@@ -1,10 +1,11 @@
 import React from 'react';
 import {
-  View, Text, StyleSheet, FlatList,
+  ScrollView, Text, StyleSheet, FlatList,
 } from 'react-native';
 import { Card, Rating, AirbnbRating } from 'react-native-elements';
 import { PhoneIcon as PhoneIconOutline, MapPinIcon as MapPinIconOutline, ClockIcon as ClockIconOutline, ArrowSmallRightIcon as ArrowSmallRightIconOutline, TruckIcon as TruckIconOutline, BookmarkIcon as BookmarkIconOutline } from "react-native-heroicons/outline";
 import ImgCarousel from './ImgCarousel';
+import Reviews from './Reviews';
 
 const styles = StyleSheet.create({
   icons: {
@@ -23,7 +24,7 @@ function RestaurantDetail({route, navigation }) {
   const item = route.params.item
 
   return (
-    <View>
+    <ScrollView>
       <BookmarkIconOutline style={styles.icons} />
       <Text>{item.name}</Text>
       <Rating imageSize={15} readonly startingValue={item.rating} />
@@ -53,7 +54,8 @@ function RestaurantDetail({route, navigation }) {
           {item.transcation[1] ? item.transcation[1] : null}
         </Text>
       </Card>
-    </View>
+      <Reviews />
+    </ScrollView>
   );
 }
 

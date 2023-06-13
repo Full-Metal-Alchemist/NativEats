@@ -1,5 +1,6 @@
 import { React } from 'react';
-import { Text, View, Card } from 'react-native';
+import { Text, View } from 'react-native';
+import { Card } from 'react-native-elements';
 import ReviewList from './ReviewList';
 
 function Reviews() {

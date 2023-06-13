@@ -5,10 +5,12 @@ import { Card, Rating, AirbnbRating } from 'react-native-elements';
 function ReviewEntry({ review }) {
 
   return (
-    <Card.Divider />
-    <Rating imageSize={15} readonly startingValue={review.rating} />
-    <Text>{review.comment}</Text>
-    <Text>{review.comment}</Text>
+    <View>
+      <Card.Divider />
+      <Rating imageSize={15} readonly startingValue={review.rating} />
+      <Text>{review.comment}</Text>
+      <Text>{review.createdAt.slice(0, 11)}</Text>
+    </View>
   );
 }
 

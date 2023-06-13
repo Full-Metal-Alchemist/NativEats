@@ -1,5 +1,7 @@
 import { React, useState, useEffect } from 'react';
+import axios from 'axios';
 import { Text, View, Card } from 'react-native';
+import ReviewEntry from './ReviewEntry';
 
 function ReviewList() {
   const [reviews, setReviews] = useState([]);
@@ -12,9 +14,11 @@ function ReviewList() {
   }, []);
 
   return (
-    {reviews?.map((review) => (
-      <ReviewEntry review={review} />
-    ))}
+    <View>
+      {reviews.map((review) => (
+        <ReviewEntry review={review} />
+      ))}
+    </View>
   );
 }
 
