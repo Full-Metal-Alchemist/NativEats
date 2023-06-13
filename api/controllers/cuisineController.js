@@ -16,7 +16,7 @@ const createCuisine = async (req, res) => {
 };
 
 const getCuisines = async (req, res) => {
-  const cuisines = await Cuisine.findAll({include: ['restaurants']});
+  const cuisines = await Cuisine.findAll({include: ['restaurants', 'recipes']});
 
   if (cuisines.length) {
     res.send(cuisines);
