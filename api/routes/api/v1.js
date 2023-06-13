@@ -9,5 +9,6 @@ router.use('/recipes', require('./recipes.route'));
 router.use('/restaurants', require('./restaurants.route'));
 router.use('/reviews', require('./reviews.route'));
 router.use('/users', require('./users.route'));
+router.use('/locations', require('./locations.route'));
 
 module.exports = router;
