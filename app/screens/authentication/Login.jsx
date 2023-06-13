@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Text, StyleSheet, View, InputField,
+  Text, StyleSheet, View, TextInput, Button, Alert,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -28,18 +28,23 @@ function Login({ navigation }) {
   return (
     <View>
       <Text>Login</Text>
-      <InputField
-        leftIcon="email"
+      <Text>New text lets goooo!</Text>
+      <TextInput
         placeholder="Enter email"
         keyboardType="email-address"
         textContentType="emailAddress"
       />
-      <InputField
-        leftIcon="lock"
+      <TextInput
         placeholder="Enter password"
-        autoCorrect="false"
+        autoCorrect={false}
         secureTextEntry
         textContentType="password"
+      />
+      <Button title="Sign In" onPress={() => Alert.alert('Sign in pressed!')} />
+      <Button title="Sign Up" onPress={() => navigation.navigate('Signup')} />
+      <Button
+        title="Forgot Password"
+        onPress={() => navigation.navigate('ForgotPassword')}
       />
     </View>
   );

@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import MockHomeScreen from './screens/authentication/MockHomeScreen';
 import Login from './screens/authentication/Login';
 import Signup from './screens/authentication/Signup';
 import ForgotPassword from './screens/authentication/ForgotPass';
@@ -26,6 +27,7 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+        <Stack.Screen name="MockHomeScreen" component={MockHomeScreen} />
         <Stack.Screen name="RecipesMain" component={RecipesMain} />
         <Stack.Screen name="RecipesSingle" component={RecipesSingle} />
         <Stack.Screen name="FoodieTour" component={FoodieTour} />

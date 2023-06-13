@@ -1,12 +1,17 @@
 import React from 'react';
 import {
-  View, Text, StyleSheet, FlatList,
+  View, Text, StyleSheet, TextInput, Button, Alert,
 } from 'react-native';
 
 function ForgotPassword() {
   return (
     <View>
-      <Text>Dude wheres my car?</Text>
+      <TextInput
+        placeholder="Enter Email"
+        keyboardType="email-address"
+        textContentType="emailAddress"
+      />
+      <Button title="Recover Password" onPress={() => Alert.alert('Password Recovered!')} />
     </View>
   );
 }
