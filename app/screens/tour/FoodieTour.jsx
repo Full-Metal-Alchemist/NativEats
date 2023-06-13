@@ -6,6 +6,7 @@ import {
 
 import { COLORS } from '../../constants/colors';
 
+
 const styles = StyleSheet.create({
   title: {
     fontSize: 30,
@@ -20,6 +21,7 @@ const styles = StyleSheet.create({
   imagecontainer: {
     height: 300,
     marginBottom: 50,
+
   },
   image: {
     width: 300,
