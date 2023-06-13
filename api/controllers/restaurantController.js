@@ -1,5 +1,5 @@
 const mockRestaurants = require('../../__mocks__/mockRestaurants');
-const Restaurant = require('../models/Restaurant');
+const {Restaurant} = require('../models');
 
 const createRestaurant = async (req, res) => {
   const {
@@ -46,6 +46,7 @@ const getRestaurants = async (req, res) => {
       [category, order],
     ],
     limit,
+    include: ['cuisines', 'reviews'],
   });
 
   if (restaurants.length) {
@@ -57,7 +58,7 @@ const getRestaurants = async (req, res) => {
 
 const getRestaurant = async (req, res) => {
   const { restaurantId } = req.params;
-  const restaurant = await Restaurant.findByPk(restaurantId);
+  const restaurant = await Restaurant.findByPk(restaurantId, {include: ['cuisines', 'reviews']});
   if (restaurant) {
     res.send(restaurant);
   } else {

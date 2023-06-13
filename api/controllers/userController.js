@@ -1,5 +1,5 @@
 const mockUser = require('../../__mocks__/mockUser');
-const User = require('../models/User');
+const {User} = require('../models');
 
 const createUser = async (req, res) => {
   const {
@@ -19,10 +19,17 @@ const createUser = async (req, res) => {
 
 const getUser = async (req, res) => {
   const { userId } = req.params;
-  const user = await User.findByPk(userId);
+  const user = await User.findByPk(userId, { include: ['bookmarks']});
 
-  if (user) {
-    res.send(user);
+  const userData = user.get();
+
+  const bookmarks = userData.bookmarks.map(({restaurantId}) => restaurantId);
+
+  if (userData) {
+    res.send({
+      ...userData,
+      bookmarks,
+    });
   } else {
     // TODO: Fix as 404 when login is done
     res.send(mockUser);

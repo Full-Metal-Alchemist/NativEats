@@ -1,5 +1,5 @@
 const mockRecipes = require('../../__mocks__/mockRecipes');
-const Recipe = require('../models/Recipe');
+const { Recipe } = require('../models');
 
 const createRecipe = async (req, res) => {
   const {
@@ -16,7 +16,7 @@ const createRecipe = async (req, res) => {
 };
 
 const getRecipes = async (req, res) => {
-  const recipes = await Recipe.findAll();
+  const recipes = await Recipe.findAll({include: ['cuisines']});
 
   if (recipes.length) {
     res.send(recipes);
@@ -27,7 +27,7 @@ const getRecipes = async (req, res) => {
 
 const getRecipe = async (req, res) => {
   const { recipeId } = req.params;
-  const recipe = await Recipe.findByPk(recipeId);
+  const recipe = await Recipe.findByPk(recipeId, {include: ['cuisines']});
 
   if (recipe) {
     res.send(recipe);

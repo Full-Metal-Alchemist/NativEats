@@ -1,32 +1,33 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
-const sequelize = require('../db/dbInstance');
-const Restaurant = require('./Restaurant');
-const User = require('./User');
+const { DataTypes, Model } = require('sequelize');
 
-class Review extends Model {}
+module.exports = (sequelize) => {
+  class Review extends Model {}
 
-Review.init({
-  rating: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  comment: {
-    type: DataTypes.STRING,
-  },
-  photos: {
-    type: DataTypes.JSON,
-  },
-  isVisible: {
-    type: DataTypes.BOOLEAN,
-  },
-}, {
-  sequelize,
-  modelName: 'review',
-  underscored: true,
-});
+  Review.init({
+    userId: {
+      type: DataTypes.INTEGER,
+    },
+    restaurantId: {
+      type: DataTypes.INTEGER,
+    },
+    rating: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    comment: {
+      type: DataTypes.TEXT,
+    },
+    photos: {
+      type: DataTypes.JSON,
+    },
+    isVisible: {
+      type: DataTypes.BOOLEAN,
+    },
+  }, {
+    sequelize,
+    modelName: 'review',
+    underscored: true,
+  });
 
-// TODO: Figure out later
-// Review.belongsTo(Restaurant, { foreignKey: 'restaurant_id' });
-// Review.belongsTo(User, { foreignKey: 'user_id' });
-
-module.exports = Review;
+  return Review;
+};

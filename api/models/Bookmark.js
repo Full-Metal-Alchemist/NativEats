@@ -1,14 +1,24 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
-const sequelize = require('../db/dbInstance');
+const { DataTypes, Model } = require('sequelize');
 
-class Bookmark extends Model {}
+module.exports = (sequelize) => {
+  class Bookmark extends Model {}
 
-Bookmark.init({}, {
-  sequelize,
-  modelName: 'bookmark',
-  underscored: true,
-  updatedAt: false,
-  createdAt: false,
-});
+  Bookmark.init({
+    userId: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+    },
+    restaurantId: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+    },
+  }, {
+    sequelize,
+    modelName: 'bookmark',
+    underscored: true,
+    updatedAt: false,
+    createdAt: false,
+  });
 
-module.exports = Bookmark;
+  return Bookmark;
+};

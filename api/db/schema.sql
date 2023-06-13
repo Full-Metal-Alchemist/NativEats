@@ -1,9 +1,9 @@
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
-  first_name VARCHAR(50),
-  last_name VARCHAR(50),
-  email VARCHAR(50),
-  username VARCHAR(50),
+  first_name TEXT,
+  last_name TEXT,
+  email TEXT,
+  username TEXT,
   profile_photo TEXT,
   password_hash TEXT,
   latitude TEXT,
@@ -13,23 +13,24 @@ CREATE TABLE users (
 
 CREATE TABLE restaurants (
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(50),
+  name TEXT,
   description TEXT,
   photos JSON,
   rating DECIMAL,
-  price VARCHAR(10),
+  price TEXT,
   review_count INT,
   popularity INT,
-  address VARCHAR(80),
-  city VARCHAR(30),
-  state VARCHAR(30),
-  country VARCHAR(40),
+  address TEXT,
+  city TEXT,
+  zip TEXT,
+  state TEXT,
+  country TEXT,
   latitude TEXT,
   longitude TEXT,
   is_visible BOOLEAN DEFAULT true,
-  transcation TEXT[],
-  hour TEXT[][],
-  phone VARCHAR(20),
+  transactions JSON,
+  hours JSON,
+  phone TEXT,
   created_at TIMESTAMP DEFAULT now()
 );
 
@@ -53,8 +54,9 @@ CREATE TABLE bookmarks (
 
 CREATE TABLE cuisines (
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(50),
-  about TEXT,
+  name TEXT,
+  history TEXT,
+  customs TEXT,
   photo TEXT,
   is_visible BOOLEAN DEFAULT true
 );
@@ -66,7 +68,7 @@ CREATE TABLE cuisine_restaurant (
 
 CREATE TABLE recipes (
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(50),
+  name TEXT,
   steps TEXT,
   photos JSON,
   is_visible BOOLEAN DEFAULT true,

@@ -1,33 +1,32 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
-const sequelize = require('../db/dbInstance');
-const CuisineRestaurant = require('./CuisineRestaurant');
-const Restaurant = require('./Restaurant');
+const { DataTypes, Model } = require('sequelize');
 
-class Cuisine extends Model {}
+module.exports = (sequelize) => {
+  class Cuisine extends Model {}
 
-Cuisine.init({
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  about: {
-    type: DataTypes.STRING,
-  },
-  photo: {
-    type: DataTypes.STRING,
-  },
-  isVisible: {
-    type: DataTypes.BOOLEAN,
-  },
-}, {
-  sequelize,
-  modelName: 'cuisine',
-  underscored: true,
-  updatedAt: false,
-  createdAt: false,
-});
+  Cuisine.init({
+    name: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    history: {
+      type: DataTypes.TEXT,
+    },
+    customs: {
+      type: DataTypes.TEXT,
+    },
+    photo: {
+      type: DataTypes.TEXT,
+    },
+    isVisible: {
+      type: DataTypes.BOOLEAN,
+    },
+  }, {
+    sequelize,
+    modelName: 'cuisine',
+    underscored: true,
+    updatedAt: false,
+    createdAt: false,
+  });
 
-// Fix later
-// Cuisine.belongsToMany(Restaurant, { through: CuisineRestaurant });
-
-module.exports = Cuisine;
+  return Cuisine;
+};

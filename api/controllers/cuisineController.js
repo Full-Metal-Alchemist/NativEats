@@ -1,5 +1,5 @@
 const mockCuisines = require('../../__mocks__/mockCuisines');
-const Cuisine = require('../models/Cuisine');
+const { Cuisine } = require('../models');
 
 const createCuisine = async (req, res) => {
   const {
@@ -16,7 +16,7 @@ const createCuisine = async (req, res) => {
 };
 
 const getCuisines = async (req, res) => {
-  const cuisines = await Cuisine.findAll();
+  const cuisines = await Cuisine.findAll({include: ['restaurants']});
 
   if (cuisines.length) {
     res.send(cuisines);
@@ -28,7 +28,7 @@ const getCuisines = async (req, res) => {
 
 const getCuisine = async (req, res) => {
   const { cuisineId } = req.params;
-  const cuisine = await Cuisine.findByPk(cuisineId);
+  const cuisine = await Cuisine.findByPk(cuisineId, {include: ['restaurants']});
 
   if (cuisine) {
     res.send(cuisine);

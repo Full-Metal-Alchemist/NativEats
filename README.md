@@ -25,6 +25,7 @@ POST /api/v1/auth/login
 POST /api/v1/auth/logout
 
 POST /api/v1/bookmarks
+GET /api/v1/bookmarks
 DELETE /api/v1/bookmarks
 
 GET /api/v1/cuisines

@@ -6,6 +6,7 @@ const router = express.Router();
 router
   .route('/')
   .post(bookmarkController.createBookmark)
+  .get(bookmarkController.getBookmarks)
   .delete(bookmarkController.deleteBookmark);
 
 module.exports = router;
