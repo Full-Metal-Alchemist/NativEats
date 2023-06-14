@@ -21,6 +21,7 @@ const Stack = createStackNavigator();
 export default function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSignout, setIsSignout] = useState(false);
 
   useEffect(() => {
     const unsubAuth = onAuthStateChanged(auth, async (authUser) => {
@@ -43,7 +44,7 @@ export default function App() {
   }
 
   return (
-    <AuthUserContext.Provider value={{ user, setUser }}>
+    <AuthUserContext.Provider value={{ user, setUser, setIsSignout }}>
       <NavigationContainer>
         {user
           ? (
@@ -70,7 +71,13 @@ export default function App() {
                 cardStyle: { backgroundColor: COLORS.JASMINE },
               }}
             >
-              <Stack.Screen name="Login" component={Login} />
+              <Stack.Screen
+                name="Login"
+                component={Login}
+                options={{
+                  animationTypeForReplace: isSignout ? 'pop' : 'push',
+                }}
+              />
               <Stack.Screen name="Signup" component={Signup} />
               <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
             </Stack.Navigator>

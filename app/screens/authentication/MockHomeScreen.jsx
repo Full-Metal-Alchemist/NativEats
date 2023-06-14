@@ -9,10 +9,11 @@ import AuthUserContext from '../../contexts';
 import { auth } from '../../firebaseConfig';
 
 export default function MockHomeScreen({ navigation }) {
-  const { user } = useContext(AuthUserContext);
+  const { user, setIsSignout } = useContext(AuthUserContext);
   const handleSignOut = async () => {
     try {
       await auth.signOut();
+      setIsSignout(true);
     } catch (err) {
       console.log(err);
     }
