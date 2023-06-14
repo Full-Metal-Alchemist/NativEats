@@ -11,6 +11,7 @@ import RecipesMain from './screens/recipes/RecipesMainScreen';
 import RecipesSingle from './screens/recipes/RecipesSingleScreen';
 import MoodPage from './screens/landing/moodpage/MoodPage';
 import FoodieTour from './screens/tour/FoodieTour';
+import CulturalInsights from './screens/cultural/Cultural';
 
 const Stack = createStackNavigator();
 
@@ -18,7 +19,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="CulturalInsights"
         screenOptions={{
           headerStyle: { elevation: 0 },
           cardStyle: { backgroundColor: '#ffdf7a' },
@@ -31,6 +32,7 @@ export default function App() {
         <Stack.Screen name="RecipesMain" component={RecipesMain} />
         <Stack.Screen name="RecipesSingle" component={RecipesSingle} />
         <Stack.Screen name="FoodieTour" component={FoodieTour} />
+        <Stack.Screen name="CulturalInsights" component={CulturalInsights} />
       </Stack.Navigator>
     </NavigationContainer>
   );
