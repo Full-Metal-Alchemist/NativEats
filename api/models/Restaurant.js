@@ -61,6 +61,12 @@ module.exports = (sequelize) => {
     tags: {
       type: DataTypes.JSON,
     },
+    photo: {
+      type: DataTypes.TEXT,
+    },
+    yelpId: {
+      type: DataTypes.TEXT,
+    },
   }, {
     sequelize,
     modelName: 'restaurant',
