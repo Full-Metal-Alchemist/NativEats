@@ -1,34 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  View, Text, StyleSheet, FlatList,
+  View, StyleSheet,
 } from 'react-native';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { LoginButton, LoginInput, LoginError } from './components';
+import { auth } from '../../firebaseConfig';
+import { COLORS } from '../../constants/colors';
 
-function Signup() {
-  const friends = [
-    { name: 'Friend #1', age: 20 },
-    { name: 'Friend #2', age: 21 },
-    { name: 'Friend #3', age: 22 },
-    { name: 'Friend #4', age: 23 },
-    { name: 'Friend #5', age: 24 },
-    { name: 'Friend #6', age: 25 },
-    { name: 'Friend #7', age: 26 },
-    { name: 'Friend #8', age: 27 },
-    { name: 'Friend #9', age: 28 },
-  ];
+function Signup({ navigation }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setshowPassword] = useState(true);
+  const [rightIcon, setRightIcon] = useState('eye');
+  const [signupError, setSignupError] = useState('');
 
+  const handleShowPassword = () => {
+    if (rightIcon === 'eye') {
+      setRightIcon('eye-off');
+      setshowPassword(!showPassword);
+    } else if (rightIcon === 'eye-off') {
+      setRightIcon('eye');
+      setshowPassword(!showPassword);
+    }
+  };
+
+  const handleSignup = async () => {
+    try {
+      if (email !== '' && password !== '') {
+        await createUserWithEmailAndPassword(auth, email, password);
+      }
+    } catch (err) {
+      setSignupError(err.message);
+      console.log(err);
+    }
+  };
   return (
-    <FlatList
-      keyExtractor={(friend) => friend.name}
-      data={friends}
-      renderItem={({ item }) => (
-        <Text style={styles.textStyle}>
-          {item.name}
-          {' '}
-          - Age
-          {item.age}
-        </Text>
-      )}
-    />
+    <View>
+      <LoginInput
+        placeholder="Email"
+        keyboardType="email-address"
+        textContentType="emailAddress"
+        leftIcon="email"
+        value={email}
+        onChangeText={(text) => setEmail(text)}
+        autoCapitalize="none"
+        iconColor={COLORS.SCARLET}
+      />
+      <LoginInput
+        placeholder="Password"
+        autoCorrect={false}
+        secureTextEntry={showPassword}
+        textContentType="password"
+        leftIcon="lock"
+        rightIcon={rightIcon}
+        value={password}
+        onChangeText={(text) => setPassword(text)}
+        handleShowPassword={handleShowPassword}
+        autoCapitalize="none"
+        iconColor={COLORS.SCARLET}
+      />
+      {signupError ? <LoginError error={signupError} visible /> : null}
+      <LoginButton title="Sign up" onPress={handleSignup} backgroundColor={COLORS.TURQUOISE} titleColor={COLORS.JASMINE} titleSize={18} />
+    </View>
   );
 }
 
