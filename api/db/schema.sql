@@ -31,6 +31,9 @@ CREATE TABLE restaurants (
   transactions JSON,
   hours JSON,
   phone TEXT,
+  tags JSON,
+  photo TEXT,
+  yelp_id TEXT,
   created_at TIMESTAMP DEFAULT now()
 );
 
@@ -58,6 +61,7 @@ CREATE TABLE cuisines (
   history TEXT,
   customs TEXT,
   photo TEXT,
+  dishes JSON,
   is_visible BOOLEAN DEFAULT true
 );
 

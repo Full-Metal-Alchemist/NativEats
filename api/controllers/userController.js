@@ -2,18 +2,7 @@ const mockUser = require('../../__mocks__/mockUser');
 const {User} = require('../models');
 
 const createUser = async (req, res) => {
-  const {
-    email,
-    firstName,
-    lastName,
-    passwordHash,
-  } = req.body;
-  const user = await User.create({
-    email,
-    firstName,
-    lastName,
-    passwordHash,
-  });
+  const user = await User.create(req.body);
   res.send(user);
 };
 
