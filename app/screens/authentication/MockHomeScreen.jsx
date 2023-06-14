@@ -12,8 +12,8 @@ export default function MockHomeScreen({ navigation }) {
   const { user, setIsSignout } = useContext(AuthUserContext);
   const handleSignOut = async () => {
     try {
-      await auth.signOut();
       setIsSignout(true);
+      await auth.signOut();
     } catch (err) {
       console.log(err);
     }
