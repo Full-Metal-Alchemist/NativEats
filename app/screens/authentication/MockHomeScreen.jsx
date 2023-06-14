@@ -5,7 +5,7 @@ import {
 
 // import { signOut } from 'firebase/auth';
 import { IconButton } from './components';
-import { AuthUserContext } from '../../contexts';
+import AuthUserContext from '../../contexts';
 import { auth } from '../../firebaseConfig';
 
 export default function MockHomeScreen({ navigation }) {
@@ -23,13 +23,13 @@ export default function MockHomeScreen({ navigation }) {
       <Text>
         User:
         {' '}
-        {user.email}
+        {/* {user.email} */}
       </Text>
       <IconButton name="logout" onPress={handleSignOut} />
       <Text>
         UID:
         {' '}
-        {user.uid}
+        {/* {user.uid} */}
       </Text>
     </View>
   );

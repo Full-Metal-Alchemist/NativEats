@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { onAuthStateChanged } from 'firebase/auth';
 import AuthUserContext from './contexts';
 import { auth } from './firebaseConfig';
+import { COLORS } from './constants/colors';
 
 import MockHomeScreen from './screens/authentication/MockHomeScreen';
 import Login from './screens/authentication/Login';
@@ -16,7 +17,6 @@ import RecipesSingle from './screens/recipes/RecipesSingleScreen';
 import FoodieTour from './screens/tour/FoodieTour';
 
 const Stack = createStackNavigator();
-console.log('Auth User Context', AuthUserContext);
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -52,7 +52,7 @@ export default function App() {
               initialRouteName="MockHomeScreen"
               screenOptions={{
                 headerStyle: { elevation: 0 },
-                cardStyle: { backgroundColor: '#ffdf7a' },
+                cardStyle: { backgroundColor: COLORS.JASMINE },
               }}
             >
               <Stack.Screen name="MockHomeScreen" component={MockHomeScreen} />
@@ -63,7 +63,13 @@ export default function App() {
           )
           : (
             // screens accessible when not logged in
-            <Stack.Navigator initialRouteName="Login">
+            <Stack.Navigator
+              initialRouteName="Login"
+              screenOptions={{
+                headerStyle: { elevation: 0 },
+                cardStyle: { backgroundColor: COLORS.JASMINE },
+              }}
+            >
               <Stack.Screen name="Login" component={Login} />
               <Stack.Screen name="Signup" component={Signup} />
               <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
