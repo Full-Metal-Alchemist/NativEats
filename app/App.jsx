@@ -1,9 +1,10 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { StatusBar } from 'expo-status-bar';
 import { ActivityIndicator, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { onAuthStateChanged } from 'firebase/auth';
+import AuthUserContext from './contexts';
 import { auth } from './firebaseConfig';
 
 import MockHomeScreen from './screens/authentication/MockHomeScreen';
@@ -14,8 +15,8 @@ import RecipesMain from './screens/recipes/RecipesMainScreen';
 import RecipesSingle from './screens/recipes/RecipesSingleScreen';
 import FoodieTour from './screens/tour/FoodieTour';
 
-export const AuthUserContext = createContext({});
 const Stack = createStackNavigator();
+console.log('Auth User Context', AuthUserContext);
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -30,7 +31,6 @@ export default function App() {
         console.log(err);
       }
     });
-    console.log('Unsub Auth', unsubAuth);
     return unsubAuth;
   }, []);
 

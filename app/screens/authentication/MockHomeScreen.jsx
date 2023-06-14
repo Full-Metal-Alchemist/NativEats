@@ -5,7 +5,7 @@ import {
 
 // import { signOut } from 'firebase/auth';
 import { IconButton } from './components';
-import { AuthUserContext } from '../../App';
+import { AuthUserContext } from '../../contexts';
 import { auth } from '../../firebaseConfig';
 
 export default function MockHomeScreen({ navigation }) {
