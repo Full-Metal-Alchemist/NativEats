@@ -2,16 +2,7 @@ const mockReviews = require('../../__mocks__/mockReviews');
 const {Review} = require('../models');
 
 const createReview = async (req, res) => {
-  const {
-    comment,
-    photos,
-    rating,
-  } = req.body;
-  const review = await Review.create({
-    comment,
-    photos,
-    rating,
-  });
+  const review = await Review.create(req.body);
   res.send(review);
 };
 

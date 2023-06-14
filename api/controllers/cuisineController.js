@@ -2,16 +2,7 @@ const mockCuisines = require('../../__mocks__/mockCuisines');
 const { Cuisine } = require('../models');
 
 const createCuisine = async (req, res) => {
-  const {
-    name,
-    about,
-    photo,
-  } = req.body;
-  const cuisine = await Cuisine.create({
-    name,
-    about,
-    photo,
-  });
+  const cuisine = await Cuisine.create(req.body);
   res.send(cuisine);
 };
 
