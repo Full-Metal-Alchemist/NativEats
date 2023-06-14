@@ -8,6 +8,9 @@ import { auth } from '../../firebaseConfig';
 import { COLORS } from '../../constants/colors';
 
 function Signup({ navigation }) {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setshowPassword] = useState(true);
@@ -37,6 +40,33 @@ function Signup({ navigation }) {
   return (
     <View>
       <LoginInput
+        placeholder="First Name"
+        textContentType="givenName"
+        value={firstName}
+        onChangeText={(text) => setFirstName(text)}
+        placeholderTextColor={COLORS.SCARLET}
+        leftIcon="identifier"
+        iconColor={COLORS.SCARLET}
+      />
+      <LoginInput
+        placeholder="Last Name"
+        textContentType="familyName"
+        value={lastName}
+        onChangeText={(text) => setLastName(text)}
+        placeholderTextColor={COLORS.SCARLET}
+        leftIcon="identifier"
+        iconColor={COLORS.SCARLET}
+      />
+      <LoginInput
+        placeholder="Username"
+        textContentType="username"
+        value={username}
+        onChangeText={(text) => setUsername(text)}
+        placeholderTextColor={COLORS.SCARLET}
+        leftIcon="account"
+        iconColor={COLORS.SCARLET}
+      />
+      <LoginInput
         placeholder="Email"
         keyboardType="email-address"
         textContentType="emailAddress"
@@ -45,6 +75,7 @@ function Signup({ navigation }) {
         onChangeText={(text) => setEmail(text)}
         autoCapitalize="none"
         iconColor={COLORS.SCARLET}
+        placeholderTextColor={COLORS.SCARLET}
       />
       <LoginInput
         placeholder="Password"
@@ -58,6 +89,7 @@ function Signup({ navigation }) {
         handleShowPassword={handleShowPassword}
         autoCapitalize="none"
         iconColor={COLORS.SCARLET}
+        placeholderTextColor={COLORS.SCARLET}
       />
       {signupError ? <LoginError error={signupError} visible /> : null}
       <LoginButton title="Sign up" onPress={handleSignup} backgroundColor={COLORS.TURQUOISE} titleColor={COLORS.JASMINE} titleSize={18} />
