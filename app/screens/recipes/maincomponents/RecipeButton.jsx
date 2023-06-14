@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 });
 
 function RecipeButton({ navigation, title, data }) {
-  // console.log(data)
+  console.log(data);
   return (
     <View>
       <TouchableOpacity
