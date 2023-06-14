@@ -41,10 +41,10 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
     },
     latitude: {
-      type: DataTypes.GEOMETRY,
+      type: DataTypes.TEXT,
     },
     longitude: {
-      type: DataTypes.GEOMETRY,
+      type: DataTypes.TEXT,
     },
     isVisible: {
       type: DataTypes.BOOLEAN,
@@ -56,6 +56,15 @@ module.exports = (sequelize) => {
       type: DataTypes.JSON,
     },
     phone: {
+      type: DataTypes.TEXT,
+    },
+    tags: {
+      type: DataTypes.JSON,
+    },
+    photo: {
+      type: DataTypes.TEXT,
+    },
+    yelpId: {
       type: DataTypes.TEXT,
     },
   }, {
