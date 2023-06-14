@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
-  Text, StyleSheet, View,
+  Text, StyleSheet, View, SafeAreaView, ScrollView,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -24,10 +24,22 @@ const styles = StyleSheet.create({
 });
 
 function CulturalInsights() {
+  // Temporary state to hold placeholder cuisine chosen
+  const [currentCuisine, setCurrentCuisine] = useState('Italian');
   return (
-    <View>
-      <Text style={styles.title}>Cultural Insights</Text>
-    </View>
+    <SafeAreaView>
+      <ScrollView>
+        <Text style={styles.title}>
+          Cultural Insights About
+          {' '}
+          {currentCuisine}
+          {' '}
+          Food
+        </Text>
+
+      </ScrollView>
+    </SafeAreaView>
+
   );
 }
 
