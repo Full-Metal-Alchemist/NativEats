@@ -4,7 +4,7 @@ import { ActivityIndicator, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { onAuthStateChanged } from 'firebase/auth';
-import { AuthUserContext } from './contexts';
+import AuthUserContext from './contexts';
 import { auth } from './firebaseConfig';
 import { COLORS } from './constants/colors';
 

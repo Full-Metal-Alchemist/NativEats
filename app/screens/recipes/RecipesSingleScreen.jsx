@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Text, StyleSheet, View, Button, TouchableOpacity,
+  Text, StyleSheet, View, Button, TouchableOpacity, Image, ScrollView,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
   },
 });
 
-function RecipeSingle({ navigation }) {
+function RecipeSingle({ navigation, route }) {
+  const { data } = route.params
   return (
     <View>
       <Text style={styles.title}>{data.name}</Text>
@@ -47,7 +48,9 @@ function RecipeSingle({ navigation }) {
         <Image style={styles.image} source={{ uri: data.photos[0] }} />
       </View>
       <Text style={styles.text}>Instructions Below:</Text>
-      <Text style={styles.text}>{data.steps}</Text>
+      <ScrollView>
+        <Text style={styles.text}>{data.steps}</Text>
+      </ScrollView>
     </View>
   );
 }
