@@ -1,9 +1,14 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 // import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { onAuthStateChanged } from 'firebase/auth';
+import AuthUserContext from './contexts';
+import { auth } from './firebaseConfig';
+import { COLORS } from './constants/colors';
 
+import MockHomeScreen from './screens/authentication/MockHomeScreen';
 import Login from './screens/authentication/Login';
 import Signup from './screens/authentication/Signup';
 import ForgotPassword from './screens/authentication/ForgotPass';
@@ -18,6 +23,30 @@ import FoodieTour from './screens/tour/FoodieTour';
 const Stack = createStackNavigator();
 
 export default function App() {
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSignout, setIsSignout] = useState(false);
+
+  useEffect(() => {
+    const unsubAuth = onAuthStateChanged(auth, async (authUser) => {
+      try {
+        await (authUser ? setUser(authUser) : setUser(null));
+        setIsLoading(false);
+      } catch (err) {
+        console.log(err);
+      }
+    });
+    return unsubAuth;
+  }, []);
+
+  if (isLoading) {
+    return (
+      <View>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator
