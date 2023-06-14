@@ -1,4 +1,4 @@
-FROM postgis/postgis:15-3.3
+FROM postgres
 ENV POSTGRES_PASSWORD password
 ENV POSTGRES_DB nativeats
 COPY *.sql /docker-entrypoint-initdb.d/
