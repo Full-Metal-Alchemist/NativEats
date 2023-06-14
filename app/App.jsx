@@ -15,9 +15,6 @@ import ForgotPassword from './screens/authentication/ForgotPass';
 import RecipesMain from './screens/recipes/RecipesMainScreen';
 import RecipesSingle from './screens/recipes/RecipesSingleScreen';
 import MoodPage from './screens/landing/moodpage/MoodPage';
-import HomePage from './screens/HomePage';
-// import BookMark from './screens/BookMark';
-import RestaurantDetail from './screens/RestaurantDetail';
 import FoodieTour from './screens/tour/FoodieTour';
 
 const Stack = createStackNavigator();
@@ -48,25 +45,49 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Login"
-        screenOptions={{
-          headerStyle: { elevation: 0 },
-          cardStyle: { backgroundColor: '#ffdf7a' },
-        }}
-      >
-        {/* <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-        <Stack.Screen name="MoodPage" component={MoodPage} />
-        <Stack.Screen name="RecipesMain" component={RecipesMain} />
-        <Stack.Screen name="RecipesSingle" component={RecipesSingle} /> */}
-        <Stack.Screen name="Restaurants" component={HomePage} />
-        {/* <Stack.Screen name="BookMark" component={BookMark} /> */}
-        <Stack.Screen name="NativEat" component={RestaurantDetail} />
-        <Stack.Screen name="FoodieTour" component={FoodieTour} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AuthUserContext.Provider value={{ user, setUser, setIsSignout }}>
+      <NavigationContainer>
+        {user
+          ? (
+            // screens accessible on login
+            <Stack.Navigator
+              initialRouteName="MockHomeScreen"
+              screenOptions={{
+                headerStyle: { elevation: 0 },
+                cardStyle: { backgroundColor: COLORS.JASMINE },
+              }}
+            >
+              <Stack.Screen name="MockHomeScreen" component={MockHomeScreen} />
+              <Stack.Screen name="RecipesMain" component={RecipesMain} />
+              <Stack.Screen name="RecipesSingle" component={RecipesSingle} />
+              <Stack.Screen name="FoodieTour" component={FoodieTour} />
+              <Stack.Screen name="MoodPage" component={MoodPage} />
+              <Stack.Screen name="Restaurants" component={HomePage} />
+              <Stack.Screen name="BookMark" component={BookMark} />
+              <Stack.Screen name="NativEat" component={RestaurantDetail} />
+            </Stack.Navigator>
+          )
+          : (
+            // screens accessible when not logged in
+            <Stack.Navigator
+              initialRouteName="Login"
+              screenOptions={{
+                headerStyle: { elevation: 0 },
+                cardStyle: { backgroundColor: COLORS.JASMINE },
+              }}
+            >
+              <Stack.Screen
+                name="Login"
+                component={Login}
+                options={{
+                  animationTypeForReplace: isSignout ? 'pop' : 'push',
+                }}
+              />
+              <Stack.Screen name="Signup" component={Signup} />
+              <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+            </Stack.Navigator>
+          )}
+      </NavigationContainer>
+    </AuthUserContext.Provider>
   );
 }
