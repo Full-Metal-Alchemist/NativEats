@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import {
-  Text, StyleSheet, View,
+  Text, StyleSheet, View, Button,
 } from 'react-native';
 
 // import { signOut } from 'firebase/auth';
@@ -32,6 +32,11 @@ export default function MockHomeScreen({ navigation }) {
         {' '}
         {/* {user.uid} */}
       </Text>
+      <Button title="RecipesMain" onPress={() => navigation.navigate('RecipesMain')} />
+      <Button title="RecipesSingle" onPress={() => navigation.navigate('RecipesSingle')} />
+      <Button title="FoodieTour" onPress={() => navigation.navigate('FoodieTour')} />
+      <Button title="MoodPage" onPress={() => navigation.navigate('MoodPage')} />
+      <Button title="CulturalInsights" onPress={() => navigation.navigate('CulturalInsights')} />
     </View>
   );
 }
