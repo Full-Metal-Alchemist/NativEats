@@ -2,16 +2,7 @@ const mockRecipes = require('../../__mocks__/mockRecipes');
 const { Recipe } = require('../models');
 
 const createRecipe = async (req, res) => {
-  const {
-    name,
-    steps,
-    photos,
-  } = req.body;
-  const recipe = await Recipe.create({
-    name,
-    steps,
-    photos,
-  });
+  const recipe = await Recipe.create(req.body);
   res.send(recipe);
 };
 
