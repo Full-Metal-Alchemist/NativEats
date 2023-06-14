@@ -1,10 +1,23 @@
 import React from 'react';
 import {
-  Text, StyleSheet, View, Dimensions, Image,
+  Text, StyleSheet, View, Button, TouchableOpacity,
 } from 'react-native';
 
 const styles = StyleSheet.create({
-  title: {
+  text: {
+    fontSize: 30,
+  },
+  touchable: {
+    width: 300,
+    marginTop: 556,
+    marginLeft: 25,
+    paddingVertical: 18,
+    borderWidth: 2,
+    borderColor: '#20232a',
+    borderRadius: 6,
+    backgroundColor: '#61dafb',
+    color: '#20232a',
+    textAlign: 'center',
     fontSize: 30,
     fontWeight: 'bold',
     fontFamily: 'Arial',
@@ -25,11 +38,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function RecipeSingle({ navigation, route }) {
-  const { data } = route.params;
-  console.log(data);
-  const recipe = data.steps.split('.');
-  console.log(recipe);
+function RecipeSingle({ navigation }) {
   return (
     <View>
       <Text style={styles.title}>{data.name}</Text>

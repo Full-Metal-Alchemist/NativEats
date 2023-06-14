@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     // borderWidth: 2,
     // borderColor: '#20232a',
     borderRadius: 6,
-    backgroundColor: '#55d6bf',
+    backgroundColor: '#61dafb',
     color: '#20232a',
     textAlign: 'center',
     fontSize: 30,
