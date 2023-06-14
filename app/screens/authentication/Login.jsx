@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   StyleSheet, View, Button,
 } from 'react-native';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 import { LoginButton, LoginInput, LoginError } from './components';
 import { auth } from '../../firebaseConfig';
@@ -28,7 +29,7 @@ export default function Login({ navigation }) {
   const onLogin = async () => {
     try {
       if (email !== '' && password !== '') {
-        await auth.signInWithEmailAndPassword(email, password);
+        await signInWithEmailAndPassword(auth, email, password);
       }
     } catch (err) {
       setLoginError(err.message);
@@ -44,6 +45,7 @@ export default function Login({ navigation }) {
         leftIcon="email"
         value={email}
         onChangeText={(text) => setEmail(text)}
+        autoCapitalize="none"
       />
       <LoginInput
         placeholder="Enter password"
@@ -55,6 +57,7 @@ export default function Login({ navigation }) {
         value={password}
         onChangeText={(text) => setPassword(text)}
         handlePasswordVis={handlePasswordVis}
+        autoCapitalize="none"
       />
       {loginError ? <LoginError error={loginError} visible /> : null}
       <LoginButton title="Sign In" onPress={onLogin} />
