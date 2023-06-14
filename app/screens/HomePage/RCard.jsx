@@ -11,7 +11,7 @@ function RCard({ navigation, item }) {
       <Card.Divider />
       <BookmarkIconOutline />
       <Card.Image
-        source={{ url: item.photos[0] }}
+        source={{ url: item.photos }}
         onPress={() => {
           navigation.navigate('NativEat', { item });
         }}

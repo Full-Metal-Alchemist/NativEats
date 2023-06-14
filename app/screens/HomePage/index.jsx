@@ -8,7 +8,7 @@ import Filter from './Filter';
 import Search from './Search';
 import List from './RList';
 
-function HomePage({ navigation }) {
+function HomePage({ navigation, route }) {
   const [arr, setArr] = useState([]);
   const [filter, setFilter] = useState(0);
   const [search, setSearch] = useState('');
@@ -19,12 +19,38 @@ function HomePage({ navigation }) {
     },
   });
   useEffect(() => {
-    axios.get('http://localhost:8080/api/v1/restaurants')
+    let params = {};
+    switch (filter) {
+      case 0:
+        params = {
+          category: null, order: null, search, cuisine: route.params.cuisine,
+        };
+        break;
+      case 1:
+        params = {
+          category: 'price', order: 'INSC', search, cuisine: route.params.cuisine,
+        };
+        break;
+      case 2:
+        params = {
+          category: 'price', order: 'DESC', search, cuisine: route.params.cuisine,
+        };
+        break;
+      case 3:
+        params = {
+          category: 'review count', order: 'DESC', search, cuisine: route.params.cuisine,
+        };
+        break;
+      case 4:
+        params = {
+          category: 'review', order: 'DESC', search, cuisine: route.params.cuisine,
+        };
+        break;
+      default:
+    }
+    axios.get('http://localhost:8080/api/v1/restaurants', { params })
       .then((res) => {
         setArr(res.data);
-        console.log(res.data.length);
-        console.log(search);
-        console.log('filter', filter);
       });
   }, [filter, search]);
   return (

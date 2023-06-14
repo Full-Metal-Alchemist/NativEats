@@ -14,10 +14,10 @@
     "helmet": "^7.0.0",
     "pg": "^8.11.0",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.32.0",
     "react-native-heroicons": "^3.2.0",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-svg": "^13.9.0",
+    "sequelize": "^6.32.0",
     "xss-clean": "^0.1.4"
   },
   "devDependencies": {

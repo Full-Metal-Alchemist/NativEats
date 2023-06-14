@@ -1,5 +1,6 @@
+const axios = require('axios');
 const mockRestaurants = require('../../__mocks__/mockRestaurants');
-const {Restaurant} = require('../models');
+const { Restaurant } = require('../models');
 
 const createRestaurant = async (req, res) => {
   const {
@@ -57,13 +58,27 @@ const getRestaurants = async (req, res) => {
 };
 
 const getRestaurant = async (req, res) => {
-  const { restaurantId } = req.params;
-  const restaurant = await Restaurant.findByPk(restaurantId, {include: ['cuisines', 'reviews']});
-  if (restaurant) {
-    res.send(restaurant);
-  } else {
-    res.send(mockRestaurants[0]);
-  }
+  const { APIID } = req.params;
+  const endpoint = `https://api.yelp.com/v3/businesses/${APIID}`;
+  const option = {
+    method: 'GET',
+    url: endpoint,
+    headers: {
+      Authorization: `Bearer ${process.env.TOKEN}`,
+    },
+  };
+
+  axios(option)
+    .then((result) => {
+      res.send(result.data);
+    })
+    .catch((err) => { console.log(err); });
+
+  // if (restaurant) {
+  //   res.send(restaurant);
+  // } else {
+  //   res.send(mockRestaurants[0]);
+  // }
 };
 
 const updateRestaurant = async (req, res) => {
