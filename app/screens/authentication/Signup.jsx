@@ -3,24 +3,24 @@ import {
   View, StyleSheet,
 } from 'react-native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-
 import { LoginButton, LoginInput, LoginError } from './components';
 import { auth } from '../../firebaseConfig';
+import { COLORS } from '../../constants/colors';
 
 function Signup({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordVis, setPasswordVis] = useState(true);
+  const [showPassword, setshowPassword] = useState(true);
   const [rightIcon, setRightIcon] = useState('eye');
   const [signupError, setSignupError] = useState('');
 
-  const handlePasswordVis = () => {
+  const handleShowPassword = () => {
     if (rightIcon === 'eye') {
       setRightIcon('eye-off');
-      setPasswordVis(!passwordVis);
+      setshowPassword(!showPassword);
     } else if (rightIcon === 'eye-off') {
       setRightIcon('eye');
-      setPasswordVis(!passwordVis);
+      setshowPassword(!showPassword);
     }
   };
 
@@ -44,21 +44,23 @@ function Signup({ navigation }) {
         value={email}
         onChangeText={(text) => setEmail(text)}
         autoCapitalize="none"
+        iconColor={COLORS.SCARLET}
       />
       <LoginInput
         placeholder="Password"
         autoCorrect={false}
-        secureTextEntry={passwordVis}
+        secureTextEntry={showPassword}
         textContentType="password"
         leftIcon="lock"
         rightIcon={rightIcon}
         value={password}
         onChangeText={(text) => setPassword(text)}
-        handlePasswordVis={handlePasswordVis}
+        handleShowPassword={handleShowPassword}
         autoCapitalize="none"
+        iconColor={COLORS.SCARLET}
       />
       {signupError ? <LoginError error={signupError} visible /> : null}
-      <LoginButton title="Sign up" onPress={handleSignup} />
+      <LoginButton title="Sign up" onPress={handleSignup} backgroundColor={COLORS.TURQUOISE} titleColor={COLORS.JASMINE} titleSize={18} />
     </View>
   );
 }

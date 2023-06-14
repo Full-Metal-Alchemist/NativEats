@@ -11,7 +11,7 @@ export default function LoginInput({
   inputStyle,
   containerStyle,
   placeholderTextColor = '#444',
-  handlePasswordVis,
+  handleShowPassword,
   ...rest
 }) {
   return (
@@ -30,7 +30,7 @@ export default function LoginInput({
         style={[styles.input, inputStyle]}
       />
       {rightIcon ? (
-        <TouchableOpacity onPress={handlePasswordVis}>
+        <TouchableOpacity onPress={handleShowPassword}>
           <MaterialCommunityIcons
             name={rightIcon}
             size={20}

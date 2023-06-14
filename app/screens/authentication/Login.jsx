@@ -3,26 +3,26 @@ import {
   StyleSheet, View, Button,
 } from 'react-native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-
 import { LoginButton, LoginInput, LoginError } from './components';
 import { auth } from '../../firebaseConfig';
+import { COLORS } from '../../constants/colors';
 
 // console.log('Firebase Auth from login', auth);
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordVis, setPasswordVis] = useState(true);
+  const [showPassword, setshowPassword] = useState(true);
   const [rightIcon, setRightIcon] = useState('eye');
   const [loginError, setLoginError] = useState('');
 
-  const handlePasswordVis = () => {
+  const handleShowPassword = () => {
     if (rightIcon === 'eye') {
       setRightIcon('eye-off');
-      setPasswordVis(!passwordVis);
+      setshowPassword(!showPassword);
     } else if (rightIcon === 'eye-off') {
       setRightIcon('eye');
-      setPasswordVis(!passwordVis);
+      setshowPassword(!showPassword);
     }
   };
 
@@ -46,21 +46,30 @@ export default function Login({ navigation }) {
         value={email}
         onChangeText={(text) => setEmail(text)}
         autoCapitalize="none"
+        iconColor={COLORS.SCARLET}
       />
       <LoginInput
         placeholder="Enter password"
         autoCorrect={false}
-        secureTextEntry={passwordVis}
+        secureTextEntry={showPassword}
         textContentType="password"
         leftIcon="lock"
         rightIcon={rightIcon}
         value={password}
         onChangeText={(text) => setPassword(text)}
-        handlePasswordVis={handlePasswordVis}
+        handleShowPassword={handleShowPassword}
         autoCapitalize="none"
+        iconColor={COLORS.SCARLET}
       />
       {loginError ? <LoginError error={loginError} visible /> : null}
-      <LoginButton title="Sign In" onPress={onLogin} />
+      <LoginButton
+        title="Sign In"
+        onPress={onLogin}
+        backgroundColor={COLORS.TURQUOISE}
+        titleColor={COLORS.JASMINE}
+        // width="60%"
+        titleSize={18}
+      />
       <Button title="Sign Up" onPress={() => navigation.navigate('Signup')} />
       <Button
         title="Forgot Password"
@@ -73,19 +82,5 @@ export default function Login({ navigation }) {
 const styles = StyleSheet.create({
   text: {
     fontSize: 30,
-  },
-  touchable: {
-    width: 300,
-    marginTop: 556,
-    marginLeft: 25,
-    paddingVertical: 18,
-    borderWidth: 2,
-    borderColor: '#20232a',
-    borderRadius: 6,
-    backgroundColor: '#61dafb',
-    color: '#20232a',
-    textAlign: 'center',
-    fontSize: 30,
-    fontWeight: 'bold',
   },
 });
