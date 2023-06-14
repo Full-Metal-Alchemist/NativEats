@@ -6,8 +6,8 @@ CREATE TABLE users (
   username TEXT,
   profile_photo TEXT,
   password_hash TEXT,
-  latitude GEOMETRY,
-  longitude GEOMETRY,
+  latitude TEXT,
+  longitude TEXT,
   created_at TIMESTAMP DEFAULT now()
 );
 
@@ -25,8 +25,8 @@ CREATE TABLE restaurants (
   zip TEXT,
   state TEXT,
   country TEXT,
-  latitude GEOMETRY,
-  longitude GEOMETRY,
+  latitude TEXT,
+  longitude TEXT,
   is_visible BOOLEAN DEFAULT true,
   transactions JSON,
   hours JSON,

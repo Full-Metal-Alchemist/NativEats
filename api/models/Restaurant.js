@@ -41,10 +41,10 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
     },
     latitude: {
-      type: DataTypes.GEOMETRY,
+      type: DataTypes.TEXT,
     },
     longitude: {
-      type: DataTypes.GEOMETRY,
+      type: DataTypes.TEXT,
     },
     isVisible: {
       type: DataTypes.BOOLEAN,
