@@ -11,7 +11,7 @@ import { auth } from '../../firebaseConfig';
 
 export default function MockHomeScreen({ navigation }) {
   const { user, setIsSignout } = useContext(AuthUserContext);
-  user.getIdToken().then((token) => console.log('Id Token', token)).catch((err) => console.log('MHS error', err));
+  console.log('MHS user: ', user);
 
   const handleSignOut = async () => {
     try {
@@ -26,7 +26,7 @@ export default function MockHomeScreen({ navigation }) {
     const url = 'http://localhost:8080/api/v1/restaurants?category=created_at&order=desc&cuisine=2';
     const reqConfig = {
       headers: {
-        Authorization: `Bearer ${user.accessToken}`,
+        Authorization: `Bearer ${await user.getIdToken()}`,
       },
     };
     try {

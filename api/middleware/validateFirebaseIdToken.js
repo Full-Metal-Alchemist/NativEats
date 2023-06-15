@@ -18,6 +18,7 @@ const validateFirebaseIdToken = async (req, res, next) => {
     console.log(
       'No Firebase ID token was passed as a Bearer Token in the Authorization header',
       'Make sure you\'re sending your request with the appropriate headers',
+      // req.headers,
     );
     res.status(403).send('Unauthorized');
     return;
@@ -34,10 +35,10 @@ const validateFirebaseIdToken = async (req, res, next) => {
 
   try {
     const decodedToken = await auth.verifyIdToken(idToken);
-    // const user = await auth.getUser(decodedToken.uid);
+    const user = await auth.getUser(decodedToken.uid);
     console.log('ID token successfully decoded:', decodedToken);
-    // console.log('User information: ', user);
-    req.user = decodedToken;
+    console.log('User information: ', user);
+    req.user = user;
     next();
   } catch (err) {
     console.log('Error while verifying ID token:', err);

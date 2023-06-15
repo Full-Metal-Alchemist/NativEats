@@ -3,9 +3,11 @@ import {
   View, StyleSheet,
 } from 'react-native';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import axios from 'axios';
 import { LoginButton, LoginInput, LoginError } from './components';
 import { auth } from '../../firebaseConfig';
 import { COLORS } from '../../constants/colors';
+// import { authAxiosPost } from '../../requests';
 
 function Signup({ navigation }) {
   const [firstName, setFirstName] = useState('');
@@ -28,15 +30,25 @@ function Signup({ navigation }) {
   };
 
   const handleSignup = async () => {
+    const url = 'http://localhost:8080/api/v1/users';
+    // const url = 'http://localhost:8080/api/v1/restaurants?category=created_at&order=desc&cuisine=2';
     try {
       if (email !== '' && password !== '') {
         const { user } = await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(user, { displayName: `${firstName} ${lastName}` });
-        console.log('Sign Up User', user);
+        console.log('Handle Signup User: ', user);
+        const testData = await axios.post(url, {}, {
+          headers: {
+            Authorization: `Bearer ${await user.getIdToken()}`,
+          },
+        });
+        // user.puid = await authAxiosPost(url, user.stsTokenManager.accessToken);
+        // console.log('puid response', user.puid);
+        console.log('Testing if req works', testData);
       }
     } catch (err) {
       setSignupError(err.message);
-      console.log(err);
+      console.log('Handle Signup Error', err);
     }
   };
   return (
@@ -59,7 +71,7 @@ function Signup({ navigation }) {
         leftIcon="identifier"
         iconColor={COLORS.SCARLET}
       />
-      <LoginInput
+      {/* <LoginInput
         placeholder="Username"
         textContentType="username"
         value={username}
@@ -67,7 +79,7 @@ function Signup({ navigation }) {
         placeholderTextColor={COLORS.SCARLET}
         leftIcon="account"
         iconColor={COLORS.SCARLET}
-      />
+      /> */}
       <LoginInput
         placeholder="Email"
         keyboardType="email-address"

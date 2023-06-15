@@ -3,17 +3,17 @@ const { User } = require('../models');
 
 const createUser = async (req, res) => {
   const userData = {
-    firstName: req.user.name ? req.user.name.split(' ')[0] : 'anon',
-    lastName: req.user.name ? req.user.name.split(' ')[1] : null,
+    firstName: req.user.displayName ? req.user.displayName.split(' ')[0] : 'anon',
+    lastName: req.user.displayName ? req.user.displayName.split(' ')[1] : null,
     email: req.user.email,
     profilePhoto: req.user.profilePhoto || null,
   };
   try {
     const user = await User.create(userData);
-    res.status(201).send(user.id);
+    res.status(201).json(user.id);
   } catch (err) {
     console.log('Error creating new user', err);
-    res.status(500);
+    res.sendStatus(500);
   }
 };
 
