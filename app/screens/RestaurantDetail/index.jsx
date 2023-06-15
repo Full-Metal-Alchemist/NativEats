@@ -28,7 +28,7 @@ function RestaurantDetail({ route, navigation }) {
   const [detail, setDetail] = useState({});
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/v1/restaurants/${item.yelpId}`)
+    axios.get(`http://localhost:8080/api/v1/yelp/${item.yelpId}`)
       .then((res) => {
         setDetail(res.data);
         console.log(res.data);
