@@ -1,8 +1,8 @@
 const axios = require('axios');
 const { Op } = require('sequelize');
 const mockRestaurants = require('../../__mocks__/mockRestaurants');
-const {  Restaurant } = require('../models');
-const { Cuisine  } = require('../models');
+const { Restaurant } = require('../models');
+const { Cuisine } = require('../models');
 
 const createRestaurant = async (req, res) => {
   const restaurant = await Restaurant.create(req.body);
