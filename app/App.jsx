@@ -15,6 +15,7 @@ import ForgotPassword from './screens/authentication/ForgotPass';
 import RecipesMain from './screens/recipes/RecipesMainScreen';
 import RecipesSingle from './screens/recipes/RecipesSingleScreen';
 import MoodPage from './screens/landing/moodpage/MoodPage';
+import SettingsPage from './screens/settingsPage/SettingsPage';
 import FoodieTour from './screens/tour/FoodieTour';
 import HomePage from './screens/HomePage';
 // import BookMark from './screens/BookMark';
@@ -67,6 +68,7 @@ export default function App() {
               <Stack.Screen name="RecipesSingle" component={RecipesSingle} />
               <Stack.Screen name="FoodieTour" component={FoodieTour} />
               <Stack.Screen name="MoodPage" component={MoodPage} />
+              <Stack.Screen name="SettingsPage" component={SettingsPage} />
               <Stack.Screen name="UserProfile" component={ProfileMainScreen} />
               <Stack.Screen name="Restaurants" component={HomePage} />
               {/* <Stack.Screen name="BookMark" component={BookMark} /> */}
