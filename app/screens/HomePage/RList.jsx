@@ -23,7 +23,9 @@ function RList({ navigation }) {
   }, []);
 
   return (
-    <List navigation={navigation} arr={restaurants} />
+    <ScrollView style={{ paddingBottom: 100 }}>
+      <List navigation={navigation} arr={restaurants} />
+    </ScrollView>
   );
 }
 export default RList;

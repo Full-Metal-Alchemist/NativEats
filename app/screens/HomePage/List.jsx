@@ -15,9 +15,10 @@ import RCard from './RCard';
 const styles = StyleSheet.create({
   container: {
     paddingTop: StatusBar.currentHeight,
+    paddingBottom: 100,
   },
   scrollView: {
-    backgroundColor: 'pink',
+    backgroundColor: '#fff5c9',
     marginHorizontal: 20,
   },
   text: {
@@ -26,6 +27,7 @@ const styles = StyleSheet.create({
 });
 
 function List({ arr, navigation }) {
+  console.log('in the list', arr.map((ele) => (ele.id)));
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} contentContainerStyle={{ flexGrow: 1 }}>
