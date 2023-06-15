@@ -1,18 +1,31 @@
 import { React, useState } from 'react';
 import {
-  View, Text, StyleSheet, FlatList,
+  View, Text, StyleSheet, FlatList, Button, ScrollView,
 } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-function Search() {
-  const [search, setSearch] = useState('');
+
+const styles = StyleSheet.create({
+  searchbar: {
+    width: 230,
+  },
+});
+
+function Search({ search, setSearch }) {
+  // const [search, setSearch] = useState('');
+  // function debounce(func, timeout=300) {
+
+  // }
   return (
-    <View>
-      <SearchBar
-        placeholder="Type Here..."
-        onChangeText={(e) => { setSearch(e); }}
-        value={search}
-      />
-    </View>
+
+    <SearchBar
+      placeholder="Type Here..."
+      onChangeText={(e) => { setSearch(e); }}
+      value={search}
+      containerStyle={{ backgroundColor: '#fff' }}
+      inputContainerStyle={{ backgroundColor: '#fff' }}
+      placeholderTextColor={{ string: '#520028' }}
+      style={styles.searchbar}
+    />
 
   );
 }
