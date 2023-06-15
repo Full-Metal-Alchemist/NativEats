@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   View, StyleSheet,
 } from 'react-native';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { LoginButton, LoginInput, LoginError } from './components';
 import { auth } from '../../firebaseConfig';
 import { COLORS } from '../../constants/colors';
@@ -30,7 +30,9 @@ function Signup({ navigation }) {
   const handleSignup = async () => {
     try {
       if (email !== '' && password !== '') {
-        await createUserWithEmailAndPassword(auth, email, password);
+        const { user } = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(user, { displayName: `${firstName} ${lastName}` });
+        console.log('Sign Up User', user);
       }
     } catch (err) {
       setSignupError(err.message);
