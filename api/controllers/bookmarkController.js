@@ -22,11 +22,12 @@ const getBookmarks = async (req, res) => {
     where: {
       userId,
     },
+    include: ['restaurant'],
   });
 
   if (bookmarks.length) {
-    const bookmarkArray = bookmarks.map((bookmark) => bookmark.restaurantId);
-    res.send(bookmarkArray);
+    const bookmarksArray = bookmarks.map((bookmark) => bookmark.restaurant);
+    res.send(bookmarksArray);
   } else {
     res.send(mockBookmarks);
   }
