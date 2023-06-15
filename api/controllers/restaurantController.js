@@ -48,28 +48,13 @@ const getRestaurants = async (req, res) => {
 };
 
 const getRestaurant = async (req, res) => {
-  const { yelpId } = req.params;
-  console.log('yelpId', yelpId);
-  const endpoint = `https://api.yelp.com/v3/businesses/${yelpId}`;
-  const option = {
-    method: 'GET',
-    url: endpoint,
-    headers: {
-      Authorization: `Bearer ${process.env.TOKEN}`,
-    },
-  };
-
-  axios(option)
-    .then((result) => {
-      res.send(result.data);
-    })
-    .catch((err) => { console.log(err); });
-
-  // if (restaurant) {
-  //   res.send(restaurant);
-  // } else {
-  //   res.send(mockRestaurants[0]);
-  // }
+  const { restaurantId } = req.params;
+  const restaurant = await Restaurant.findByPk(restaurantId, { include: ['cuisines', 'reviews'] });
+  if (restaurant) {
+    res.send(restaurant);
+  } else {
+    res.send(mockRestaurants[0]);
+  }
 };
 
 const updateRestaurant = async (req, res) => {
