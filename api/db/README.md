@@ -15,15 +15,15 @@ Check to see if postgres is running in brew
 
 `brew services`
 
-Stop postgres in brew
+If postgres is running above, stop it
 
-`brew services stop @postgresVersion`
+`brew services stop @postgres_version`
 
-Build a docker file
+cd into api/db to build the Dockerfile
 
 `docker build -t postgres-with-data ./`
 
-Run a docker file
+Run the Dockerfile from api/db
 
 `docker run -d --name nativeats-db -p 5432:5432 postgres-with-data`
 
