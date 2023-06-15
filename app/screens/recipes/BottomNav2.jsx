@@ -1,9 +1,8 @@
 import React from 'react';
 import {
-  Text, StyleSheet, SafeAreaView, FlatList, Dimensions,
+  StyleSheet, SafeAreaView, FlatList,
 } from 'react-native';
 import BottomLink from './BottomLink';
-import ButtonGroup from 'react-native-elements'
 
 const styles = StyleSheet.create({
   title: {
@@ -13,9 +12,15 @@ const styles = StyleSheet.create({
   },
   list: {
     fontSize: 20,
-    backgroundColor: '#61dafb',
+    backgroundColor: 'white',
     height: 70,
-    paddingLeft: 200,
+    paddingLeft: 250,
+  },
+  list2: {
+    fontSize: 20,
+    backgroundColor: 'white',
+    height: 80,
+    paddingLeft: 50,
   },
   text: {
     fontSize: 20,
@@ -23,10 +28,17 @@ const styles = StyleSheet.create({
 });
 
 function BottomNav({ navigation }) {
-  const mock = [{ render: 'Recipes', navName: 'RecipesMain' }, { render: 'Foodie Tour', navName: 'FoodieTour' }, { render: 'Cultural Insights', navName: 'CulturalScreen' }, { render: 'Bookmarks', navName: 'BookmarkScreen' }];
+  const mock = [
+    { render: 'Recipes', navName: 'RecipesMain', icon: 'clipboard' },
+    { render: 'Foodie Tour', navName: 'FoodieTour', icon: 'briefcase' },
+    { render: 'Cultural Insights', navName: 'CulturalScreen', icon: 'wind' },
+    { render: 'Bookmarks', navName: 'BookmarkScreen', icon: 'bookmark' },
+    { render: '       ', navName: 'BookmarkScreen', icon: '' },
+  ];
   return (
     <SafeAreaView style={styles.list}>
       <FlatList
+        style={styles.list2}
         horizontal
         showsHorizontalScrollIndicator={false}
         data={mock}
@@ -39,7 +51,6 @@ function BottomNav({ navigation }) {
         )}
         keyExtractor={(item) => item}
       />
-      {/* <ButtonGroup /> */}
     </SafeAreaView>
   );
 }

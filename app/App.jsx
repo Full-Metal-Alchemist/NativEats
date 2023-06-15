@@ -57,8 +57,8 @@ export default function App() {
                 cardStyle: { backgroundColor: COLORS.JASMINE },
               }}
             >
-              <Stack.Screen name="MockHomeScreen" component={MockHomeScreen} />
               <Stack.Screen name="RecipesMain" component={RecipesMain} />
+              <Stack.Screen name="MockHomeScreen" component={MockHomeScreen} />
               <Stack.Screen name="RecipesSingle" component={RecipesSingle} />
               <Stack.Screen name="FoodieTour" component={FoodieTour} />
               <Stack.Screen name="MoodPage" component={MoodPage} />
