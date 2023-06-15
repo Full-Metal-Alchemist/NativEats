@@ -35,11 +35,11 @@ const getRestaurants = async (req, res) => {
       {
         model: Cuisine,
         as: 'cuisines',
-        where: {
-          ...(cuisine ? {
+        ...(cuisine ? {
+          where: {
             id: cuisine,
-          } : {}),
-        },
+          },
+        } : {}),
       },
       'reviews',
     ],

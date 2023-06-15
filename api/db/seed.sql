@@ -369,10 +369,6 @@ COPY reviews (id, restaurant_id, user_id, rating, comment, photos, is_visible, c
 1	1	1	4.2	Food was good. Service was ok.	https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80	t	2023-06-15 07:34:15.634768	\N
 \.
 
-COPY bookmarks (user_id, restaurant_id, created_at) FROM stdin;
-1	1	2023-06-15 00:02:48.983335
-\.
-
 COPY cuisine_restaurant (cuisine_id, restaurant_id) FROM stdin;
 1	1
 1	2
@@ -674,4 +670,8 @@ COPY cuisine_restaurant (cuisine_id, restaurant_id) FROM stdin;
 5	248
 5	249
 5	250
+\.
+
+COPY bookmarks (user_id, restaurant_id, created_at) FROM stdin;
+1	1	2023-06-15 00:02:48.983335
 \.
