@@ -1,5 +1,5 @@
 const mockRestaurants = require('../../__mocks__/mockRestaurants');
-const {Restaurant} = require('../models');
+const { Restaurant } = require('../models');
 
 const createRestaurant = async (req, res) => {
   const restaurant = await Restaurant.create(req.body);
@@ -29,7 +29,7 @@ const getRestaurants = async (req, res) => {
 
 const getRestaurant = async (req, res) => {
   const { restaurantId } = req.params;
-  const restaurant = await Restaurant.findByPk(restaurantId, {include: ['cuisines', 'reviews']});
+  const restaurant = await Restaurant.findByPk(restaurantId, { include: ['cuisines', 'reviews'] });
   if (restaurant) {
     res.send(restaurant);
   } else {

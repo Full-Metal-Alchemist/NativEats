@@ -7,7 +7,14 @@ const createCuisine = async (req, res) => {
 };
 
 const getCuisines = async (req, res) => {
-  const cuisines = await Cuisine.findAll({include: ['restaurants', 'recipes']});
+  const { name } = req.query;
+  const cuisines = await Cuisine.findAll({
+    where: {
+      isVisible: true,
+      ...(name ? { name } : {}),
+    },
+    include: ['restaurants', 'recipes'],
+  });
 
   if (cuisines.length) {
     res.send(cuisines);
@@ -19,7 +26,7 @@ const getCuisines = async (req, res) => {
 
 const getCuisine = async (req, res) => {
   const { cuisineId } = req.params;
-  const cuisine = await Cuisine.findByPk(cuisineId, {include: ['restaurants']});
+  const cuisine = await Cuisine.findByPk(cuisineId, { include: ['restaurants'] });
 
   if (cuisine) {
     res.send(cuisine);

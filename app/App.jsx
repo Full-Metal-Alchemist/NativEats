@@ -16,6 +16,7 @@ import RecipesMain from './screens/recipes/RecipesMainScreen';
 import RecipesSingle from './screens/recipes/RecipesSingleScreen';
 import MoodPage from './screens/landing/moodpage/MoodPage';
 import FoodieTour from './screens/tour/FoodieTour';
+import CulturalInsights from './screens/cultural/Cultural';
 
 const Stack = createStackNavigator();
 
@@ -62,6 +63,7 @@ export default function App() {
               <Stack.Screen name="RecipesSingle" component={RecipesSingle} />
               <Stack.Screen name="FoodieTour" component={FoodieTour} />
               <Stack.Screen name="MoodPage" component={MoodPage} />
+              <Stack.Screen name="CulturalInsights" component={CulturalInsights} />
             </Stack.Navigator>
           )
           : (
