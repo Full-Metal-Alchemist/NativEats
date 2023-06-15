@@ -1,3 +1,4 @@
+const {Op} = ('sequelize');
 const mockRestaurants = require('../../__mocks__/mockRestaurants');
 const { Restaurant } = require('../models');
 
@@ -8,10 +9,15 @@ const createRestaurant = async (req, res) => {
 
 const getRestaurants = async (req, res) => {
   // TODO: add category
-  const { category = 'createdAt', order = 'DESC', limit = 50 } = req.query;
+  const { category = 'createdAt', order = 'DESC', limit = 50, tags } = req.query;
   const restaurants = await Restaurant.findAll({
     where: {
       isVisible: true,
+      ...(tags ? {
+        tags: {
+          [Op.contains]: 'breakfast',
+        },
+      } : {}),
     },
     order: [
       [category, order],
