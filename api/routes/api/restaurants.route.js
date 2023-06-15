@@ -9,7 +9,7 @@ router
   .get(restaurantController.getRestaurants);
 
 router
-  .route('/:yelpId')
+  .route('/:restaurantId')
   .get(restaurantController.getRestaurant)
   .patch(restaurantController.updateRestaurant)
   .delete(restaurantController.deleteRestaurant);
