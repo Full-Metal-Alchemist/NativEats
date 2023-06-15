@@ -1,4 +1,6 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useContext } from 'react';
+import AuthUserContext from '../../contexts';
+
 import {
   FlatList,
   SafeAreaView,
@@ -15,10 +17,16 @@ import List from './List';
 function BookMark({ navigation }) {
   const [bookmark, setBookmark] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/v1/bookmarks/?user_id=${user_id}`)
-      .then((res) => {
-        setBookmark(res.data);
-      });
+    // axios.get(`http://localhost:8080/api/v1/bookmarks/`)
+    //   .then((res) => {
+    //     setBookmark(res.data);
+    //   });
+    const { user } = useContext(AuthUserContext);
+    const helpFunction = async () => {
+      const res = await axios.get(`http://localhost:8080/api/v1/bookmarks/?userId=${user.puid}`);
+      await setBookmark(res.data);
+    };
+    helpFunction();
   }, []);
   return (
     <List navigation={navigation} arr={bookmark} />

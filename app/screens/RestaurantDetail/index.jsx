@@ -1,25 +1,58 @@
 import { React, useEffect, useState } from 'react';
 import {
-  ScrollView, Text, StyleSheet, FlatList,
+  ScrollView, Text, View, StyleSheet, FlatList,
 } from 'react-native';
 import axios from 'axios';
 import { Card, Rating, AirbnbRating } from 'react-native-elements';
 import {
-  PhoneIcon as PhoneIconOutline, MapPinIcon as MapPinIconOutline, ClockIcon as ClockIconOutline, ArrowSmallRightIcon as ArrowSmallRightIconOutline, TruckIcon as TruckIconOutline, BookmarkIcon as BookmarkIconOutline,
+  PhoneIcon as PhoneIconOutline, MapPinIcon as MapPinIconOutline, ClockIcon as ClockIconOutline, ArrowSmallRightIcon as ArrowSmallRightIconOutline, TruckIcon as TruckIconOutline, BookmarkIcon as BookmarkIconOutline, CreditCardIcon as CreditCardIconOutline
 } from 'react-native-heroicons/outline';
 import ImgCarousel from './ImgCarousel';
 import Reviews from './Reviews';
+import { COLORS } from '../../constants/colors';
 
 const styles = StyleSheet.create({
+  container: {
+    position: 'relative',
+  },
   icons: {
     width: 16,
     heigth: 16,
-    color: '#55d6bf',
+    color: COLORS.TURQUOISE,
   },
   bookmarkIcon: {
-    width: 20,
-    heigth: 20,
+    width: 28,
+    heigth: 28,
+    color: COLORS.TURQUOISE,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    transform: [{ translateX: -20 }, { translateY: 20 }],
   },
+  name: {
+    fontSize: 28,
+    fontWeight: 700,
+    textAlign: 'center',
+    marginTop: 24,
+    color: COLORS.SCARLET,
+  },
+  rating: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'start',
+
+    marginLeft: 24,
+    marginTop: 16,
+    marginBottom: 16,
+  },
+  price: {
+    fontSize: 16,
+    color: COLORS.SCARLET,
+    marginRight: 24,
+  },
+  // text: {
+  //   fontSize: 24,
+  // },
 });
 
 function RestaurantDetail({ route, navigation }) {
@@ -36,20 +69,24 @@ function RestaurantDetail({ route, navigation }) {
   }, []);
 
   return (
-    <ScrollView>
-      <BookmarkIconOutline style={styles.icons} />
-      <Text>{item.name}</Text>
-      <Rating imageSize={15} readonly startingValue={item.rating} />
+    <ScrollView style={styles.container}>
+      <BookmarkIconOutline style={styles.bookmarkIcon} height={28} width={28} />
+      <Text style={styles.name}>{item.name}</Text>
+      <Rating style={styles.rating} imageSize={18} readonly startingValue={item.rating} />
       <ImgCarousel photoarr={detail.photos} />
-      <Text>{detail.price}</Text>
       <Card>
+        <Text>
+          <CreditCardIconOutline style={styles.icons} />
+          {detail.price}
+        </Text>
+        <Card.Divider />
         <Text>
           <PhoneIconOutline style={styles.icons} />
           {item.phone}
         </Text>
         <Card.Divider />
         <Text>
-          <PhoneIconOutline style={styles.icons} />
+          <MapPinIconOutline style={styles.icons} />
           {item.address}
           ,
           {' '}
@@ -71,7 +108,7 @@ function RestaurantDetail({ route, navigation }) {
           {item.transactions[1] ? item.transactions[1] : null}
         </Text> */}
       </Card>
-      {/* <Reviews reviews={item.reviews} /> */}
+      <Reviews reviews={item.reviews} />
     </ScrollView>
   );
 }

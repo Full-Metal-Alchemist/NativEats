@@ -16,35 +16,33 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   btnContainer: {
-    flex: 1,
-    flexDirection: 'row',
+    marginLeft: 16,
+    marginVertical: 8,
   },
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    marginBottom: 12,
-    paddingLeft: 12,
-    alignItems: 'center',
-  },
+  // container: {
+  //   flex: 1,
+  //   flexDirection: 'row',
+  //   marginBottom: 12,
+  //   paddingLeft: 12,
+  //   alignItems: 'center',
+  // },
 });
 
 function Filter({ filter, setFilter }) {
   // const buttons = ['price', 'price', 'popularity', 'rating'];
   const buttonStyle = (x) => {
     if (filter === x) return ({ color: COLORS.ORANGE });
-
     return ({ color: '#520028' });
   };
 
   const iconStyle = (x) => {
-    if (filter === x) return COLORS.ORANGE;
-
-    return COLORS.SCARLET;
+    if (filter === x) return COLORS.SCARLET;
+    return COLORS.ORANGE;
   };
 
   return (
-    <View styles={styles.container}>
-      <ScrollView horizontal styles={styles.btnContainer}>
+    <View style={styles.container}>
+      <ScrollView horizontal style={styles.btnContainer}>
         <Button title="All" titleStyle={buttonStyle(0)} type="clear" onPress={() => { setFilter(0); }} />
         <Button
           title="Price"

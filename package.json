@@ -17,8 +17,6 @@
     "eslint-plugin-react-hooks": "^4.6.0"
   },
   "dependencies": {
-    "axios": "^1.4.0",
-    "deprecated-react-native-prop-types": "^4.1.0",
-    "react-native-elements": "^3.4.3"
+    "axios": "^1.4.0"
   }
 }
