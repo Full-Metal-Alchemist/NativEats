@@ -34,6 +34,8 @@ function HomePage({ navigation, route }) {
     },
     listContainer: {
       flex: 6,
+      // justifyContent: 'center',
+      // alignItems: 'center',
     },
   });
   useEffect(() => {

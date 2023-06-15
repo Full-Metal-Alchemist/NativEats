@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { ButtonGroup, Button } from 'react-native-elements';
 import { ArrowSmallUpIcon as ArrowSmallUpIconOutline, ArrowSmallDownIcon as ArrowSmallDownIconOutline } from 'react-native-heroicons/outline';
-import COLORS from '../../constants/colors';
+import {COLORS} from '../../constants/colors';
 
 const styles = StyleSheet.create({
   icons: {
@@ -15,23 +15,40 @@ const styles = StyleSheet.create({
   buttons: {
     color: '#000',
   },
+  btnContainer: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    marginBottom: 12,
+    paddingLeft: 12,
+    alignItems: 'center',
+  },
 });
 
 function Filter({ filter, setFilter }) {
   // const buttons = ['price', 'price', 'popularity', 'rating'];
   const buttonStyle = (x) => {
-    if (filter === x) return ({ color: '#fff' });
+    if (filter === x) return ({ color: COLORS.ORANGE });
 
     return ({ color: '#520028' });
   };
 
+  const iconStyle = (x) => {
+    if (filter === x) return COLORS.ORANGE;
+
+    return COLORS.SCARLET;
+  };
+
   return (
-    <View>
-      <ScrollView horizontal>
+    <View styles={styles.container}>
+      <ScrollView horizontal styles={styles.btnContainer}>
         <Button title="All" titleStyle={buttonStyle(0)} type="clear" onPress={() => { setFilter(0); }} />
         <Button
           title="Price"
-          icon={<ArrowSmallUpIconOutline color="grey" />}
+          icon={<ArrowSmallUpIconOutline color={iconStyle(0)} />}
           style={styles.buttons}
           type="clear"
           titleStyle={buttonStyle(1)}
@@ -39,7 +56,7 @@ function Filter({ filter, setFilter }) {
         />
         <Button
           title="Price"
-          icon={<ArrowSmallDownIconOutline color="grey" />}
+          icon={<ArrowSmallDownIconOutline color={iconStyle(0)} />}
           style={styles.buttons}
           type="clear"
           titleStyle={buttonStyle(2)}
