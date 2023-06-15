@@ -19,6 +19,7 @@ import FoodieTour from './screens/tour/FoodieTour';
 import HomePage from './screens/HomePage';
 // import BookMark from './screens/BookMark';
 import RestaurantDetail from './screens/RestaurantDetail';
+import CulturalInsights from './screens/cultural/Cultural';
 
 const Stack = createStackNavigator();
 
@@ -68,6 +69,7 @@ export default function App() {
               <Stack.Screen name="Restaurants" component={HomePage} />
               {/* <Stack.Screen name="BookMark" component={BookMark} /> */}
               <Stack.Screen name="NativEat" component={RestaurantDetail} />
+              <Stack.Screen name="CulturalInsights" component={CulturalInsights} />
             </Stack.Navigator>
           )
           : (

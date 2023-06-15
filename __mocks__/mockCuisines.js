@@ -69,4 +69,28 @@ module.exports = [
       },
     ],
   },
+  {
+    id: '3',
+    name: 'Persian',
+    history: 'Some history about Persian food',
+    customs: 'Some customs about Persian food',
+    photo: 'https://images.unsplash.com/photo-1604741333810-0ef6017256da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    restaurants: [],
+  },
+  {
+    id: '4',
+    name: 'Italian',
+    history: 'Some history about Italian food',
+    customs: 'Some customs about Italian food',
+    photo: 'https://plus.unsplash.com/premium_photo-1673439307239-f30b4f467d35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80',
+    restaurants: [],
+  },
+  {
+    id: '5',
+    name: 'Chinese',
+    history: 'Some history about Chinese food',
+    customs: 'Some customs about Chinese food',
+    photo: 'https://images.unsplash.com/flagged/photo-1556742524-750f2ab99913?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80',
+    restaurants: [],
+  },
 ];
