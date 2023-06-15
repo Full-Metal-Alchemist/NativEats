@@ -8,8 +8,13 @@ const createUser = async (req, res) => {
     email: req.user.email,
     profilePhoto: req.user.profilePhoto || null,
   };
-  const user = await User.create(userData);
-  res.status(201).send(user.id);
+  try {
+    const user = await User.create(userData);
+    res.status(201).send(user.id);
+  } catch (err) {
+    console.log('Error creating new user', err);
+    res.status(500);
+  }
 };
 
 const getUser = async (req, res) => {
