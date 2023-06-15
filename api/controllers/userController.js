@@ -1,18 +1,24 @@
 const mockUser = require('../../__mocks__/mockUser');
-const {User} = require('../models');
+const { User } = require('../models');
 
 const createUser = async (req, res) => {
-  const user = await User.create(req.body);
-  res.send(user);
+  const userData = {
+    firstName: req.user.name ? req.user.name.split(' ')[0] : 'anon',
+    lastName: req.user.name ? req.user.name.split(' ')[1] : null,
+    email: req.user.email,
+    profilePhoto: req.user.profilePhoto || null,
+  };
+  const user = await User.create(userData);
+  res.status(201).send(user.id);
 };
 
 const getUser = async (req, res) => {
   const { userId } = req.params;
-  const user = await User.findByPk(userId, { include: ['bookmarks']});
+  const user = await User.findByPk(userId, { include: ['bookmarks'] });
 
   const userData = user.get();
 
-  const bookmarks = userData.bookmarks.map(({restaurantId}) => restaurantId);
+  const bookmarks = userData.bookmarks.map(({ restaurantId }) => restaurantId);
 
   if (userData) {
     res.send({
