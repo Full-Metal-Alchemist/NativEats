@@ -1,4 +1,5 @@
 const axios = require('axios');
+const { Op } = require('sequelize');
 const mockRestaurants = require('../../__mocks__/mockRestaurants');
 const { Restaurant } = require('../models');
 const { Cuisine } = require('../models');
@@ -29,7 +30,9 @@ const getRestaurants = async (req, res) => {
 
   const restaurants = await Restaurant.findAll({
     where: {
-      isVisible: true,
+      [Op.or]: [
+        { name: { [Op.like]: `%${search}%` } },
+      ],
     },
     order: [
       [category, order],
@@ -37,7 +40,6 @@ const getRestaurants = async (req, res) => {
     limit,
     include: [{ model: Cuisine, as: 'cuisines', where: { id: cuisine } }, 'reviews'],
   });
-  console.log(restaurants);
   if (restaurants.length) {
     res.send(restaurants);
   } else {

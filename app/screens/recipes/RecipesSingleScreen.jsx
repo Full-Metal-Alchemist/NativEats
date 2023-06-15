@@ -27,7 +27,6 @@ function RecipeSingle({ navigation }) {
   return (
     <View>
       <Text style={styles.text}>This is the Signle Recipe screen!</Text>
-      <Button title="Homepage" onPress={() => { navigation.navigate('Restaurants'); }} />
     </View>
   );
 }

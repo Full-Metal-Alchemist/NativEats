@@ -69,7 +69,7 @@ function HomePage({ navigation, route }) {
     help_function();
   }, [filter, search]);
   return (
-    <View style={{ paddingBottom: 500 }}>
+    <View style={{ paddingBottom: 200 }}>
       <View style={styles.imgContainer}>
         <Image style={styles.img} source={require('../../assets/logo.png')} />
         {/* <Image style={styles.img} source={require('../../assets/profile.jpeg')} /> */}

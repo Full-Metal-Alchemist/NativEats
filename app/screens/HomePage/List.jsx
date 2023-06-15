@@ -15,7 +15,7 @@ import RCard from './RCard';
 const styles = StyleSheet.create({
   container: {
     paddingTop: StatusBar.currentHeight,
-    paddingBottom: 500,
+    paddingBottom: 100,
   },
   scrollView: {
     backgroundColor: '#fff5c9',
