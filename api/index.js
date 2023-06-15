@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const compression = require('compression');
 const cors = require('cors');
+const morgan = require('morgan');
 const helmet = require('helmet');
 const xss = require('xss-clean');
 const apiV1Routes = require('./routes/api/v1');
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(xss());
 app.use(compression());
+app.use(morgan('dev'));
 app.use(cors());
 app.options('*', cors());
 
