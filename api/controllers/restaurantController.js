@@ -1,5 +1,8 @@
+const axios = require('axios');
+const { Op } = require('sequelize');
 const mockRestaurants = require('../../__mocks__/mockRestaurants');
 const { Restaurant } = require('../models');
+const { Cuisine } = require('../models');
 
 const createRestaurant = async (req, res) => {
   const restaurant = await Restaurant.create(req.body);
@@ -7,19 +10,36 @@ const createRestaurant = async (req, res) => {
 };
 
 const getRestaurants = async (req, res) => {
+  console.log('12', req.query);
   // TODO: add category
-  const { category = 'createdAt', order = 'DESC', limit = 50 } = req.query;
+  const {
+    category = 'created_at', order = 'DESC', cuisine = 2, limit = 10, search = '',
+  } = req.query;
+  // const { category, order, cuisine } = req.query;
+  console.log('lin 16', category, order, cuisine);
+  // const restaurants = await Restaurant.findAll({
+  //   where: {
+  //     isVisible: true,
+  //   },
+  //   order: [
+  //     [category, order],
+  //   ],
+  //   limit,
+  //   include: ['cuisines', 'reviews'],
+  // });
+
   const restaurants = await Restaurant.findAll({
     where: {
-      isVisible: true,
+      [Op.or]: [
+        { name: { [Op.like]: `%${search}%` } },
+      ],
     },
     order: [
       [category, order],
     ],
     limit,
-    include: ['cuisines', 'reviews'],
+    include: [{ model: Cuisine, as: 'cuisines', where: { id: cuisine } }, 'reviews'],
   });
-
   if (restaurants.length) {
     res.send(restaurants);
   } else {
@@ -28,13 +48,28 @@ const getRestaurants = async (req, res) => {
 };
 
 const getRestaurant = async (req, res) => {
-  const { restaurantId } = req.params;
-  const restaurant = await Restaurant.findByPk(restaurantId, { include: ['cuisines', 'reviews'] });
-  if (restaurant) {
-    res.send(restaurant);
-  } else {
-    res.send(mockRestaurants[0]);
-  }
+  const { yelpId } = req.params;
+  console.log('yelpId', yelpId);
+  const endpoint = `https://api.yelp.com/v3/businesses/${yelpId}`;
+  const option = {
+    method: 'GET',
+    url: endpoint,
+    headers: {
+      Authorization: `Bearer ${process.env.TOKEN}`,
+    },
+  };
+
+  axios(option)
+    .then((result) => {
+      res.send(result.data);
+    })
+    .catch((err) => { console.log(err); });
+
+  // if (restaurant) {
+  //   res.send(restaurant);
+  // } else {
+  //   res.send(mockRestaurants[0]);
+  // }
 };
 
 const updateRestaurant = async (req, res) => {
