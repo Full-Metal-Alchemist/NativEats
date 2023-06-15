@@ -9,10 +9,13 @@ const createRestaurant = async (req, res) => {
 };
 
 const getRestaurants = async (req, res) => {
+  console.log('12', req.query);
   // TODO: add category
-  // const { category = 'createdAt', order = 'DESC', limit = 50 } = req.query;
-  const { category, order, cuisine } = req.query;
-  console.log(category, order, cuisine);
+  const {
+    category = 'created_at', order = 'DESC', cuisine = 2, limit = 10, search = '',
+  } = req.query;
+  // const { category, order, cuisine } = req.query;
+  console.log('lin 16', category, order, cuisine);
   // const restaurants = await Restaurant.findAll({
   //   where: {
   //     isVisible: true,
@@ -31,9 +34,10 @@ const getRestaurants = async (req, res) => {
     order: [
       [category, order],
     ],
+    limit,
     include: [{ model: Cuisine, as: 'cuisines', where: { id: cuisine } }, 'reviews'],
   });
-
+  console.log(restaurants);
   if (restaurants.length) {
     res.send(restaurants);
   } else {
@@ -42,8 +46,9 @@ const getRestaurants = async (req, res) => {
 };
 
 const getRestaurant = async (req, res) => {
-  const { APIID } = req.params;
-  const endpoint = `https://api.yelp.com/v3/businesses/${APIID}`;
+  const { yelpId } = req.params;
+  console.log('yelpId', yelpId);
+  const endpoint = `https://api.yelp.com/v3/businesses/${yelpId}`;
   const option = {
     method: 'GET',
     url: endpoint,

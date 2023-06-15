@@ -4,14 +4,14 @@ import { Card, Rating, AirbnbRating } from 'react-native-elements';
 import { BookmarkIcon as BookmarkIconOutline } from 'react-native-heroicons/outline';
 
 function RCard({ navigation, item }) {
-  console.log(item.id, item.rating);
+  console.log('in the card', item.id);
   return (
     <Card>
       <Card.Title>{item.name}</Card.Title>
       <Card.Divider />
       <BookmarkIconOutline />
       <Card.Image
-        source={{ url: item.photos }}
+        source={{ url: item.photo }}
         onPress={() => {
           navigation.navigate('NativEat', { item });
         }}

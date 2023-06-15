@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
 });
 
 function List({ arr, navigation }) {
+  console.log('in the list', arr.map((ele) => (ele.id)));
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} contentContainerStyle={{ flexGrow: 1 }}>

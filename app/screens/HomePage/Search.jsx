@@ -12,6 +12,9 @@ const styles = StyleSheet.create({
 
 function Search({ search, setSearch }) {
   // const [search, setSearch] = useState('');
+  // function debounce(func, timeout=300) {
+
+  // }
   return (
 
     <SearchBar

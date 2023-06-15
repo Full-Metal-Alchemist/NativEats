@@ -24,26 +24,28 @@ const styles = StyleSheet.create({
 
 function RestaurantDetail({ route, navigation }) {
   const item = route.params.item;
+  console.log('yelp', item.yelpId);
   const [detail, setDetail] = useState({});
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/restaurants/${item.APIID}`)
+    axios.get(`http://localhost:8080/api/v1/restaurants/${item.yelpId}`)
       .then((res) => {
         setDetail(res.data);
+        console.log(res.data);
       });
   }, []);
 
   return (
     <ScrollView>
       <BookmarkIconOutline style={styles.icons} />
-      <Text>{detail.name}</Text>
-      <Rating imageSize={15} readonly startingValue={detail.rating} />
+      <Text>{item.name}</Text>
+      <Rating imageSize={15} readonly startingValue={item.rating} />
       <ImgCarousel photoarr={detail.photos} />
       <Text>{detail.price}</Text>
       <Card>
         <Text>
           <PhoneIconOutline style={styles.icons} />
-          {detail.phone}
+          {item.phone}
         </Text>
         <Card.Divider />
         <Text>
@@ -62,14 +64,14 @@ function RestaurantDetail({ route, navigation }) {
           <ArrowSmallRightIconOutline style={styles.icons} />
         </Text>
         <Card.Divider />
-        <Text>
+        {/* <Text>
           <TruckIconOutline style={styles.icons} />
-          {item.transcation[0] ? item.transcation[0] : null}
+          {item.transactions[0] ? item.transactions[0] : null}
           ,
-          {item.transcation[1] ? item.transcation[1] : null}
-        </Text>
+          {item.transactions[1] ? item.transactions[1] : null}
+        </Text> */}
       </Card>
-      <Reviews reviews={item.reviews} />
+      {/* <Reviews reviews={item.reviews} /> */}
     </ScrollView>
   );
 }

@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Avatar } from '@rneui/themed';
 import Filter from './Filter';
 import Search from './Search';
-import List from './RList';
+import List from './List';
 
 function HomePage({ navigation, route }) {
   const [arr, setArr] = useState([]);
@@ -29,7 +29,7 @@ function HomePage({ navigation, route }) {
     switch (filter) {
       case 0:
         params = {
-          category: null, order: null, search, cuisine,
+          category: 'created_at', order: 'DESC', search, cuisine,
         };
         break;
       case 1:
@@ -44,20 +44,29 @@ function HomePage({ navigation, route }) {
         break;
       case 3:
         params = {
-          category: 'review count', order: 'DESC', search, cuisine,
+          category: 'reviewCount', order: 'DESC', search, cuisine,
         };
         break;
       case 4:
         params = {
-          category: 'review', order: 'DESC', search, cuisine,
+          category: 'rating', order: 'DESC', search, cuisine,
         };
         break;
       default:
+        // params = {
+        //   category: 'created_at', order: 'DESC', search, cuisine,
+        // };
+        // break;
     }
-    axios.get('http://localhost:8080/api/v1/restaurants', { params })
-      .then((res) => {
-        setArr(res.data);
-      });
+    const help_function = async () => {
+      try {
+        const res = await axios.get('http://localhost:8080/api/v1/restaurants', { params });
+        await setArr(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    help_function();
   }, [filter, search]);
   return (
     <View style={{ paddingBottom: 500 }}>
