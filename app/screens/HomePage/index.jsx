@@ -14,14 +14,26 @@ function HomePage({ navigation, route }) {
   const [search, setSearch] = useState('');
   const cuisine = 2;
   const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      paddingBottom: 200,
+    },
     img: {
-      width: 50,
-      height: 50,
+      width: 75,
+      height: 75,
+      // boxShadow: 0 3.2px 6.4px rgba(0, 0, 0, 0.1);
+      borderRadius: 6,
     },
     imgContainer: {
       flex: 1,
       justifyContent: 'space-between',
       flexDirection: 'row',
+      marginTop: 18,
+      marginHorizontal: 24,
+      marginBottom: 10,
+    },
+    listContainer: {
+      flex: 6,
     },
   });
   useEffect(() => {
@@ -69,20 +81,21 @@ function HomePage({ navigation, route }) {
     help_function();
   }, [filter, search]);
   return (
-    <View style={{ paddingBottom: 200 }}>
+    <View style={styles.container}>
       <View style={styles.imgContainer}>
         <Image style={styles.img} source={require('../../assets/logo.png')} />
         {/* <Image style={styles.img} source={require('../../assets/profile.jpeg')} /> */}
         <Avatar
-          size={64}
+          size={75}
           rounded
           source={require('../../assets/profile.jpeg')}
         />
       </View>
-
-      <Search search={search} setSearch={setSearch} />
-      <Filter filter={filter} setFilter={setFilter} />
-      <List arr={arr} navigation={navigation} />
+      <View style={styles.listContainer}>
+        <Search search={search} setSearch={setSearch} />
+        <Filter filter={filter} setFilter={setFilter} />
+        <List arr={arr} navigation={navigation} />
+      </View>
     </View>
   );
 }
