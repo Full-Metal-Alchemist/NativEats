@@ -1,6 +1,7 @@
 const axios = require('axios');
 const mockRestaurants = require('../../__mocks__/mockRestaurants');
 const { Restaurant } = require('../models');
+const { Cuisine } = require('../models');
 
 const createRestaurant = async (req, res) => {
   const restaurant = await Restaurant.create(req.body);
@@ -9,7 +10,20 @@ const createRestaurant = async (req, res) => {
 
 const getRestaurants = async (req, res) => {
   // TODO: add category
-  const { category = 'createdAt', order = 'DESC', limit = 50 } = req.query;
+  // const { category = 'createdAt', order = 'DESC', limit = 50 } = req.query;
+  const { category, order, cuisine } = req.query;
+  console.log(category, order, cuisine);
+  // const restaurants = await Restaurant.findAll({
+  //   where: {
+  //     isVisible: true,
+  //   },
+  //   order: [
+  //     [category, order],
+  //   ],
+  //   limit,
+  //   include: ['cuisines', 'reviews'],
+  // });
+
   const restaurants = await Restaurant.findAll({
     where: {
       isVisible: true,
@@ -17,8 +31,7 @@ const getRestaurants = async (req, res) => {
     order: [
       [category, order],
     ],
-    limit,
-    include: ['cuisines', 'reviews'],
+    include: [{ model: Cuisine, as: 'cuisines', where: { id: cuisine } }, 'reviews'],
   });
 
   if (restaurants.length) {

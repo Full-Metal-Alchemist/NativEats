@@ -16,6 +16,9 @@ import RecipesMain from './screens/recipes/RecipesMainScreen';
 import RecipesSingle from './screens/recipes/RecipesSingleScreen';
 import MoodPage from './screens/landing/moodpage/MoodPage';
 import FoodieTour from './screens/tour/FoodieTour';
+import HomePage from './screens/HomePage';
+// import BookMark from './screens/BookMark';
+import RestaurantDetail from './screens/RestaurantDetail';
 
 const Stack = createStackNavigator();
 
@@ -57,13 +60,13 @@ export default function App() {
                 cardStyle: { backgroundColor: COLORS.JASMINE },
               }}
             >
-              <Stack.Screen name="MockHomeScreen" component={MockHomeScreen} />
+              {/* <Stack.Screen name="MockHomeScreen" component={MockHomeScreen} /> */}
               <Stack.Screen name="RecipesMain" component={RecipesMain} />
               <Stack.Screen name="RecipesSingle" component={RecipesSingle} />
               <Stack.Screen name="FoodieTour" component={FoodieTour} />
               <Stack.Screen name="MoodPage" component={MoodPage} />
               <Stack.Screen name="Restaurants" component={HomePage} />
-              <Stack.Screen name="BookMark" component={BookMark} />
+              {/* <Stack.Screen name="BookMark" component={BookMark} /> */}
               <Stack.Screen name="NativEat" component={RestaurantDetail} />
             </Stack.Navigator>
           )

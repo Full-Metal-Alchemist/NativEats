@@ -12,10 +12,16 @@ function HomePage({ navigation, route }) {
   const [arr, setArr] = useState([]);
   const [filter, setFilter] = useState(0);
   const [search, setSearch] = useState('');
+  const cuisine = 2;
   const styles = StyleSheet.create({
     img: {
       width: 50,
       height: 50,
+    },
+    imgContainer: {
+      flex: 1,
+      justifyContent: 'space-between',
+      flexDirection: 'row',
     },
   });
   useEffect(() => {
@@ -23,27 +29,27 @@ function HomePage({ navigation, route }) {
     switch (filter) {
       case 0:
         params = {
-          category: null, order: null, search, cuisine: route.params.cuisine,
+          category: null, order: null, search, cuisine,
         };
         break;
       case 1:
         params = {
-          category: 'price', order: 'INSC', search, cuisine: route.params.cuisine,
+          category: 'price', order: 'ASC', search, cuisine,
         };
         break;
       case 2:
         params = {
-          category: 'price', order: 'DESC', search, cuisine: route.params.cuisine,
+          category: 'price', order: 'DESC', search, cuisine,
         };
         break;
       case 3:
         params = {
-          category: 'review count', order: 'DESC', search, cuisine: route.params.cuisine,
+          category: 'review count', order: 'DESC', search, cuisine,
         };
         break;
       case 4:
         params = {
-          category: 'review', order: 'DESC', search, cuisine: route.params.cuisine,
+          category: 'review', order: 'DESC', search, cuisine,
         };
         break;
       default:
@@ -55,7 +61,7 @@ function HomePage({ navigation, route }) {
   }, [filter, search]);
   return (
     <View style={{ paddingBottom: 500 }}>
-      <View>
+      <View style={styles.imgContainer}>
         <Image style={styles.img} source={require('../../assets/logo.png')} />
         {/* <Image style={styles.img} source={require('../../assets/profile.jpeg')} /> */}
         <Avatar
