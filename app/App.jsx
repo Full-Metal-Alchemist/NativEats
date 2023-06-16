@@ -63,10 +63,7 @@ export default function App() {
                 cardStyle: { backgroundColor: COLORS.JASMINE },
               }}
             >
-<<<<<<< HEAD
-=======
               {/* <Stack.Screen name="MockHomeScreen" component={MockHomeScreen} /> */}
->>>>>>> 3687c9463d526d49867e7c8656f75dec1f5728d3
               <Stack.Screen name="RecipesMain" component={RecipesMain} />
               <Stack.Screen name="MockHomeScreen" component={MockHomeScreen} />
               <Stack.Screen name="RecipesSingle" component={RecipesSingle} />

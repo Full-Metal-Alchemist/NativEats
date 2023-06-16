@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   list2: {
     fontSize: 20,
     backgroundColor: 'white',
-    height: 80,
+    height: 90,
     paddingLeft: 50,
   },
   text: {
@@ -31,7 +31,7 @@ function BottomNav({ navigation }) {
   const mock = [
     { render: 'Recipes', navName: 'RecipesMain', icon: 'clipboard' },
     { render: 'Foodie Tour', navName: 'FoodieTour', icon: 'briefcase' },
-    { render: 'Cultural Insights', navName: 'CulturalScreen', icon: 'wind' },
+    { render: 'Cultural Insights', navName: 'CulturalInsights', icon: 'wind' },
     { render: 'Bookmarks', navName: 'BookmarkScreen', icon: 'bookmark' },
     { render: '       ', navName: 'BookmarkScreen', icon: '' },
   ];

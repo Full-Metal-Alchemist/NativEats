@@ -42,7 +42,6 @@ function RecipeSingle({ navigation, route }) {
   const { data } = route.params
   return (
     <View>
-<<<<<<< HEAD
       <Text style={styles.title}>{data.name}</Text>
       {/* <Text style={styles.text}>{data.cuisine[0]} Cuisine</Text> */}
       <View styles={styles.imagecontainer}>
@@ -52,10 +51,6 @@ function RecipeSingle({ navigation, route }) {
       <ScrollView>
         <Text style={styles.text}>{data.steps}</Text>
       </ScrollView>
-=======
-      <Text style={styles.text}>This is the Signle Recipe screen!</Text>
-      <Button title="HomePage" onPress={() => navigation.navigate('Restaurants')} />
->>>>>>> 3687c9463d526d49867e7c8656f75dec1f5728d3
     </View>
   );
 }

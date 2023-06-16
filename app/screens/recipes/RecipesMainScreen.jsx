@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   list: {
-    height: Dimensions.get('window').height - 65,
+    height: Dimensions.get('window').height - 60,
     alignItems: 'center',
   },
   container: {
