@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     width: 16,
     heigth: 16,
     color: COLORS.TURQUOISE,
-    // marginRight: 6,
+    // marginRight: 2,
   },
   bookmarkIcon: {
     width: 28,
@@ -140,7 +140,7 @@ function RestaurantDetail({ route, navigation }) {
           <Text>
             <ClockIconOutline style={styles.icons} />
             See all hours
-            <ArrowSmallRightIconOutline style={styles.icons} />
+            {/* <ArrowSmallRightIconOutline style={styles.icons} /> */}
           </Text>
           <Card.Divider />
           {/* <Text>

@@ -36,7 +36,7 @@ function List({ arr, navigation }) {
       const res = await axios.get(`http://localhost:8080/api/v1/users/1`);
       setBookMark(res.data.bookmarks);
       console.log(res.data.bookmarks);
-    }
+    };
     help_function();
   }, [arr]);
   return (
