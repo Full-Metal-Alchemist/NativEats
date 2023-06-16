@@ -1,7 +1,10 @@
 const axios = require('axios');
 const { Op } = require('sequelize');
+const axios = require('axios');
+const { Op } = require('sequelize');
 const mockRestaurants = require('../../__mocks__/mockRestaurants');
 const { Restaurant } = require('../models');
+const { Cuisine } = require('../models');
 const { Cuisine } = require('../models');
 
 const createRestaurant = async (req, res) => {
@@ -11,7 +14,24 @@ const createRestaurant = async (req, res) => {
 
 const getRestaurants = async (req, res) => {
   console.log('12', req.query);
+  console.log('12', req.query);
   // TODO: add category
+  const {
+    category = 'created_at', order = 'DESC', cuisine = 2, limit = 10, search = '',
+  } = req.query;
+  // const { category, order, cuisine } = req.query;
+  console.log('lin 16', category, order, cuisine);
+  // const restaurants = await Restaurant.findAll({
+  //   where: {
+  //     isVisible: true,
+  //   },
+  //   order: [
+  //     [category, order],
+  //   ],
+  //   limit,
+  //   include: ['cuisines', 'reviews'],
+  // });
+
   const {
     category = 'created_at', order = 'DESC', cuisine = 2, limit = 10, search = '',
   } = req.query;
@@ -33,11 +53,15 @@ const getRestaurants = async (req, res) => {
       [Op.or]: [
         { name: { [Op.like]: `%${search}%` } },
       ],
+      [Op.or]: [
+        { name: { [Op.like]: `%${search}%` } },
+      ],
     },
     order: [
       [category, order],
     ],
     limit,
+    include: [{ model: Cuisine, as: 'cuisines', where: { id: cuisine } }, 'reviews'],
     include: [{ model: Cuisine, as: 'cuisines', where: { id: cuisine } }, 'reviews'],
   });
   if (restaurants.length) {
