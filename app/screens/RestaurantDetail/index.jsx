@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'start',
 
-    marginLeft: 24,
+    marginLeft: 16,
     marginTop: 16,
     marginBottom: 16,
   },

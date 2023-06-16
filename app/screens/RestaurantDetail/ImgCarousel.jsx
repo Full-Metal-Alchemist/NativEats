@@ -5,7 +5,8 @@ import {
 import Carousel from 'react-native-snap-carousel';
 
 const SLIDER_WIDTH = Dimensions.get('window').width + 80;
-const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
+const ITEM_WIDTH = Math.round(SLIDER_WIDTH);
+//  * 0.7
 
 const styles = StyleSheet.create({
   container: {
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItem: 'center',
+    marginHorizontal: 16,
   },
 });
 
@@ -50,8 +52,8 @@ function ImgCarousel({ photoarr }) {
   return (
     <View style={styles.carouselCon}>
       <Carousel
-        layout="default"
-        layoutCardOffset={9}
+        layout="tinder"
+        layoutCardOffset={'9'}
         ref={isCarousel}
         data={photoarr}
         renderItem={CarouselCardItem}
@@ -60,6 +62,7 @@ function ImgCarousel({ photoarr }) {
         inactiveSlideShift={0}
         useScrollView
         contentContainerCustomStyle={{ alignItems: 'center' }}
+        style={{ marginRight: 50 }}
       />
     </View>
   );

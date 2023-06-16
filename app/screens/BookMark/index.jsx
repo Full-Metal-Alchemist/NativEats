@@ -12,7 +12,7 @@ import {
   View,
 } from 'react-native';
 import axios from 'axios';
-import List from './List';
+import List from '../HomePage/List';
 
 function BookMark({ navigation }) {
   const [bookmark, setBookmark] = useState([]);
@@ -21,9 +21,9 @@ function BookMark({ navigation }) {
     //   .then((res) => {
     //     setBookmark(res.data);
     //   });
-    const { user } = useContext(AuthUserContext);
+    // const { user } = useContext(AuthUserContext);
     const helpFunction = async () => {
-      const res = await axios.get(`http://localhost:8080/api/v1/bookmarks/?userId=${user.puid}`);
+      const res = await axios.get(`http://localhost:8080/api/v1/bookmarks/?userId=1`);
       await setBookmark(res.data);
     };
     helpFunction();
