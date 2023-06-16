@@ -6,7 +6,7 @@ const createBookmark = async (req, res) => {
   // const userId = '1';
   const {
     userId = 1, restaurantId,
-  } = req.query;
+  } = req.body;
   await Bookmark.create({
     userId,
     restaurantId,
@@ -17,11 +17,13 @@ const createBookmark = async (req, res) => {
 const getBookmarks = async (req, res) => {
   // TODO: Fix when JWT implemented
   const { userId = 1 } = req.query;
-
   const bookmarks = await Bookmark.findAll({
     where: {
       userId,
     },
+    order: [
+      ['created_at', 'DESC'],
+    ],
     include: ['restaurant'],
   });
   if (bookmarks.length) {
@@ -37,7 +39,7 @@ const deleteBookmark = async (req, res) => {
   // const userId = '1';
   const {
     userId = 1, restaurantId,
-  } = req.query;
+  } = req.body;
   await Bookmark.destroy({
     where: { userId, restaurantId },
   });

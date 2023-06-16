@@ -28,23 +28,25 @@ const styles = StyleSheet.create({
 });
 
 function List({ arr, navigation }) {
-  // const [bookmark, setBookMark] = useState([]);
+  const [bookmark, setBookMark] = useState([]);
   // const {user} = useContext(AuthUserContext)
-  // useEffect(()=>{
-  //   const help_function = async () =>{
-  //     const res = await axios.get(`http://localhost:8080/api/v1/users/${user.puid}`);
-  //     setBookMark(res.data.bookmarks);
-  //   }
-  //   help_function();
-  // }, [])
+  useEffect(()=>{
+    const help_function = async () => {
+      console.log('check bookmark list')
+      const res = await axios.get(`http://localhost:8080/api/v1/users/1`);
+      setBookMark(res.data.bookmarks);
+      console.log(res.data.bookmarks);
+    }
+    help_function();
+  }, [arr]);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} contentContainerStyle={{ flexGrow: 1 }}>
         {arr.map((restaurant) => {
-          //const isBooked = bookmark.indexOf(restaurant.id) >= 0;
+          const isBooked = bookmark.indexOf(restaurant.id) >= 0;
           return (
-            <RCard navigation={navigation} item={restaurant} key={restaurant.id} />
-            // <RCard navigation={navigation} item={restaurant} key={restaurant.id} isBooked={isBooked} />
+            // <RCard navigation={navigation} item={restaurant} key={restaurant.id} />
+            <RCard navigation={navigation} item={restaurant} key={restaurant.id} isBooked={isBooked} />
           )
         } )}
       </ScrollView>
