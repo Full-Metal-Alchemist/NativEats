@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
   Text, StyleSheet, View, SafeAreaView, ScrollView, Image, Dimensions,
 } from 'react-native';
-import AuthUserContext from '../../contexts';
 import BottomNav from '../recipes/BottomNav2';
 
 import { COLORS } from '../../constants/colors';
@@ -61,14 +60,11 @@ function CulturalInsights({ navigation }) {
   const tempId = 1;
   // id: 1 is Italian
   // TODO: grab current cuisine from nathan
-  const { user } = useContext(AuthUserContext);
   const [currentCuisine, setCurrentCuisine] = useState({});
 
   useEffect(() => {
     // TODO: grab data for current cuisine
-    axios.get('http://localhost:8080/api/v1/cuisines', {
-      headers: { Authorization: `Bearer ${user.accessToken}` },
-    })
+    axios.get('http://localhost:8080/api/v1/cuisines')
       .then(({ data }) => {
         data.forEach((cuisine) => {
           if (cuisine.id === tempId) {
