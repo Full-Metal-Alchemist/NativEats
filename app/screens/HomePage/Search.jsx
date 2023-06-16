@@ -3,6 +3,7 @@ import {
   View, Text, StyleSheet, FlatList, Button, ScrollView,
 } from 'react-native';
 import { SearchBar } from 'react-native-elements';
+import {COLORS} from '../../constants/colors';
 
 const styles = StyleSheet.create({
   searchbar: {
@@ -21,10 +22,11 @@ function Search({ search, setSearch }) {
       placeholder="Type Here..."
       onChangeText={(e) => { setSearch(e); }}
       value={search}
-      containerStyle={{ backgroundColor: '#fff' }}
+      containerStyle={{ backgroundColor: COLORS.LEMON }}
       inputContainerStyle={{ backgroundColor: '#fff' }}
       placeholderTextColor={{ string: '#520028' }}
       style={styles.searchbar}
+      searchIcon={{ size: 30 }}
     />
 
   );
