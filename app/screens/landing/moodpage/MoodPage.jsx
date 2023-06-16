@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   Text, StyleSheet, FlatList, SafeAreaView,
 } from 'react-native';
 import axios from 'axios';
+import AuthUserContext from '../../../contexts';
 import MoodButton from './MoodButton';
 import { COLORS } from '../../../constants/colors';
 import UserIcon from '../../shared/UserIcon';
@@ -40,12 +41,15 @@ const styles = StyleSheet.create({
 });
 
 function MoodPage({ navigation }) {
+  const { user } = useContext(AuthUserContext);
   const [cuisines, setCuisines] = useState([]);
 
   useEffect(() => {
     const helpFunction = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/v1/cuisines');
+        const response = await axios.get('http://localhost:8080/api/v1/cuisines', {
+          headers: { Authorization: `Bearer ${await user.getIdToken()}` },
+        });
         console.log('API response: ', response.data);
         setCuisines(response.data);
       } catch (error) {
