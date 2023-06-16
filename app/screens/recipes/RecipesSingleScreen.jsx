@@ -50,6 +50,8 @@ function RecipeSingle({ navigation, route }) {
       <Text style={styles.text}>Instructions Below:</Text>
       <ScrollView>
         <Text style={styles.text}>{data.steps}</Text>
+      <Button title="HomePage" onPress={() => navigation.navigate('Restaurants')} />
+      <Button title="bookmark" onPress={() => navigation.navigate('BookMark')} />
       </ScrollView>
     </View>
   );
