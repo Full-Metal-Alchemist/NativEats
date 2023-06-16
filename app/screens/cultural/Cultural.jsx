@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import {
-  Text, StyleSheet, View, SafeAreaView, ScrollView,
+  Text, StyleSheet, View, SafeAreaView, ScrollView, Image,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 300,
     alignSelf: 'center',
+    borderRadius: 30,
   },
 });
 
@@ -59,9 +60,7 @@ function CulturalInsights() {
           Food
         </Text>
 
-        <View>
-
-        </View>
+        <Image style={styles.image} source={{ uri: currentCuisine.photo }} />
 
       </ScrollView>
     </SafeAreaView>
