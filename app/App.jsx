@@ -57,7 +57,7 @@ export default function App() {
           ? (
             // screens accessible on login
             <Stack.Navigator
-              initialRouteName="MockHomeScreen"
+              initialRouteName="Login"
               screenOptions={{
                 headerStyle: { elevation: 0 },
                 cardStyle: { backgroundColor: COLORS.JASMINE },
