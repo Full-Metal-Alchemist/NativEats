@@ -10,9 +10,24 @@ import {
   TouchableOpacity,
   ScrollView,
   View,
+  Dimensions,
 } from 'react-native';
 import axios from 'axios';
 import List from '../HomePage/List';
+import BottomNav from '../recipes/BottomNav2';
+
+const styles = StyleSheet.create({
+  outerContainer: {
+    height: Dimensions.get('window').height - 60,
+    alignItems: 'center',
+    marginBottom: -30,
+    flex: 1,
+  },
+  container: {
+    flex: 1,
+    width: Dimensions.get('window').width,
+  },
+});
 
 function BookMark({ navigation }) {
   const [bookmark, setBookmark] = useState([]);
@@ -29,7 +44,12 @@ function BookMark({ navigation }) {
     helpFunction();
   }, []);
   return (
-    <List navigation={navigation} arr={bookmark} />
+    <SafeAreaView style={styles.outerContainer}>
+      <View style={styles.container}>
+        <List navigation={navigation} arr={bookmark} />
+      </View>
+      <BottomNav navigation={navigation} />
+    </SafeAreaView>
   );
 }
 

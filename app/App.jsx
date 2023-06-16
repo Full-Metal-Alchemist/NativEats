@@ -64,6 +64,7 @@ export default function App() {
               }}
             >
               {/* <Stack.Screen name="MockHomeScreen" component={MockHomeScreen} /> */}
+              <Stack.Screen name="Restaurants" component={HomePage} />
               <Stack.Screen name="RecipesMain" component={RecipesMain} />
               <Stack.Screen name="MockHomeScreen" component={MockHomeScreen} />
               <Stack.Screen name="RecipesSingle" component={RecipesSingle} />
@@ -71,7 +72,6 @@ export default function App() {
               <Stack.Screen name="MoodPage" component={MoodPage} />
               <Stack.Screen name="SettingsPage" component={SettingsPage} />
               <Stack.Screen name="UserProfile" component={ProfileMainScreen} />
-              <Stack.Screen name="Restaurants" component={HomePage} />
               <Stack.Screen name="BookMark" component={BookMark} />
               <Stack.Screen name="NativEat" component={RestaurantDetail} />
               <Stack.Screen name="CulturalInsights" component={CulturalInsights} />
