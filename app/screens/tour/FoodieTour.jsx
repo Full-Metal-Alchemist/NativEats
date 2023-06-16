@@ -1,10 +1,9 @@
 // login mirandofrank@gmail.com frankpw
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
   Text, StyleSheet, View, Image, ScrollView, SafeAreaView, TouchableOpacity, Dimensions,
 } from 'react-native';
-import AuthUserContext from '../../contexts';
 import BottomNav from '../recipes/BottomNav2';
 
 // Temporary import of mock data
@@ -53,12 +52,12 @@ const styles = StyleSheet.create({
 function FoodieTour({ navigation }) {
   // name, address, ratings, phone#, maybe description?
   // const { data } = route.params;
-  const { user } = useContext(AuthUserContext);
+
   const [restaurants, setRestaurants] = useState([]);
   const meals = ['Breakfast', 'Lunch', 'Dinner'];
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/v1/restaurants?category=rating&limit=3&order=desc', { headers: { Authorization: `Bearer ${user.accessToken}` } })
+    axios.get('http://localhost:8080/api/v1/restaurants?category=rating&limit=3&order=desc')
       .then((results) => {
         console.log('Client: >>>', results.data);
         // Maybe need to do some filtering of data
