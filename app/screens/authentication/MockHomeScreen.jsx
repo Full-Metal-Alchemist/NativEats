@@ -12,8 +12,6 @@ import { auth } from '../../firebaseConfig';
 export default function MockHomeScreen({ navigation }) {
   const { user, setIsSignout } = useContext(AuthUserContext);
 
-  console.log('access token', user.accessToken);
-
   const handleSignOut = async () => {
     try {
       setIsSignout(true);
