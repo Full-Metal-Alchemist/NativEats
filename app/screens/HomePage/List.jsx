@@ -1,5 +1,6 @@
-import { React, useContext, useState, useEffect } from 'react';
-import AuthUserContext from '../../contexts';
+import {
+  React, useContext, useState, useEffect,
+} from 'react';
 import {
   FlatList,
   SafeAreaView,
@@ -11,6 +12,7 @@ import {
   View,
 } from 'react-native';
 import axios from 'axios';
+import AuthUserContext from '../../contexts';
 import RCard from './RCard';
 
 const styles = StyleSheet.create({
@@ -29,11 +31,18 @@ const styles = StyleSheet.create({
 
 function List({ arr, navigation }) {
   const [bookmark, setBookMark] = useState([]);
-  // const {user} = useContext(AuthUserContext)
-  useEffect(()=>{
+  const { user } = useContext(AuthUserContext);
+
+  useEffect(() => {
     const help_function = async () => {
-      console.log('check bookmark list')
-      const res = await axios.get(`http://localhost:8080/api/v1/users/1`);
+      console.log('check bookmark list');
+      const reqConfig = {
+        headers: {
+          Authorization: `Bearer ${await user.getIdToken()}`,
+        },
+      };
+      const id = await user.puid;
+      const res = await axios.get(`http://localhost:8080/api/v1/users/${id}`, reqConfig);
       setBookMark(res.data.bookmarks);
       console.log(res.data.bookmarks);
     };
@@ -47,8 +56,8 @@ function List({ arr, navigation }) {
           return (
             // <RCard navigation={navigation} item={restaurant} key={restaurant.id} />
             <RCard navigation={navigation} item={restaurant} key={restaurant.id} isBooked={isBooked} />
-          )
-        } )}
+          );
+        })}
       </ScrollView>
     </SafeAreaView>
   );

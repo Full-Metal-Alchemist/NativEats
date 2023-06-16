@@ -1,6 +1,6 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, useState, useContext } from 'react';
 import {
-  ScrollView, Text, View, StyleSheet, FlatList, Dimensions, SafeAreaView, Button
+  ScrollView, Text, View, StyleSheet, FlatList, Dimensions, SafeAreaView, Button,
 } from 'react-native';
 import axios from 'axios';
 import { Card, Rating, AirbnbRating } from 'react-native-elements';
@@ -10,6 +10,7 @@ import {
 import ImgCarousel from './ImgCarousel';
 import Reviews from './Reviews';
 import { COLORS } from '../../constants/colors';
+import AuthUserContext from '../../contexts';
 import BottomNav from '../recipes/BottomNav2';
 
 const styles = StyleSheet.create({
@@ -64,19 +65,31 @@ const styles = StyleSheet.create({
 });
 
 function RestaurantDetail({ route, navigation }) {
-  const item = route.params.item;
+  const { item } = route.params;
+  const { user } = useContext(AuthUserContext);
   // const [fill, setFill] = useState(route.params.filled);
   const [detail, setDetail] = useState({});
   // const [fillIcon, setFillIcon] = useState(route.params.filled);
   // console.log('filled', route.params.filled);
   // console.log('item', item);
+  console.log('yelp', item.yelpId);
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/v1/yelp/${item.yelpId}`)
-      .then((res) => {
-        setDetail(res.data);
-        // console.log(res.data);
-      });
+    const helpFunction = async () => {
+      const reqConfig = {
+        headers: {
+          Authorization: `Bearer ${await user.getIdToken()}`,
+        },
+      };
+      const res = await axios.get(`http://localhost:8080/api/v1/yelp/${item.yelpId}`, reqConfig);
+      console.log('yelpinfo', res.data);
+      setDetail(res.data);
+      // .then((res) => {
+      //   setDetail(res.data);
+      //   // console.log(res.data);
+      //
+    };
+    helpFunction();
   }, []);
 
   return (

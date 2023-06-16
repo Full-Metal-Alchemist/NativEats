@@ -5,6 +5,7 @@ const getPuid = async (req, res) => {
   const { email } = req.user;
   try {
     const user = await User.findOne({ where: { email } });
+    console.log('getPuid User***', user);
     res.status(200).json(user.id);
   } catch (err) {
     console.log('Error getting puid', err);

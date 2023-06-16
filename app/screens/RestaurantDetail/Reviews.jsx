@@ -8,7 +8,7 @@ function Reviews({reviews}) {
     <View>
       <Card>
         <Card.Title>REVIEWS</Card.Title>
-        {reviews.length > 0 && <ReviewList reviews={reviews}/>}
+        {/* {reviews.length > 0 && <ReviewList reviews={reviews}/>} */}
       </Card>
     </View>
   );
