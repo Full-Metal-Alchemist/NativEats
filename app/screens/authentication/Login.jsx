@@ -3,6 +3,7 @@ import {
   StyleSheet, View, Button,
 } from 'react-native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import axios from 'axios';
 import { LoginButton, LoginInput, LoginError } from './components';
 import { auth } from '../../firebaseConfig';
 import { COLORS } from '../../constants/colors';
@@ -27,9 +28,16 @@ export default function Login({ navigation }) {
   };
 
   const onLogin = async () => {
+    const url = 'http://localhost:8080/api/v1/users';
     try {
       if (email !== '' && password !== '') {
-        await signInWithEmailAndPassword(auth, email, password);
+        const { user } = await signInWithEmailAndPassword(auth, email, password);
+        const { data } = await axios.get(url, {
+          headers: {
+            Authorization: `Bearer ${await user.getIdToken()}`,
+          },
+        });
+        user.puid = data;
       }
     } catch (err) {
       setLoginError(err.message);
