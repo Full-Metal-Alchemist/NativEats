@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
   Text, StyleSheet, FlatList, SafeAreaView,
 } from 'react-native';
-import
 import axios from 'axios';
 import MoodButton from './MoodButton';
 import { COLORS } from '../../../constants/colors';
