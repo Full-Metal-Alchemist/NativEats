@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
+import AuthUserContext from '../../contexts';
 import {
   Text, StyleSheet, View, Button, TouchableOpacity, FlatList, SafeAreaView, Dimensions,
 } from 'react-native';
@@ -37,12 +38,15 @@ const styles = StyleSheet.create({
 });
 
 function RecipesMain({ navigation }) {
+  const { user } = useContext(AuthUserContext);
   const getSetofRecipesNumber = Math.floor(Math.random() * (60 - 1) + 1);
   console.log('This is list LINE 41:', getSetofRecipesNumber);
   const [list, setList] = useState([]);
   // setList(res.data.splice(getSetofRecipesNumber, 14))
   useEffect(() => {
-    axios.get('http://localhost:8080/api/v1/recipes')
+    axios.get('http://localhost:8080/api/v1/recipes', {
+      headers: { Authorization: `Bearer ${user.accessToken}` },
+    })
       .then((res) => setList(res.data.splice(getSetofRecipesNumber, 14)))
       .catch((err) => console.log('This is error Line 59: ', err));
   }, []);
