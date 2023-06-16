@@ -3,10 +3,10 @@ const mockBookmarks = require('../../__mocks__/mockBookmarks');
 
 const createBookmark = async (req, res) => {
   // TODO: Fix when JWT implemented
-  const userId = '1';
+  // const userId = '1';
   const {
-    restaurantId,
-  } = req.body;
+    userId = 1, restaurantId,
+  } = req.query;
   await Bookmark.create({
     userId,
     restaurantId,
@@ -16,7 +16,7 @@ const createBookmark = async (req, res) => {
 
 const getBookmarks = async (req, res) => {
   // TODO: Fix when JWT implemented
-  const userId = '1';
+  const { userId = 1 } = req.query;
 
   const bookmarks = await Bookmark.findAll({
     where: {
@@ -24,7 +24,6 @@ const getBookmarks = async (req, res) => {
     },
     include: ['restaurant'],
   });
-
   if (bookmarks.length) {
     const bookmarksArray = bookmarks.map((bookmark) => bookmark.restaurant);
     res.send(bookmarksArray);
@@ -35,10 +34,10 @@ const getBookmarks = async (req, res) => {
 
 const deleteBookmark = async (req, res) => {
   // TODO: Fix when JWT implemented
-  const userId = '1';
+  // const userId = '1';
   const {
-    restaurantId,
-  } = req.body;
+    userId = 1, restaurantId,
+  } = req.query;
   await Bookmark.destroy({
     where: { userId, restaurantId },
   });

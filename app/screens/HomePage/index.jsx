@@ -13,6 +13,7 @@ function HomePage({ navigation, route }) {
   const [filter, setFilter] = useState(0);
   const [search, setSearch] = useState('');
   const cuisine = 2;
+  // const cuisine = route.params.cuisine;
   const styles = StyleSheet.create({
     container: {
       flex: 1,

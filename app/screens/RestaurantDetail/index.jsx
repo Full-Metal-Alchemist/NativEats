@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
 
 function RestaurantDetail({ route, navigation }) {
   const item = route.params.item;
+  // const [fill, setFill] = useState(route.params.filled);
   console.log('yelp', item.yelpId);
   const [detail, setDetail] = useState({});
 

@@ -3,9 +3,14 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Card, Rating, AirbnbRating } from 'react-native-elements';
 import { BookmarkIcon as BookmarkIconOutline } from 'react-native-heroicons/outline';
 import {COLORS} from '../../constants/colors';
+import axios from 'axios';
+import AuthUserContext from '../../contexts';
 
-function RCard({ navigation, item }) {
+function RCard({ navigation, item, isBooked }) {
   console.log('in the card', item.id);
+    // const {user} = useContext(AuthUserContext)
+  const [filled, setFill] = useState(isBooked);
+
 
   const styles = StyleSheet.create({
     cardContainer: {
@@ -55,6 +60,24 @@ function RCard({ navigation, item }) {
 
   return (
     <Card style={styles.cardContainer}>
+      {/* <BookmarkIconOutline style={styles.bookmarkIcon} onPress={async ()=> {
+        if(filled) {
+          // delete req
+              await axios.delete('http://localhost:8080/api/v1/bookmarks', {params:{
+      userId: user.puid,
+      restaurantId: item.id
+    }})
+          await setFill(!filled)
+        }
+        else {
+          post req
+           await axios.post('http://localhost:8080/api/v1/bookmarks', {params:{
+      userId: user.puid,
+      restaurantId: item.id
+    }})
+          await setFill(!filled)
+        }
+      }}/> */}
       <BookmarkIconOutline style={styles.bookmarkIcon} />
       <Card.Title style={styles.name}>{item.name}</Card.Title>
       <Card.Divider />
@@ -65,7 +88,7 @@ function RCard({ navigation, item }) {
       <Card.Image
         source={{ url: item.photo }}
         onPress={() => {
-          navigation.navigate('NativEat', { item });
+          navigation.navigate('NativEat', { item, filled });
         }}
       />
       <Text style={styles.reviewCount}>
