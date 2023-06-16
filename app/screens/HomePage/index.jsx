@@ -14,10 +14,10 @@ function HomePage({ navigation, route }) {
   const [arr, setArr] = useState([]);
   const [filter, setFilter] = useState(0);
   const [search, setSearch] = useState('');
-  const cuisine = 2;
+  // const cuisine = 2;
   const { user } = useContext(AuthUserContext);
 
-  // const cuisine = route.params.cuisine;
+  const cuisine = route.params.cuisine;
   const styles = StyleSheet.create({
     outerContainer: {
       height: Dimensions.get('window').height - 60,

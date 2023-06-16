@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   Text, StyleSheet, FlatList, SafeAreaView,
 } from 'react-native';
@@ -6,6 +6,7 @@ import axios from 'axios';
 import MoodButton from './MoodButton';
 import { COLORS } from '../../../constants/colors';
 import UserIcon from '../../shared/UserIcon';
+import AuthUserContext from '../../../contexts';
 
 const mockUser = {
   id: '1',
@@ -41,11 +42,16 @@ const styles = StyleSheet.create({
 
 function MoodPage({ navigation }) {
   const [cuisines, setCuisines] = useState([]);
-
+  const {user} = useContext(AuthUserContext);
   useEffect(() => {
     const helpFunction = async () => {
+      const reqConfig = {
+        headers: {
+          Authorization: `Bearer ${await user.getIdToken()}`,
+        },
+      };
       try {
-        const response = await axios.get('http://192.168.1.39:8080/api/v1/cuisines');
+        const response = await axios.get('http://localhost:8080/api/v1/cuisines', reqConfig);
         console.log('API response: ', response.data);
         setCuisines(response.data);
       } catch (error) {
