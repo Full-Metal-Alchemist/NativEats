@@ -32,8 +32,10 @@ function BottomNav({ navigation }) {
     { render: 'Recipes', navName: 'RecipesMain', icon: 'clipboard' },
     { render: 'Foodie Tour', navName: 'FoodieTour', icon: 'briefcase' },
     { render: 'Cultural Insights', navName: 'CulturalInsights', icon: 'wind' },
-    { render: 'Bookmarks', navName: 'BookmarkScreen', icon: 'bookmark' },
-    { render: '       ', navName: 'BookmarkScreen', icon: '' },
+    // { render: 'Bookmarks', navName: 'BookmarkScreen', icon: 'bookmark' },
+    { render: 'Bookmarks', navName: 'BookMark', icon: 'bookmark' },
+    // { render: '       ', navName: 'BookmarkScreen', icon: '' },
+    { render: '       ', navName: 'BookMark', icon: '' },
   ];
   return (
     <SafeAreaView style={styles.list}>

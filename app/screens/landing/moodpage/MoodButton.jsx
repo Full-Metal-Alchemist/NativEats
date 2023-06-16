@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Text, StyleSheet, View, Button, TouchableOpacity,
+  Text, StyleSheet, View, TouchableOpacity,
 } from 'react-native';
 import { COLORS } from '../../../constants/colors';
 
@@ -31,7 +31,7 @@ function MoodButton({ navigation, title, data, userId }) {
     <View>
       <TouchableOpacity
         style={styles.touchable}
-        onPress={() => navigation.navigate('Restaurants', { cuisine: data.name, userId })}
+        onPress={() => navigation.navigate('Restaurants', { cuisine: data.id, userId })}
       >
         <Text>{title}</Text>
       </TouchableOpacity>
