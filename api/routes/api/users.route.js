@@ -5,6 +5,7 @@ const router = express.Router();
 
 router
   .route('/')
+  .get(userController.getPuid)
   .post(userController.createUser);
 
 router

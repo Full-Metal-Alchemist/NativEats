@@ -1,6 +1,17 @@
 const mockUser = require('../../__mocks__/mockUser');
 const { User } = require('../models');
 
+const getPuid = async (req, res) => {
+  const { email } = req.user;
+  try {
+    const user = await User.findOne({ where: { email } });
+    res.status(200).json(user.id);
+  } catch (err) {
+    console.log('Error getting puid', err);
+    res.sendStatus(500);
+  }
+};
+
 const createUser = async (req, res) => {
   const userData = {
     firstName: req.user.displayName ? req.user.displayName.split(' ')[0] : 'anon',
@@ -53,6 +64,7 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = {
+  getPuid,
   createUser,
   getUser,
   updateUser,
