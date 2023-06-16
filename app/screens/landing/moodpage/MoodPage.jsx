@@ -43,9 +43,13 @@ const styles = StyleSheet.create({
 function MoodPage({ navigation }) {
   const { user } = useContext(AuthUserContext);
   const [cuisines, setCuisines] = useState([]);
-
   useEffect(() => {
     const helpFunction = async () => {
+      const reqConfig = {
+        headers: {
+          Authorization: `Bearer ${await user.getIdToken()}`,
+        },
+      };
       try {
         const response = await axios.get('http://localhost:8080/api/v1/cuisines', {
           headers: { Authorization: `Bearer ${await user.getIdToken()}` },
