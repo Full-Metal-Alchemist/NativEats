@@ -1,10 +1,10 @@
 // login mirandofrank@gmail.com frankpw
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
 import {
-  Text, StyleSheet, View, Image, ScrollView, SafeAreaView, TouchableOpacity,
+  Text, StyleSheet, View, Image, ScrollView, SafeAreaView, TouchableOpacity, Dimensions,
 } from 'react-native';
+import BottomNav from '../recipes/BottomNav2';
 
 // Temporary import of mock data
 // import restaurants from './mockTourData';
@@ -43,17 +43,15 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 8,
   },
+  list: {
+    height: Dimensions.get('window').height - 60,
+    alignItems: 'center',
+  },
 });
 
 function FoodieTour({ navigation }) {
-  // TODO: need to grab one restaurant for each using fetch
-  // TODO: need a back button to go back to homepage
-  // TODO: when clicking on a restaurant, it should redirect to the restaurant card page
-  // Highest # of reviews, minimum 4+ star ratings -> need to filter myself probably
-  // TODO: each restaurant needs to display the following:
   // name, address, ratings, phone#, maybe description?
   // const { data } = route.params;
-  // Just grab top 3 restaurants and put them in b l & d
 
   const [restaurants, setRestaurants] = useState([]);
   const meals = ['Breakfast', 'Lunch', 'Dinner'];
@@ -73,32 +71,35 @@ function FoodieTour({ navigation }) {
 
   // Refactor later so data is dynamic coming from server
   return (
-    <SafeAreaView style={styles.tourcontainer}>
-      <ScrollView style={styles.tourcontainer}>
-        <View style={styles.heading}>
-          <Text style={styles.title}>Self-Guided Foodie Tour</Text>
-          <Text style={styles.text}>Can't decide on what to eat today? We'll choose for you!</Text>
-        </View>
+    <SafeAreaView style={styles.list}>
+      <SafeAreaView style={styles.tourcontainer}>
+        <ScrollView style={styles.tourcontainer}>
+          <View style={styles.heading}>
+            <Text style={styles.title}>Self-Guided Foodie Tour</Text>
+            <Text style={styles.text}>Can't decide on what to eat today? We'll choose for you!</Text>
+          </View>
 
-        {restaurants.map((item, index) => (
-          <TouchableOpacity
-            key={index}
-            style={styles.imagecontainer}
-            onPress={() => navigation.navigate('NativEat', { item })}
-          >
-            <Text style={styles.title}>{meals[index]}</Text>
-            <Text style={styles.text}>{item.name}</Text>
-            <Image style={styles.image} source={{ uri: item.photo }} />
-            <Text style={styles.text}>{item.address}</Text>
-            <Text style={styles.text}>
-              {item.rating}
-              {' '}
-              Rating
-            </Text>
-          </TouchableOpacity>
-        ))}
+          {restaurants.map((item, index) => (
+            <TouchableOpacity
+              key={index}
+              style={styles.imagecontainer}
+              onPress={() => navigation.navigate('NativEat', { item })}
+            >
+              <Text style={styles.title}>{meals[index]}</Text>
+              <Text style={styles.text}>{item.name}</Text>
+              <Image style={styles.image} source={{ uri: item.photo }} />
+              <Text style={styles.text}>{item.address}</Text>
+              <Text style={styles.text}>
+                {item.rating}
+                {' '}
+                Rating
+              </Text>
+            </TouchableOpacity>
+          ))}
 
-      </ScrollView>
+        </ScrollView>
+      </SafeAreaView>
+      <BottomNav navigatopn={navigation} />
     </SafeAreaView>
   );
 }

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
 import {
-  Text, StyleSheet, View, SafeAreaView, ScrollView, Image,
+  Text, StyleSheet, View, SafeAreaView, ScrollView, Image, Dimensions,
 } from 'react-native';
+import BottomNav from '../recipes/BottomNav2';
 
 import { COLORS } from '../../constants/colors';
 
@@ -44,9 +44,18 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 8,
   },
+  divider: {
+    flex: 1,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: 'gray',
+  },
+  list: {
+    height: Dimensions.get('window').height - 60,
+    alignItems: 'center',
+  },
 });
 
-function CulturalInsights() {
+function CulturalInsights({ navigation }) {
   // Temporary state to hold placeholder cuisine chosen
   const tempId = 1;
   // id: 1 is Italian
@@ -57,8 +66,6 @@ function CulturalInsights() {
     // TODO: grab data for current cuisine
     axios.get('http://localhost:8080/api/v1/cuisines')
       .then(({ data }) => {
-        // console.log('Cultural: grabbing cuisines', data);
-        // setCurrentCuisine(data.filter((c) => c.id === tempId));
         data.forEach((cuisine) => {
           if (cuisine.id === tempId) {
             setCurrentCuisine(cuisine);
@@ -71,25 +78,28 @@ function CulturalInsights() {
   }, []);
 
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <Text style={styles.title}>
-          Cultural Insights About
-          {' '}
-          {currentCuisine.name}
-          {' '}
-          Food
-        </Text>
+    <SafeAreaView style={styles.list}>
+      <SafeAreaView style={styles.culturalcontainer}>
+        <ScrollView>
+          <Text style={styles.title}>
+            Cultural Insights:
+            {' '}
+            {currentCuisine.name}
+            {' '}
+            Cuisine
+          </Text>
 
-        <Image style={styles.image} source={{ uri: currentCuisine.photo }} />
+          <Image style={styles.image} source={{ uri: currentCuisine.photo }} />
+          <View style={styles.divider} />
+          <Text style={styles.subheading}>History</Text>
+          <Text style={styles.info}>{currentCuisine.history}</Text>
+          <View style={styles.divider} />
+          <Text style={styles.subheading}>Customs</Text>
+          <Text style={styles.info}>{currentCuisine.customs}</Text>
 
-        <Text style={styles.subheading}>History</Text>
-        <Text style={styles.info}>{currentCuisine.history}</Text>
-
-        <Text style={styles.subheading}>Customs</Text>
-        <Text style={styles.info}>{currentCuisine.customs}</Text>
-
-      </ScrollView>
+        </ScrollView>
+      </SafeAreaView>
+      <BottomNav navigation={navigation} />
     </SafeAreaView>
 
   );
