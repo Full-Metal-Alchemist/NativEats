@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Text, StyleSheet, View, TouchableOpacity,
 } from 'react-native';
-import { COLORS } from '../../../constants/colors';
+import { Feather } from '@expo/vector-icons';
 
 const styles = StyleSheet.create({
   text: {
@@ -10,33 +10,35 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignSelf: 'center',
   },
+  icon: {
+    fontSize: 30,
+  },
   touchable: {
-    width: 300,
-    marginTop: 15,
-    paddingVertical: 18,
-    borderWidth: 2,
-    borderColor: '#20232a',
+    width: 130,
+    height: 40,
+    paddingVertical: 10,
     borderRadius: 6,
-    backgroundColor: COLORS.TURQUOISE,
+    backgroundColor: 'white',
     color: '#20232a',
-    textAlign: 'center',
-    alignSelf: 'center',
+    diplay: 'flex',
+    alignItems: 'center',
     fontSize: 30,
     fontWeight: 'bold',
   },
 });
 
-function MoodButton({ navigation, title, data, userId }) {
+function RecipeButton({ navigation, title, data }) {
   return (
     <View>
       <TouchableOpacity
         style={styles.touchable}
-        onPress={() => navigation.navigate('Restaurants', { cuisine: data.id, userId })}
+        onPress={() => navigation.navigate(data.navName, {})}
       >
+        <Feather style={styles.icon} name={data.icon} size={28} color="black" />
         <Text>{title}</Text>
       </TouchableOpacity>
     </View>
   );
 }
 
-export default MoodButton;
+export default RecipeButton;

@@ -1,8 +1,7 @@
 import React from 'react';
 import {
-  Text, StyleSheet, View, TouchableOpacity,
+  Text, StyleSheet, View, Button, TouchableOpacity,
 } from 'react-native';
-import { COLORS } from '../../../constants/colors';
 
 const styles = StyleSheet.create({
   text: {
@@ -14,24 +13,22 @@ const styles = StyleSheet.create({
     width: 300,
     marginTop: 15,
     paddingVertical: 18,
-    borderWidth: 2,
-    borderColor: '#20232a',
     borderRadius: 6,
-    backgroundColor: COLORS.TURQUOISE,
+    backgroundColor: '#61dafb',
     color: '#20232a',
     textAlign: 'center',
-    alignSelf: 'center',
+    alignItems: 'center',
     fontSize: 30,
     fontWeight: 'bold',
   },
 });
 
-function MoodButton({ navigation, title, data, userId }) {
+function RecipeButton({ navigation, title, data }) {
   return (
     <View>
       <TouchableOpacity
         style={styles.touchable}
-        onPress={() => navigation.navigate('Restaurants', { cuisine: data.id, userId })}
+        onPress={() => navigation.navigate('RecipesSingle', { data })}
       >
         <Text>{title}</Text>
       </TouchableOpacity>
@@ -39,4 +36,4 @@ function MoodButton({ navigation, title, data, userId }) {
   );
 }
 
-export default MoodButton;
+export default RecipeButton;
