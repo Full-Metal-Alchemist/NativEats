@@ -1,27 +1,45 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  View, Text, StyleSheet, FlatList, Image, Button,
+  View, Text, StyleSheet, FlatList, Image, Button, Dimensions, SafeAreaView,
 } from 'react-native';
 import axios from 'axios';
 import { Avatar } from '@rneui/themed';
 import Filter from './Filter';
 import Search from './Search';
 import List from './List';
+import BottomNav from '../recipes/BottomNav2';
 
 function HomePage({ navigation, route }) {
   const [arr, setArr] = useState([]);
   const [filter, setFilter] = useState(0);
   const [search, setSearch] = useState('');
   const cuisine = 2;
+  // const cuisine = route.params.cuisine;
   const styles = StyleSheet.create({
+    outerContainer: {
+      height: Dimensions.get('window').height - 60,
+      alignItems: 'center',
+    },
+    container: {
+      flex: 1,
+      paddingBottom: 125,
+    },
     img: {
-      width: 50,
-      height: 50,
+      width: 75,
+      height: 75,
+      // boxShadow: 0 3.2px 6.4px rgba(0, 0, 0, 0.1);
+      borderRadius: 6,
     },
     imgContainer: {
       flex: 1,
       justifyContent: 'space-between',
       flexDirection: 'row',
+      marginTop: 18,
+      marginHorizontal: 24,
+      marginBottom: 10,
+    },
+    listContainer: {
+      flex: 6,
     },
   });
   useEffect(() => {
@@ -69,21 +87,25 @@ function HomePage({ navigation, route }) {
     help_function();
   }, [filter, search]);
   return (
-    <View style={{ paddingBottom: 200 }}>
-      <View style={styles.imgContainer}>
-        <Image style={styles.img} source={require('../../assets/logo.png')} />
-        {/* <Image style={styles.img} source={require('../../assets/profile.jpeg')} /> */}
-        <Avatar
-          size={64}
-          rounded
-          source={require('../../assets/profile.jpeg')}
-        />
+    <SafeAreaView style={styles.outerContainer}>
+      <View style={styles.container}>
+        <View style={styles.imgContainer}>
+          <Image style={styles.img} source={require('../../assets/logo.png')} />
+          {/* <Image style={styles.img} source={require('../../assets/profile.jpeg')} /> */}
+          <Avatar
+            size={75}
+            rounded
+            source={require('../../assets/profile.jpeg')}
+          />
+        </View>
+        <View style={styles.listContainer}>
+          <Search search={search} setSearch={setSearch} />
+          <Filter filter={filter} setFilter={setFilter} />
+          <List arr={arr} navigation={navigation} />
+        </View>
       </View>
-
-      <Search search={search} setSearch={setSearch} />
-      <Filter filter={filter} setFilter={setFilter} />
-      <List arr={arr} navigation={navigation} />
-    </View>
+      <BottomNav navigation={navigation} />
+    </SafeAreaView>
   );
 }
 
