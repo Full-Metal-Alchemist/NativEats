@@ -117,7 +117,7 @@ function RCard({ navigation, item, isBooked }) {
       <Text style={styles.reviewCount}>
         {item.reviewCount}
         {' '}
-        reviews
+        users like it
       </Text>
     </Card>
   );

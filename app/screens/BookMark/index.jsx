@@ -47,6 +47,7 @@ function BookMark({ navigation }) {
       const id = await user.puid;
       const res = await axios.get(`http://localhost:8080/api/v1/bookmarks/?userId=${id}`, reqConfig);
       await setBookmark(res.data);
+      console.log('bookmark list', res.data);
     };
     helpFunction();
   }, []);

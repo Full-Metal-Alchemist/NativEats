@@ -103,7 +103,7 @@ function HomePage({ navigation, route }) {
       <View style={styles.container}>
         <View style={styles.imgContainer}>
           <Image style={styles.img} source={require('../../assets/logo.png')} />
-          {/* <Image style={styles.img} source={require('../../assets/profile.jpeg')} /> */}
+          {/* <Image style={styles.img} source={require('../../assets/NativEats.png')} /> */}
           <Avatar
             size={75}
             rounded
