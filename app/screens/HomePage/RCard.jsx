@@ -23,12 +23,13 @@ function RCard({ navigation, item, isBooked }) {
       right: 0,
       color: COLORS.TURQUOISE,
       zIndex: 100,
-      // transform: [{ translateX: -20 }, { translateY: 20 }],
+      transform: [{ translateX: 0 }, { translateY: -2.5 }],
     },
     name: {
       fontSize: 20,
       textAlign: 'center',
       color: COLORS.SCARLET,
+      marginTop: 8,
     },
     reviewCount: {
       fontSize: 16,
