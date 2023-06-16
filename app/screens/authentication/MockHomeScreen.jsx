@@ -57,6 +57,7 @@ export default function MockHomeScreen({ navigation }) {
       <Button title="CulturalInsights" onPress={() => navigation.navigate('CulturalInsights')} />
       <Button title="TestRequest" onPress={() => sendTestRequest()} />
       <Button title="Print puid" onPress={() => console.log('puid button', user.puid)} />
+      <Button title="Home Page" onPress={() => navigation.navigate('Restaurants')} />
     </View>
   );
 }

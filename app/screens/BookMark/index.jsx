@@ -30,15 +30,22 @@ const styles = StyleSheet.create({
 });
 
 function BookMark({ navigation }) {
+  const { user } = useContext(AuthUserContext);
   const [bookmark, setBookmark] = useState([]);
   useEffect(() => {
     // axios.get(`http://localhost:8080/api/v1/bookmarks/`)
     //   .then((res) => {
     //     setBookmark(res.data);
     //   });
-    // const { user } = useContext(AuthUserContext);
+
     const helpFunction = async () => {
-      const res = await axios.get(`http://localhost:8080/api/v1/bookmarks/?userId=1`);
+      const reqConfig = {
+        headers: {
+          Authorization: `Bearer ${await user.getIdToken()}`,
+        },
+      };
+      const id = await user.puid;
+      const res = await axios.get(`http://localhost:8080/api/v1/bookmarks/?userId=${id}`, reqConfig);
       await setBookmark(res.data);
     };
     helpFunction();

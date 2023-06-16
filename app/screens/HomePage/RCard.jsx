@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import {
   Card, Rating, AirbnbRating, Button,
@@ -10,7 +10,8 @@ import AuthUserContext from '../../contexts';
 
 function RCard({ navigation, item, isBooked }) {
   // console.log('in the card', item.id);
-  // const {user} = useContext(AuthUserContext)
+  const { user } = useContext(AuthUserContext);
+  console.log('user', user.puid);
   const [filled, setFill] = useState(isBooked);
   // console.log(item, 'item from rcard');
 
@@ -59,22 +60,41 @@ function RCard({ navigation, item, isBooked }) {
         type="clear"
         onPress={() => {
           const help = async () => {
+            // const reqConfig = {
+            //   headers: {
+            //     Authorization: `Bearer ${user.accessToken}`, // this may cause bug for extended login
+            //   },
+            // };
+
+            // const headers = {
+            //     Authorization: `Bearer ${user.accessToken}`, // this may cause bug for extended login
+            //   },
+            // };
+
+            const headers = {Authorization: `Bearer ${await user.getIdToken()}`,};
+            const id = await user.puid;
             if (filled) {
               // delete req
               await axios({
                 url: 'http://localhost:8080/api/v1/bookmarks',
                 method: 'DELETE',
                 data: {
-                  userId: 1,
+                  userId: id,
                   restaurantId: item.id,
                 },
+                headers,
               });
               await setFill(!filled);
             } else {
               // post req
-              await axios.post('http://localhost:8080/api/v1/bookmarks', {
-                userId: 1,
-                restaurantId: item.id,
+              await axios({
+                url: 'http://localhost:8080/api/v1/bookmarks',
+                method: 'POST',
+                data: {
+                  userId: id,
+                  restaurantId: item.id,
+                },
+                headers,
               });
               await setFill(!filled);
             }

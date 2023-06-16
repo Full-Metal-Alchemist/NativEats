@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   View, Text, StyleSheet, FlatList, Image, Button, Dimensions, SafeAreaView,
 } from 'react-native';
@@ -7,6 +7,7 @@ import { Avatar } from '@rneui/themed';
 import Filter from './Filter';
 import Search from './Search';
 import List from './List';
+import AuthUserContext from '../../contexts';
 import BottomNav from '../recipes/BottomNav2';
 
 function HomePage({ navigation, route }) {
@@ -14,6 +15,8 @@ function HomePage({ navigation, route }) {
   const [filter, setFilter] = useState(0);
   const [search, setSearch] = useState('');
   const cuisine = 2;
+  const { user } = useContext(AuthUserContext);
+
   // const cuisine = route.params.cuisine;
   const styles = StyleSheet.create({
     outerContainer: {
@@ -77,8 +80,17 @@ function HomePage({ navigation, route }) {
         // break;
     }
     const help_function = async () => {
+      // const reqConfig = {
+      const id = await user.puid;
+      console.log('****************', id);
+       const headers = {
+          Authorization: `Bearer ${await user.getIdToken()}`,
+      //   },
+       };
+      //  const id = await user.puid;
+      //  console.log('async id', id);
       try {
-        const res = await axios.get('http://localhost:8080/api/v1/restaurants', { params });
+        const res = await axios.get('http://localhost:8080/api/v1/restaurants', { params, headers });
         await setArr(res.data);
       } catch (err) {
         console.log(err);
