@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  StyleSheet, View, Button,
+  StyleSheet, View, Button, Image,
 } from 'react-native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import axios from 'axios';
@@ -45,7 +45,9 @@ export default function Login({ navigation }) {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
+      <Image source={require('../../assets/NativEatsLogo.png')} />
+      <Image source={require('../../assets/NativEats.png')} />
       <LoginInput
         placeholder="Enter email"
         keyboardType="email-address"
@@ -68,6 +70,7 @@ export default function Login({ navigation }) {
         handleShowPassword={handleShowPassword}
         autoCapitalize="none"
         iconColor={COLORS.SCARLET}
+        width="80%"
       />
       {loginError ? <LoginError error={loginError} visible /> : null}
       <LoginButton
@@ -75,19 +78,33 @@ export default function Login({ navigation }) {
         onPress={onLogin}
         backgroundColor={COLORS.TURQUOISE}
         titleColor={COLORS.JASMINE}
-        // width="60%"
+        width="100%"
         titleSize={18}
       />
-      <Button title="Sign Up" onPress={() => navigation.navigate('Signup')} />
-      <Button
-        title="Forgot Password"
-        onPress={() => navigation.navigate('ForgotPassword')}
-      />
+      <View style={styles.buttonContainer}>
+        <Button title="Sign Up" onPress={() => navigation.navigate('Signup')} />
+        <Button
+          title="Forgot Password"
+          onPress={() => navigation.navigate('ForgotPassword')}
+        />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    margin: 40,
+  },
+  buttonContainer: {
+    // flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
   text: {
     fontSize: 30,
   },

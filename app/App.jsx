@@ -29,6 +29,7 @@ export default function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isSignout, setIsSignout] = useState(false);
+  const [cuisine, setCuisine] = useState();
 
   useEffect(() => {
     const unsubAuth = onAuthStateChanged(auth, async (authUser) => {
@@ -51,7 +52,7 @@ export default function App() {
   }
 
   return (
-    <AuthUserContext.Provider value={{ user, setUser, setIsSignout }}>
+    <AuthUserContext.Provider value={{ user, setUser, setIsSignout, cuisine, setCuisine }}>
       <NavigationContainer>
         {user
           ? (
