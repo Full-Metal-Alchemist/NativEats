@@ -12,6 +12,7 @@ function RCard({ navigation, item, isBooked }) {
   // console.log('in the card', item.id);
   // const {user} = useContext(AuthUserContext)
   const [filled, setFill] = useState(isBooked);
+  // console.log(item, 'item from rcard');
 
   const styles = StyleSheet.create({
     cardContainer: {
