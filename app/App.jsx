@@ -57,20 +57,20 @@ export default function App() {
           ? (
             // screens accessible on login
             <Stack.Navigator
-              initialRouteName="MockHomeScreen"
+              initialRouteName="MoodPage"
               screenOptions={{
                 headerStyle: { elevation: 0 },
                 cardStyle: { backgroundColor: COLORS.JASMINE },
               }}
             >
               {/* <Stack.Screen name="MockHomeScreen" component={MockHomeScreen} /> */}
+              <Stack.Screen name="MoodPage" component={MoodPage} />
               <Stack.Screen name="MockHomeScreen" component={MockHomeScreen} />
               <Stack.Screen name="Restaurants" component={HomePage} />
 
               <Stack.Screen name="RecipesMain" component={RecipesMain} />
               <Stack.Screen name="RecipesSingle" component={RecipesSingle} />
               <Stack.Screen name="FoodieTour" component={FoodieTour} />
-              <Stack.Screen name="MoodPage" component={MoodPage} />
               <Stack.Screen name="SettingsPage" component={SettingsPage} />
               <Stack.Screen name="UserProfile" component={ProfileMainScreen} />
               <Stack.Screen name="BookMark" component={BookMark} />
