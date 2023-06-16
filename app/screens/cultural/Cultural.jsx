@@ -58,10 +58,10 @@ const styles = StyleSheet.create({
 
 function CulturalInsights({ navigation }) {
   // Temporary state to hold placeholder cuisine chosen
-  const tempId = 1;
+  // const tempId = 1;
   // id: 1 is Italian
   // TODO: grab current cuisine from nathan
-  const { user } = useContext(AuthUserContext);
+  const { user, cuisine } = useContext(AuthUserContext);
   const [currentCuisine, setCurrentCuisine] = useState({});
 
   useEffect(() => {
@@ -71,9 +71,9 @@ function CulturalInsights({ navigation }) {
       headers: { Authorization: `Bearer ${user.accessToken}` },
     })
       .then(({ data }) => {
-        data.forEach((cuisine) => {
-          if (cuisine.id === tempId) {
-            setCurrentCuisine(cuisine);
+        data.forEach((c) => {
+          if (c.id === cuisine) {
+            setCurrentCuisine(c);
           }
         });
       })
