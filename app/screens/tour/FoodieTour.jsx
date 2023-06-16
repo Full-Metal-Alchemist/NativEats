@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 // Temporary import of mock data
-import restaurants from './mockTourData';
+// import restaurants from './mockTourData';
 
 import { COLORS } from '../../constants/colors';
 
@@ -44,29 +44,30 @@ const styles = StyleSheet.create({
   },
   tourcontainer: {
     flex: 1,
+    padding: 8,
   },
 });
 
 function FoodieTour({ navigation }) {
-// TODO: need to grab one restaurant for each using fetch
-// TODO: need a back button to go back to homepage
-// TODO: when clicking on a restaurant, it should redirect to the restaurant card page
-// Highest # of reviews, minimum 4+ star ratings -> need to filter myself probably
-// TODO: each restaurant needs to display the following:
-// name, address, ratings, phone#, maybe description?
-// const { data } = route.params;
-// Just grab top 3 restaurants and put them in b l & d
+  // TODO: need to grab one restaurant for each using fetch
+  // TODO: need a back button to go back to homepage
+  // TODO: when clicking on a restaurant, it should redirect to the restaurant card page
+  // Highest # of reviews, minimum 4+ star ratings -> need to filter myself probably
+  // TODO: each restaurant needs to display the following:
+  // name, address, ratings, phone#, maybe description?
+  // const { data } = route.params;
+  // Just grab top 3 restaurants and put them in b l & d
 
-  // const [restaurants, setRestaurants] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
   const meals = ['Breakfast', 'Lunch', 'Dinner'];
-  const testImage = 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80';
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/vi/restaurants?category=rating&limit=3&order=desc')
-      .then((data) => {
-        console.log('Client: >>>', data);
+    axios.get('http://localhost:8080/api/v1/restaurants?category=rating&limit=3&order=desc')
+      .then((results) => {
+        console.log('Client: >>>', results.data);
         // Maybe need to do some filtering of data
         // Grab top 3
+        setRestaurants(results.data);
       })
       .catch((err) => {
         console.error('Couln\'t retrieve restaurants...', err);
@@ -82,14 +83,18 @@ function FoodieTour({ navigation }) {
           <Text style={styles.text}>Can't decide on what to eat today? We'll choose for you!</Text>
         </View>
 
-        {restaurants.map((restaurant, index) => (
-          <TouchableOpacity key={index} style={styles.imagecontainer}>
+        {restaurants.map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            style={styles.imagecontainer}
+            onPress={() => navigation.navigate('NativEat', { item })}
+          >
             <Text style={styles.title}>{meals[index]}</Text>
-            <Text style={styles.text}>{restaurant.name}</Text>
-            <Image style={styles.image} source={{ uri: restaurant.photos[0] }} />
-            <Text style={styles.text}>{restaurant.address}</Text>
+            <Text style={styles.text}>{item.name}</Text>
+            <Image style={styles.image} source={{ uri: item.photo }} />
+            <Text style={styles.text}>{item.address}</Text>
             <Text style={styles.text}>
-              {restaurant.rating}
+              {item.rating}
               {' '}
               Rating
             </Text>
