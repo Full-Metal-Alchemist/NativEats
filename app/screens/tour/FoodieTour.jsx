@@ -17,9 +17,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'Arial',
     textAlign: 'center',
-  },
-  heading: {
-    backgroundColor: COLORS.TURQUOISE,
     borderRadius: 20,
   },
   text: {
