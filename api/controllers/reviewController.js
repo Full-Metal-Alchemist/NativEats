@@ -1,22 +1,15 @@
 const mockReviews = require('../../__mocks__/mockReviews');
-const {Review} = require('../models');
+const { Review } = require('../models');
 
 const createReview = async (req, res) => {
-  const {
-    comment,
-    photos,
-    rating,
-  } = req.body;
-  const review = await Review.create({
-    comment,
-    photos,
-    rating,
-  });
+  const review = await Review.create(req.body);
   res.send(review);
 };
 
 const getReviews = async (req, res) => {
-  const { category = 'createdAt', order = 'DESC', limit = 50, restaurantId, userId } = req.query;
+  const {
+    category = 'createdAt', order = 'DESC', limit = 50, restaurantId, userId,
+  } = req.query;
   const reviews = await Review.findAll({
     where: {
       isVisible: true,
@@ -40,7 +33,7 @@ const getReviews = async (req, res) => {
 
 const getReview = async (req, res) => {
   const { reviewId } = req.params;
-  const review = await Review.findByPk(reviewId, {include: ['user', 'restaurant']});
+  const review = await Review.findByPk(reviewId, { include: ['user', 'restaurant'] });
 
   if (review) {
     res.send(review);

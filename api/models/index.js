@@ -6,9 +6,9 @@ const Restaurant = require('./Restaurant')(sequelize);
 const Review = require('./Review')(sequelize);
 const User = require('./User')(sequelize);
 
-// Bookmark.belongsTo(Restaurant, { foreignKey: 'restaurant_id' });
+Bookmark.belongsTo(Restaurant);
 // Bookmark.belongsTo(User, { foreignKey: 'user_id' });
-Cuisine.belongsToMany(Restaurant, { through: 'cuisine_restaurant', as: 'restaurants'});
+Cuisine.belongsToMany(Restaurant, { through: 'cuisine_restaurant', as: 'restaurants' });
 Cuisine.belongsToMany(Recipe, { through: 'cuisine_recipe', as: 'recipes' });
 Recipe.belongsToMany(Cuisine, { through: 'cuisine_recipe', as: 'cuisines' });
 Restaurant.belongsToMany(Cuisine, { through: 'cuisine_restaurant', as: 'cuisines' });
