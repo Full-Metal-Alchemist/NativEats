@@ -29,9 +29,6 @@ const styles = StyleSheet.create({
   list: {
     height: Dimensions.get('window').height - 65,
     alignItems: 'center',
-    padding: 0,
-    margin: 0,
-    display: 'flex',
   },
   container: {
     flex: 1,
@@ -41,13 +38,15 @@ const styles = StyleSheet.create({
 
 function RecipesMain({ navigation }) {
   const getSetofRecipesNumber = Math.floor(Math.random() * (60 - 1) + 1);
-  console.log(getSetofRecipesNumber);
+  console.log('This is list LINE 41:', getSetofRecipesNumber);
   const [list, setList] = useState([]);
+  // setList(res.data.splice(getSetofRecipesNumber, 14))
   useEffect(() => {
     axios.get('http://localhost:8080/api/v1/recipes')
       .then((res) => setList(res.data.splice(getSetofRecipesNumber, 14)))
       .catch((err) => console.log('This is error Line 59: ', err));
   }, []);
+
   return (
     <SafeAreaView style={styles.list}>
       <View style={styles.container}>

@@ -1,5 +1,8 @@
+const axios = require('axios');
+const { Op } = require('sequelize');
 const mockRestaurants = require('../../__mocks__/mockRestaurants');
 const { Restaurant } = require('../models');
+const { Cuisine } = require('../models');
 
 const createRestaurant = async (req, res) => {
   const restaurant = await Restaurant.create(req.body);
@@ -7,24 +10,42 @@ const createRestaurant = async (req, res) => {
 };
 
 const getRestaurants = async (req, res) => {
-  // TODO: add category
-  const { category = 'createdAt', order = 'DESC', limit = 50 } = req.query;
+  const {
+    category = 'created_at', order = 'DESC', cuisine, limit = 10, search, tags,
+  } = req.query;
   const restaurants = await Restaurant.findAll({
     where: {
       isVisible: true,
+      ...(search ? {
+        name: {
+          [Op.iLike]: `%${search}%`,
+        },
+      } : {}),
+      ...(tags ? {
+        tags: {
+          [Op.contains]: tags,
+        },
+      } : {}),
     },
     order: [
       [category, order],
     ],
     limit,
-    include: ['cuisines', 'reviews'],
+    include: [
+      {
+        model: Cuisine,
+        as: 'cuisines',
+        ...(cuisine ? {
+          where: {
+            id: cuisine,
+          },
+        } : {}),
+      },
+      'reviews',
+    ],
   });
 
-  if (restaurants.length) {
-    res.send(restaurants);
-  } else {
-    res.send(mockRestaurants);
-  }
+  res.send(restaurants);
 };
 
 const getRestaurant = async (req, res) => {
@@ -33,7 +54,7 @@ const getRestaurant = async (req, res) => {
   if (restaurant) {
     res.send(restaurant);
   } else {
-    res.send(mockRestaurants[0]);
+    res.sendStatus(404);
   }
 };
 
