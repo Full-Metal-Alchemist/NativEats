@@ -9,7 +9,7 @@ import { COLORS } from '../../constants/colors';
 import AuthUserContext from '../../contexts';
 
 function RCard({ navigation, item, isBooked }) {
-  console.log('in the card', item.id);
+  // console.log('in the card', item.id);
   // const {user} = useContext(AuthUserContext)
   const [filled, setFill] = useState(isBooked);
 
@@ -90,7 +90,7 @@ function RCard({ navigation, item, isBooked }) {
       <Card.Image
         source={{ url: item.photo }}
         onPress={() => {
-          navigation.navigate('NativEat', { item, filled });
+          navigation.navigate('NativEat', { item });
         }}
       />
       <Text style={styles.reviewCount}>

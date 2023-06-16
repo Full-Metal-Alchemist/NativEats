@@ -68,15 +68,15 @@ function RestaurantDetail({ route, navigation }) {
   // const [fill, setFill] = useState(route.params.filled);
   // console.log('yelp', item.yelpId);
   const [detail, setDetail] = useState({});
-  const [fillIcon, setFillIcon] = useState(route.params.filled);
-  console.log('filled', route.params.filled);
-  console.log('item', item);
+  // const [fillIcon, setFillIcon] = useState(route.params.filled);
+  // console.log('filled', route.params.filled);
+  // console.log('item', item);
 
   useEffect(() => {
     axios.get(`http://localhost:8080/api/v1/yelp/${item.yelpId}`)
       .then((res) => {
         setDetail(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       });
   }, []);
 
@@ -84,7 +84,7 @@ function RestaurantDetail({ route, navigation }) {
     <SafeAreaView style={styles.outerContainer}>
       <ScrollView style={styles.container}>
         {/* <BookmarkIconOutline style={styles.bookmarkIcon} height={28} width={28} /> */}
-        <Button
+        {/* <Button
           title=""
           icon={<BookmarkIconOutline fill={fillIcon ? COLORS.TURQUOISE : '#fff'} style={styles.bookmarkIcon} />}
           type="clear"
@@ -112,7 +112,7 @@ function RestaurantDetail({ route, navigation }) {
             };
             help();
           }}
-        />
+        /> */}
         <Text style={styles.name}>{item.name}</Text>
         <Rating style={styles.rating} imageSize={18} readonly startingValue={item.rating} />
         <ImgCarousel photoarr={detail.photos} />
