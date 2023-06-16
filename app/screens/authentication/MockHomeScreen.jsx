@@ -11,7 +11,6 @@ import { auth } from '../../firebaseConfig';
 
 export default function MockHomeScreen({ navigation }) {
   const { user, setIsSignout } = useContext(AuthUserContext);
-  console.log('MHS user: ', user);
 
   const handleSignOut = async () => {
     try {
@@ -57,6 +56,7 @@ export default function MockHomeScreen({ navigation }) {
       <Button title="MoodPage" onPress={() => navigation.navigate('MoodPage')} />
       <Button title="CulturalInsights" onPress={() => navigation.navigate('CulturalInsights')} />
       <Button title="TestRequest" onPress={() => sendTestRequest()} />
+      <Button title="Print puid" onPress={() => console.log('puid button', user.puid)} />
     </View>
   );
 }

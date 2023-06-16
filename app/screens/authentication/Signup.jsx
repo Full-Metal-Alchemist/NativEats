@@ -30,21 +30,17 @@ function Signup({ navigation }) {
   };
 
   const handleSignup = async () => {
-    const url = 'http://localhost:8080/api/v1/users';
-    // const url = 'http://localhost:8080/api/v1/restaurants?category=created_at&order=desc&cuisine=2';
+    const url = 'http://localhost:8080/api/v1/users'; // to do --> add base url to .env
     try {
       if (email !== '' && password !== '') {
         const { user } = await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(user, { displayName: `${firstName} ${lastName}` });
-        console.log('Handle Signup User: ', user);
-        const testData = await axios.post(url, {}, {
+        const { puid } = await axios.post(url, {}, {
           headers: {
             Authorization: `Bearer ${await user.getIdToken()}`,
           },
         });
-        // user.puid = await authAxiosPost(url, user.stsTokenManager.accessToken);
-        // console.log('puid response', user.puid);
-        console.log('Testing if req works', testData);
+        user.puid = puid;
       }
     } catch (err) {
       setSignupError(err.message);
