@@ -7,7 +7,6 @@ import AuthUserContext from '../../../contexts';
 import MoodButton from './MoodButton';
 import { COLORS } from '../../../constants/colors';
 import UserIcon from '../../shared/UserIcon';
-import AuthUserContext from '../../../contexts';
 
 const mockUser = {
   id: '1',
@@ -44,7 +43,6 @@ const styles = StyleSheet.create({
 function MoodPage({ navigation }) {
   const { user } = useContext(AuthUserContext);
   const [cuisines, setCuisines] = useState([]);
-  const {user} = useContext(AuthUserContext);
   useEffect(() => {
     const helpFunction = async () => {
       const reqConfig = {
