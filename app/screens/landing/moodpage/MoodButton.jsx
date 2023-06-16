@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Text, StyleSheet, View, TouchableOpacity,
 } from 'react-native';
 import { COLORS } from '../../../constants/colors';
+import AuthUserContext from '../../../contexts';
 
 const styles = StyleSheet.create({
   text: {
@@ -26,12 +27,19 @@ const styles = StyleSheet.create({
   },
 });
 
-function MoodButton({ navigation, title, data, userId }) {
+function MoodButton({
+  navigation, title, data, userId,
+}) {
+  const { setCuisine } = useContext(AuthUserContext);
+  const moodPressHandler = (navigation2, data2, userId2) => {
+    setCuisine(data.id);
+    navigation2.navigate('Restaurants', { cuisine: data2.id, userId2 });
+  };
   return (
     <View>
       <TouchableOpacity
         style={styles.touchable}
-        onPress={() => navigation.navigate('Restaurants', { cuisine: data.id, userId })}
+        onPress={() => moodPressHandler(navigation, data, userId)}
       >
         <Text>{title}</Text>
       </TouchableOpacity>
