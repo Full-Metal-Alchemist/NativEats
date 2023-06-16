@@ -5,14 +5,29 @@ import {
   Text, StyleSheet, View, SafeAreaView, ScrollView, Image,
 } from 'react-native';
 
+import { COLORS } from '../../constants/colors';
+
 const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: 'bold',
     fontFamily: 'Arial',
+    textAlign: 'center',
   },
-  text: {
+  heading: {
+    backgroundColor: COLORS.TURQUOISE,
+    borderRadius: 20,
+  },
+  subheading: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    fontFamily: 'Arial',
+    textAlign: 'center',
+    textDecorationLine: 'underline',
+  },
+  info: {
     fontSize: 20,
+    padding: 30,
   },
   imagecontainer: {
     height: 300,
@@ -22,6 +37,12 @@ const styles = StyleSheet.create({
     height: 300,
     alignSelf: 'center',
     borderRadius: 30,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  culturalcontainer: {
+    flex: 1,
+    padding: 8,
   },
 });
 
@@ -61,6 +82,12 @@ function CulturalInsights() {
         </Text>
 
         <Image style={styles.image} source={{ uri: currentCuisine.photo }} />
+
+        <Text style={styles.subheading}>History</Text>
+        <Text style={styles.info}>{currentCuisine.history}</Text>
+
+        <Text style={styles.subheading}>Customs</Text>
+        <Text style={styles.info}>{currentCuisine.customs}</Text>
 
       </ScrollView>
     </SafeAreaView>
