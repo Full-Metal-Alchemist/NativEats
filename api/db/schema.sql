@@ -31,7 +31,7 @@ CREATE TABLE restaurants (
   transactions JSON,
   hours JSON,
   phone TEXT,
-  tags JSON,
+  tags JSONB,
   photo TEXT,
   yelp_id TEXT,
   created_at TIMESTAMP DEFAULT now()

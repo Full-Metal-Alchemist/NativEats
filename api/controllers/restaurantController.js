@@ -10,66 +10,52 @@ const createRestaurant = async (req, res) => {
 };
 
 const getRestaurants = async (req, res) => {
-  console.log('12', req.query);
-  // TODO: add category
   const {
-    category = 'created_at', order = 'DESC', cuisine = 2, limit = 10, search = '',
+    category = 'created_at', order = 'DESC', cuisine, limit = 10, search, tags,
   } = req.query;
-  // const { category, order, cuisine } = req.query;
-  console.log('lin 16', category, order, cuisine);
-  // const restaurants = await Restaurant.findAll({
-  //   where: {
-  //     isVisible: true,
-  //   },
-  //   order: [
-  //     [category, order],
-  //   ],
-  //   limit,
-  //   include: ['cuisines', 'reviews'],
-  // });
-
   const restaurants = await Restaurant.findAll({
     where: {
-      [Op.or]: [
-        { name: { [Op.like]: `%${search}%` } },
-      ],
+      isVisible: true,
+      ...(search ? {
+        name: {
+          [Op.iLike]: `%${search}%`,
+        },
+      } : {}),
+      ...(tags ? {
+        tags: {
+          [Op.contains]: tags,
+        },
+      } : {}),
     },
     order: [
       [category, order],
     ],
     limit,
-    include: [{ model: Cuisine, as: 'cuisines', where: { id: cuisine } }, 'reviews'],
+    include: [
+      {
+        model: Cuisine,
+        as: 'cuisines',
+        ...(cuisine ? {
+          where: {
+            id: cuisine,
+          },
+        } : {}),
+      },
+      'reviews',
+    ],
   });
-  if (restaurants.length) {
-    res.send(restaurants);
-  } else {
-    res.send(mockRestaurants);
-  }
+
+  res.send(restaurants);
 };
 
 const getRestaurant = async (req, res) => {
-  const { yelpId } = req.params;
-  console.log('yelpId', yelpId);
-  const endpoint = `https://api.yelp.com/v3/businesses/${yelpId}`;
-  const option = {
-    method: 'GET',
-    url: endpoint,
-    headers: {
-      Authorization: `Bearer ${process.env.TOKEN}`,
-    },
-  };
-
-  axios(option)
-    .then((result) => {
-      res.send(result.data);
-    })
-    .catch((err) => { console.log(err); });
-
-  // if (restaurant) {
-  //   res.send(restaurant);
-  // } else {
-  //   res.send(mockRestaurants[0]);
-  // }
+  const { restaurantId } = req.params;
+  const restaurant = await Restaurant.findByPk(restaurantId, { include: ['cuisines', 'reviews'] });
+  if (restaurant) {
+    res.send(restaurant);
+  } else {
+    res.sendStatus(404);
+  }
 };
 
 const updateRestaurant = async (req, res) => {
